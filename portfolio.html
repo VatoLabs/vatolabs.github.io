@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vakhtang Inasaridze</title>
+<meta name="description" content="Robotics engineer. First Class, Warwick; admitted to UC Berkeley MEng. Robot learning, 3D perception and hardware.">
+<meta property="og:title" content="Vakhtang Inasaridze | Vato Labs">
+<meta property="og:description" content="Robot learning, 3D perception and the hardware to put them on real robots.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23d9480f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="logo" href="/"><span class="dot"></span>VATO LABS</a>
+  <nav><a href="/">Lab</a><a href="/portfolio" aria-current="page">Portfolio</a></nav>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Vakhtang &ldquo;Vato&rdquo; Inasaridze</div>
+    <h1>Robot learning, with the hardware to make it real.</h1>
+    <p class="lede">Mechanical engineer, First Class from Warwick, admitted to UC Berkeley MEng (Robotics). I build robot learning and 3D perception systems, and the mechanisms, PCBs and firmware to run them.</p>
+    <div class="cta">
+      <a class="btn" href="mailto:inasaridzevato@gmail.com">Email me</a>
+      <a class="btn ghost" href="https://github.com/termvato">GitHub</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/vakhtang-inasaridze">LinkedIn</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Selected work</h2>
+    <div class="grid">
+
+      <article class="card feature">
+        <div class="meta"><span class="tag done">Hardware</span><span>BEng dissertation &middot; solo &middot; 2025-26</span></div>
+        <h3>MRV: Monopedal Reconnaissance Vehicle</h3>
+        <div class="two">
+          <div>
+            <p>A one-legged jumping robot for low-gravity exploration, stabilised by two inertial actuators. Self-proposed; I designed every mechanical part, the 4-layer PCB and the Teensy C++ firmware (120 Hz sensor fusion, independent 1 kHz safety interrupt).</p>
+            <ul class="points">
+              <li>Five revisions of the spring release mechanism; asymmetric ratchet wedge stored 38% more energy per cycle.</li>
+              <li>Root-caused a 43% launch failure rate to a cam concentricity offset.</li>
+              <li>CAD, firmware and BOM open under MIT licence.</li>
+            </ul>
+          </div>
+          <div class="stats">
+            <div class="stat"><b>41 cm</b><span>mean jump at 360 g</span></div>
+            <div class="stat"><b>67.8%</b><span>elastic to potential energy</span></div>
+            <div class="stat"><b>12.7&deg;</b><span>attitude recovery</span></div>
+            <div class="stat"><b>&pound;286</b><span>of &pound;300 budget</span></div>
+          </div>
+        </div>
+        <a class="more" href="https://github.com/termvato/MRV">github.com/termvato/MRV &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="tag done">Robot learning</span><span>Oct 2026</span></div>
+        <h3>Phone-to-robot imitation learning</h3>
+        <p>iPhone LiDAR recordings of my hand turned into robot demonstrations in LIBERO: hand tracking, metric 3D lifting, grasp-anchored retargeting and a demo multiplier.</p>
+        <div class="stats">
+          <div class="stat"><b>41%</b><span>ACT from 3 phone takes (92% scripted)</span></div>
+          <div class="stat"><b>3/4</b><span>pre-registered world-model tests passed</span></div>
+        </div>
+        <a class="more" href="https://github.com/termvato/Humanoid-Learning-Challenge">Code &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="tag done">3D perception</span><span>Oct 2026</span></div>
+        <h3>3D room change detection</h3>
+        <p>Two phone videos in; moved, added and removed objects out, named, with ROS occupancy maps. Hosted GPU web app on Modal.</p>
+        <div class="stats">
+          <div class="stat"><b>2.4&rarr;18.0</b><span>AP with free-space voxel carving</span></div>
+          <div class="stat"><b>21.4</b><span>typed AP vs 15.8 SceneDiff (ECCV 2026)</span></div>
+        </div>
+        <a class="more" href="https://github.com/termvato/Humanoid-Spatial-Challenge">Code &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="tag done">Control</span><span>Oct 2026</span></div>
+        <h3>Reaction-wheel pendulum: LQR vs PPO</h3>
+        <p>Isaac Sim plant, LQR as a ROS 2 node, PPO trained in Isaac Lab as a drop-in replacement. A linear program over all torque sequences proved no controller beats 7.47&deg;; both reached 7.45&deg;.</p>
+        <a class="more" href="https://github.com/termvato/isaac-ros-pendulum">Code &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="tag done">Medical device</span><span>Team of 5</span></div>
+        <h3>Cannulation trainer</h3>
+        <p>Forearm simulator for dialysis nurses on a &pound;200 budget. I owned the flesh analogue: silicone matched to forearm Shore hardness, vein found by touch, replaceable vein. Chosen best of five teams by the nurses.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Awards</h2>
+    <div class="rows">
+      <div class="row"><time>17 Oct 2026</time><div><b>1st place, Physical AI Hack London</b><p>60 builders. Rocky Robotics: quarry autonomy. Simulation, world generation, voice fleet commands, business case.</p></div></div>
+      <div class="row"><time>15 Oct 2026</time><div><b>Top 8 of ~180, Accel AI Innovate London</b><p>CounterFactual: crash recovery decisions for insurers. Simulator, careful-driver models, CCTV vision, agent team.</p></div></div>
+      <div class="row"><time>2023</time><div><b>European Physics Olympiad, represented France</b><p>Hannover. BPhO Intermediate Challenge Gold.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience &amp; education</h2>
+    <div class="rows">
+      <div class="row"><time>Fall 2027</time><div><b>UC Berkeley, MEng Mechanical Engineering (Robotics)</b><p>Admitted, deferred.</p></div></div>
+      <div class="row"><time>2023 - 2026</time><div><b>University of Warwick, BEng Mechanical Engineering</b><p>First Class Honours. Robotics Society Project Manager: membership 15 to 28.</p></div></div>
+      <div class="row"><time>Summer 2024</time><div><b>Siemens, Manufacturing Automation Intern</b><p>Specified a &pound;400k selective soldering machine and its capital case; approved by six chief engineers and installed.</p></div></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <span>&copy; 2026 Vato Labs</span>
+  <nav><a href="https://github.com/termvato">GitHub</a><a href="https://www.linkedin.com/in/vakhtang-inasaridze">LinkedIn</a><a href="mailto:inasaridzevato@gmail.com">Email</a></nav>
+</div></footer>
+</body>
+</html>
