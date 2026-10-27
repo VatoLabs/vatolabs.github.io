@@ -7,24 +7,47 @@
 <meta property="og:description" content="Decoupling robot progress from atoms.">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f7f9fa">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#030303">
 <meta property="og:image" content="https://vatolabs.com/logo.png">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')d.setAttribute('data-theme',t);}catch(e){}})();</script>
 <link rel="icon" href="/logo.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="/img/hero-1600.webp" type="image/webp" media="(min-width: 601px)">
 <link rel="stylesheet" href="/style.css">
-<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-<div class="story" id="story" data-step="0">
-  <div class="stage">
-    <header class="nav">
-      <a class="wordmark" href="/" aria-label="Vato Labs home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.0 -0.0 1920.0 1490.0" role="img" aria-label="Vato Labs"><g fill="currentColor"><path transform="translate(-10.0 735.0) scale(1.00000 -1.00000)" d="M287 0C312 0 327 9 342 42L392 152C421 215 430 257 430 341V700C430 722 417 735 395 735H265C243 735 230 724 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V341C10 257 19 215 48 152L98 42C113 9 128 0 153 0Z"/><path transform="translate(430.0 735.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(870.0 735.0) scale(1.00000 -1.00000)" d="M375 0C397 0 410 13 410 35V700C410 722 397 735 375 735H245C223 735 210 722 210 700V35C210 13 223 0 245 0ZM155 482C177 482 190 495 190 517V700C190 722 177 735 155 735H45C23 735 10 722 10 700V517C10 495 23 482 45 482ZM575 482C597 482 610 495 610 517V700C610 722 597 735 575 735H465C443 735 430 722 430 700V517C430 495 443 482 465 482Z"/><path transform="translate(1490.0 735.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 63 430 174V561C430 672 355 735 266 735H265C243 735 230 722 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H174C85 735 10 672 10 561V174C10 63 85 0 174 0Z"/><path transform="translate(-10.5 1490.0) scale(1.05000 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 722 10 700V35C10 13 23 0 45 0ZM375 0C397 0 410 13 410 35V210C410 232 397 245 375 245H265C243 245 230 232 230 210V35C230 13 243 0 265 0Z"/><path transform="translate(430.0 1490.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(865.7 1490.0) scale(1.42857 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V35C10 11 23 0 45 0ZM266 397C355 397 430 460 430 561V571C430 672 355 735 266 735H265C243 735 230 722 230 700V432C230 410 243 397 265 397ZM266 0C355 0 430 63 430 184V195C430 316 355 379 266 379H265C243 379 230 366 230 344V35C230 13 243 0 265 0Z"/><path transform="translate(1490.0 1490.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 53 430 159V269C430 375 383 413 306 442L252 462C222 473 210 483 210 517V700C210 724 197 735 175 735H174C85 735 10 682 10 576V478C10 372 57 334 134 305L188 285C218 274 230 264 230 230V35C230 11 243 0 265 0ZM395 482C417 482 430 495 430 517V576C430 682 355 735 266 735H265C243 735 230 722 230 700V517C230 493 243 482 265 482ZM175 0C197 0 210 13 210 35V230C210 254 197 265 175 265H45C23 265 10 252 10 230V159C10 53 85 0 174 0Z"/></g></svg>
-</a>
-      <ul><li><a href="#how">How it works</a></li><li><a href="#work">Work</a></li><li><a href="#log">Log</a></li><li><a class="btn" href="https://github.com/vatolabs">GitHub</a></li></ul>
-    </header>
-    <div class="split">
-      <h1><span class="a">Decoupling robot progress</span> <span class="b">from atoms</span></h1>
+<section class="hero" aria-labelledby="hero-title">
+  <figure class="hero-fig">
+    <picture>
+      <source media="(max-width: 600px)" type="image/webp" srcset="/img/hero-portrait-1200.webp">
+      <source media="(max-width: 600px)" srcset="/img/hero-portrait-1200.jpg">
+      <source type="image/webp" srcset="/img/hero-1600.webp 1600w, /img/hero-2400.webp 2400w" sizes="100vw">
+      <img src="/img/hero-1600.jpg" srcset="/img/hero-1600.jpg 1600w, /img/hero-2400.jpg 2400w" sizes="100vw" width="1600" height="900" fetchpriority="high" decoding="async" alt="Black and white film still: the MRV robot shown six times in one jump, rising from a crouch at lower left to the top of its arc at upper right">
+    </picture>
+    <figcaption class="hero-cap">MRV jumping robot, built by hand. Frames from one jump.</figcaption>
+  </figure>
+  <header class="nav">
+    <a class="wordmark" href="/" aria-label="Vato Labs home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.0 -0.0 1920.0 1490.0" role="img" aria-label="Vato Labs"><g fill="currentColor"><path transform="translate(-10.0 735.0) scale(1.00000 -1.00000)" d="M287 0C312 0 327 9 342 42L392 152C421 215 430 257 430 341V700C430 722 417 735 395 735H265C243 735 230 724 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V341C10 257 19 215 48 152L98 42C113 9 128 0 153 0Z"/><path transform="translate(430.0 735.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(870.0 735.0) scale(1.00000 -1.00000)" d="M375 0C397 0 410 13 410 35V700C410 722 397 735 375 735H245C223 735 210 722 210 700V35C210 13 223 0 245 0ZM155 482C177 482 190 495 190 517V700C190 722 177 735 155 735H45C23 735 10 722 10 700V517C10 495 23 482 45 482ZM575 482C597 482 610 495 610 517V700C610 722 597 735 575 735H465C443 735 430 722 430 700V517C430 495 443 482 465 482Z"/><path transform="translate(1490.0 735.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 63 430 174V561C430 672 355 735 266 735H265C243 735 230 722 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H174C85 735 10 672 10 561V174C10 63 85 0 174 0Z"/><path transform="translate(-10.5 1490.0) scale(1.05000 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 722 10 700V35C10 13 23 0 45 0ZM375 0C397 0 410 13 410 35V210C410 232 397 245 375 245H265C243 245 230 232 230 210V35C230 13 243 0 265 0Z"/><path transform="translate(430.0 1490.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(865.7 1490.0) scale(1.42857 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V35C10 11 23 0 45 0ZM266 397C355 397 430 460 430 561V571C430 672 355 735 266 735H265C243 735 230 722 230 700V432C230 410 243 397 265 397ZM266 0C355 0 430 63 430 184V195C430 316 355 379 266 379H265C243 379 230 366 230 344V35C230 13 243 0 265 0Z"/><path transform="translate(1490.0 1490.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 53 430 159V269C430 375 383 413 306 442L252 462C222 473 210 483 210 517V700C210 724 197 735 175 735H174C85 735 10 682 10 576V478C10 372 57 334 134 305L188 285C218 274 230 264 230 230V35C230 11 243 0 265 0ZM395 482C417 482 430 495 430 517V576C430 682 355 735 266 735H265C243 735 230 722 230 700V517C230 493 243 482 265 482ZM175 0C197 0 210 13 210 35V230C210 254 197 265 175 265H45C23 265 10 252 10 230V159C10 53 85 0 174 0Z"/></g></svg></a>
+    <ul><li><a href="#how">How it works</a></li><li><a href="#work">Work</a></li><li><a href="#log">Log</a></li><li><button class="theme" type="button" aria-pressed="false" aria-label="Dark theme"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 2.5a7.5 7.5 0 0 0 0 15z" fill="currentColor"/></svg></button></li><li><a class="btn" href="https://github.com/vatolabs">GitHub</a></li></ul>
+  </header>
+  <div class="hero-copy">
+    <h1 class="lines" id="hero-title"><span class="line"><span data-line style="--i:0">Decoupling robot</span></span> <span class="line"><span data-line style="--i:1">progress from atoms</span></span></h1>
+    <p class="lead" data-load style="--d:420ms">Vato Labs is building open-source calibration that makes each $200 robot arm go where it is told.</p>
+    <a class="btn paper" data-load style="--d:500ms" href="https://github.com/vatolabs">Follow on GitHub</a>
+  </div>
+</section>
+
+<main>
+  <section class="servo" id="servo" data-step="0" aria-labelledby="servo-title">
+    <div class="servo-text">
+      <h2 class="small" id="servo-title">One move, simulated</h2>
+      <div class="beat on"><p class="state">Your command: a 60&deg; move. Pick how fast.</p><p class="aside">The buttons set the move time, from 1 s down to 0.15 s.</p></div>
+      <div class="beat"><p class="state">A stock servo hits its speed limit, lags behind and lands on backlash.</p><p class="aside">Peak lag is read off the gap between the two lines.</p></div>
+      <div class="beat"><p class="state">Calibration measures those limits on your arm, so software can plan around them.</p><p class="aside">Speed limit 299&deg;/s and backlash &plusmn;0.5&deg; here; your arm gets its own values.</p></div>
+    </div>
+    <div class="servo-stage">
       <figure class="fragment trace" data-ui aria-label="Simulated servo tracking a commanded move">
         <header><b>Shoulder lift, STS3215 <span class="tag">Simulated</span></b>
           <span class="seg" role="group" aria-label="Move time">
@@ -39,19 +62,8 @@
         <p class="simnote">Simulated from datasheet limits; 10 ms delay assumed. Measured trace replaces it after servos arrive.</p>
       </figure>
     </div>
-    <div class="stage-foot">
-      <p class="say">Vato Labs is building open-source calibration that makes each $200 robot arm go where it is told.</p>
-      <div class="steps" aria-live="polite">
-        <p class="on">Your command: a 60&deg; move. Pick how fast.</p>
-        <p>A stock servo hits its speed limit, lags behind and lands on backlash.</p>
-        <p>Calibration measures those limits on your arm, so software can plan around them.</p>
-      </div>
-      <a class="btn act" href="https://github.com/vatolabs">Follow on GitHub</a>
-    </div>
-  </div>
-</div>
+  </section>
 
-<main>
   <section id="how" aria-labelledby="stage-title">
     <div class="stages" id="stages">
       <div class="left">

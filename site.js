@@ -1,4 +1,12 @@
-// Vato Labs: servo trace (simulated), pinned story, stage slider, ledger preview, entrances.
+// Vato Labs: theme toggle, servo trace (simulated), pinned story, stage slider, ledger preview, entrances.
+(function(){
+  // theme: follows the system until the visitor picks one; the choice is stored when storage allows
+  const root=document.documentElement,dark=matchMedia('(prefers-color-scheme: dark)');
+  const current=()=>root.dataset.theme||(dark.matches?'dark':'light');
+  const sync=()=>document.querySelectorAll('.theme').forEach(b=>b.setAttribute('aria-pressed',current()==='dark'));
+  document.querySelectorAll('.theme').forEach(b=>b.addEventListener('click',()=>{const t=current()==='dark'?'light':'dark';root.dataset.theme=t;try{localStorage.setItem('theme',t);}catch(e){}sync();}));
+  dark.addEventListener('change',sync);sync();
+})();
 (function(){
   const NS='http://www.w3.org/2000/svg';
   // Simple STS3215-like position servo: PD on error, speed limit 299 deg/s (5.22 rad/s), 10 ms delay, +-0.5 deg backlash.
@@ -29,11 +37,11 @@
     const pr=s=>{let p='';for(let i=0;i<N;i+=4)p+=(i?'L':'M')+(P+(W-2*P)*i/(N-1)).toFixed(1)+' '+(H-P-(H-2*P)*s[i]/64).toFixed(1);return p;};
     for(const g of [0,30,60]){const y=H-P-(H-2*P)*g/64;p2.append(el('line',{x1:P,x2:W-P,y1:y,y2:y,class:'axis'}));}
     p2.append(el('path',{d:pr(r),class:'ln-ref'}),el('path',{d:pr(c),class:'ln-act'}));}
-  // pinned story: three steps over the held hero
-  const story=document.getElementById('story');
-  if(story){const steps=story.querySelectorAll('.steps p');const on=()=>{const r=story.getBoundingClientRect();const h=story.offsetHeight-innerHeight;
-      const k=h>0?Math.max(0,Math.min(2,Math.floor(-r.top/h*3))):0;if(story.dataset.step!=k){story.dataset.step=k;steps.forEach((p,i)=>p.classList.toggle('on',i===k));}};
-    addEventListener('scroll',on,{passive:true});on();}
+  // pinned story: the chart holds while three statements pass; the one crossing the middle of the screen sets its state
+  const servo=document.getElementById('servo');
+  if(servo){const beats=[...servo.querySelectorAll('.beat')];const set=k=>{if(servo.dataset.step!=k){servo.dataset.step=k;beats.forEach((b,i)=>b.classList.toggle('on',i===k));}};
+    if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting)set(beats.indexOf(e.target));},{rootMargin:'-45% 0px -45% 0px'});beats.forEach(b=>io.observe(b));}
+    set(0);}
   // stage slider
   const S=[['Record 20 minutes','The arm runs chirps, steps and sweeps chosen so each one isolates a few parameters.','Record'],
     ['Fit every servo','Delay, gains, speed limit, backlash, friction and gravity, fitted per joint on your arm.','Fit'],
