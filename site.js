@@ -1,58 +1,80 @@
-// Vato Labs: servo trace (simulated), pinned story, stage slider, ledger preview, entrances.
+// Vato Labs: theme toggle, simulated servo trace with its peak lag dimensioned, corrected-command plot.
 (function(){
-  const NS='http://www.w3.org/2000/svg';
-  // Simple STS3215-like position servo: PD on error, speed limit 299 deg/s (5.22 rad/s), 10 ms delay, +-0.5 deg backlash.
-  // An illustration with published limits, not a measurement.
-  function sim(T,amp){const dt=.001,N=1200,d=10,vmax=298.8,kp=900,kd=55,umax=3e4,bl=.5;
-    let m=0,v=0,o=0;const r=[],a=[];
-    for(let i=0;i<N;i++){const s=Math.min(Math.max((i*dt-.1)/T,0),1);r.push(amp*(10*s**3-15*s**4+6*s**5));}
-    let peak=0;for(let i=0;i<N;i++){const e=r[Math.max(0,i-d)]-o;const u=Math.max(-umax,Math.min(umax,kp*e-kd*v));
-      v=Math.max(-vmax,Math.min(vmax,v+u*dt));m+=v*dt;if(m-o>bl)o=m-bl;else if(m-o<-bl)o=m+bl;a.push(o);peak=Math.max(peak,Math.abs(r[i]-o));}
-    return {r,a,peak};}
+  const d=document.documentElement, NS='http://www.w3.org/2000/svg';
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // theme: follows the system until the visitor picks; the pick persists
+  const mq=matchMedia('(prefers-color-scheme: dark)');
+  const isDark=()=>{const t=d.getAttribute('data-theme');return t?t==='dark':mq.matches;};
+  const toggles=document.querySelectorAll('.theme');
+  const sync=()=>toggles.forEach(b=>b.setAttribute('aria-pressed',String(isDark())));
+  toggles.forEach(b=>b.addEventListener('click',()=>{const next=isDark()?'light':'dark';d.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}sync();redraw();}));
+  if(mq.addEventListener)mq.addEventListener('change',()=>{sync();redraw();});
+  sync();
+
   function el(n,at){const e=document.createElementNS(NS,n);for(const k in at)e.setAttribute(k,at[k]);return e;}
-  function path(arr,W,H,pad,max){let p='';const n=arr.length;for(let i=0;i<n;i+=4){const x=pad+(W-2*pad)*i/(n-1),y=H-pad-(H-2*pad)*arr[i]/max;p+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);}return p;}
-  function draw(svg,T){const W=560,H=260,P=24,R=sim(T,60);svg.textContent='';
-    for(const g of [0,30,60]){const y=H-P-(H-2*P)*g/66;svg.append(el('line',{x1:P,x2:W-8,y1:y,y2:y,class:'axis'}));const t=el('text',{x:2,y:y+4,class:'axl'});t.textContent=g+'°';svg.append(t);}
-    let band='';const n=R.r.length;for(let i=0;i<n;i+=4)band+=(i?'L':'M')+(P+(W-P-8)*i/(n-1)).toFixed(1)+' '+(H-P-(H-2*P)*R.r[i]/66).toFixed(1);
-    for(let i=n-1;i>=0;i-=4)band+='L'+(P+(W-P-8)*i/(n-1)).toFixed(1)+' '+(H-P-(H-2*P)*R.a[i]/66).toFixed(1);
-    svg.append(el('path',{d:band+'Z',class:'err'}));
-    const pr=s=>{let p='';for(let i=0;i<n;i+=4){p+=(i?'L':'M')+(P+(W-P-8)*i/(n-1)).toFixed(1)+' '+(H-P-(H-2*P)*s[i]/66).toFixed(1);}return p;};
-    svg.append(el('path',{d:pr(R.r),class:'ln-ref'}),el('path',{d:pr(R.a),class:'ln-act'}));
-    const lag=document.getElementById('lag');if(lag)lag.textContent=R.peak.toFixed(1)+'°';}
-  const plot=document.getElementById('plot');let T=.25;
-  if(plot){draw(plot,T);document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{
-    document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));T=+b.dataset.t;draw(plot,T);}));}
-  // corrected command (stage 3): the command leads the target by the modelled delay and is shaped near the speed limit
+
+  // STS3215-like position servo: PD on error, speed limit 299 deg/s (5.22 rad/s), 10 ms delay, +-0.5 deg backlash.
+  // An illustration from published limits, not a measurement.
+  function sim(T,amp){const dt=.001,N=1200,dl=10,vmax=298.8,kp=900,kd=55,umax=3e4,bl=.5;
+    let m=0,v=0,o=0,peak=0,ip=0;const r=[],a=[];
+    for(let i=0;i<N;i++){const s=Math.min(Math.max((i*dt-.1)/T,0),1);r.push(amp*(10*s**3-15*s**4+6*s**5));}
+    for(let i=0;i<N;i++){const e=r[Math.max(0,i-dl)]-o;const u=Math.max(-umax,Math.min(umax,kp*e-kd*v));
+      v=Math.max(-vmax,Math.min(vmax,v+u*dt));m+=v*dt;if(m-o>bl)o=m-bl;else if(m-o<-bl)o=m+bl;a.push(o);
+      const g=Math.abs(r[i]-o);if(g>peak){peak=g;ip=i;}}
+    return {r,a,peak,ip};}
+
+  const plot=document.getElementById('plot'), lagOut=document.getElementById('lag');
+  let T=.25;
+  function drawTrace(animate){
+    if(!plot)return;const box=plot.parentElement,W=box.clientWidth,H=box.clientHeight;if(!W||!H)return;
+    const L=40,R=Math.min(96,W*.18),Tp=14,B=30,ymax=66,N=1200,R0=sim(T,60);
+    const X=i=>L+(W-L-R)*i/(N-1), Y=v=>H-B-(H-Tp-B)*v/ymax;
+    plot.setAttribute('viewBox',`0 0 ${W} ${H}`);plot.textContent='';plot.classList.remove('drawn');
+    for(const g of [0,30,60]){plot.append(el('line',{x1:L,x2:W-R+8,y1:Y(g),y2:Y(g),class:g?'axis':'axis0'}));
+      const t=el('text',{x:L-8,y:Y(g)+4,'text-anchor':'end',class:'axl'});t.textContent=g+'°';plot.append(t);}
+    for(let s=0;s<=1.2001;s+=.2){const x=X(Math.min(N-1,Math.round(s*1000)));plot.append(el('line',{x1:x,x2:x,y1:H-B,y2:H-B+5,class:'axis0'}));
+      const t=el('text',{x,y:H-8,'text-anchor':'middle',class:'axl'});t.textContent=(s===0?'0':s.toFixed(1))+(s>1.1?' s':'');plot.append(t);}
+    const line=s=>{let p='';for(let i=0;i<N;i+=3)p+=(i?'L':'M')+X(i).toFixed(1)+' '+Y(s[i]).toFixed(1);return p;};
+    let band=line(R0.r);for(let i=N-1;i>=0;i-=3)band+='L'+X(i).toFixed(1)+' '+Y(R0.a[i]).toFixed(1);
+    plot.append(el('path',{d:band+'Z',class:'err'}),el('path',{d:line(R0.r),class:'ln-ref'}));
+    const act=el('path',{d:line(R0.a),class:'ln-act'});plot.append(act);
+    // the dimension: extension lines from both curves at the peak, a dimension line, arrowheads, the value
+    const x=X(R0.ip),y1=Y(R0.r[R0.ip]),y2=Y(R0.a[R0.ip]),top=Math.min(y1,y2),bot=Math.max(y1,y2);
+    const xd=Math.min(W-R+18,x+Math.max(26,(W-L-R)*.06)),g=el('g',{class:'dimg'});
+    g.append(el('line',{x1:x+3,x2:xd+7,y1:y1,y2:y1,class:'ext'}),el('line',{x1:x+3,x2:xd+7,y1:y2,y2:y2,class:'ext'}));
+    const ah=(y,dir)=>el('path',{d:`M${xd} ${y}l-3.2 ${-9*dir}h6.4z`,class:'arrow'});
+    if(bot-top>22){g.append(el('line',{x1:xd,x2:xd,y1:top,y2:bot,class:'dim'}),ah(top,-1),ah(bot,1));}
+    else{g.append(el('line',{x1:xd,x2:xd,y1:top-16,y2:bot+16,class:'dim'}),ah(top,1),ah(bot,-1));}
+    const t=el('text',{x:xd+10,y:(top+bot)/2+5,class:'dimt'});t.textContent=R0.peak.toFixed(1)+'°';g.append(t);plot.append(g);
+    if(lagOut)lagOut.textContent=R0.peak.toFixed(1)+'°';
+    if(animate&&!reduce){const len=act.getTotalLength();act.style.strokeDasharray=len;act.style.setProperty('--len',len);
+      void plot.getBoundingClientRect();plot.classList.add('drawn');}
+  }
+  const segs=document.querySelectorAll('.seg button');
+  segs.forEach(b=>b.addEventListener('click',()=>{segs.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));T=+b.dataset.t;drawTrace(true);}));
+
+  // corrected command: leads the target by the modelled delay, offset by backlash in the direction of travel
   const p2=document.getElementById('plot2');
-  if(p2){const W=440,H=220,P=20,N=1200,r=[],c=[];for(let i=0;i<N;i++){const s=Math.min(Math.max((i*.001-.15)/.4,0),1);r.push(60*(10*s**3-15*s**4+6*s**5));}
-    for(let i=0;i<N;i++){const j=Math.min(N-1,i+10);c.push(r[j]+0.5*Math.sign(r[j]-r[Math.max(0,j-1)]));}
-    const pr=s=>{let p='';for(let i=0;i<N;i+=4)p+=(i?'L':'M')+(P+(W-2*P)*i/(N-1)).toFixed(1)+' '+(H-P-(H-2*P)*s[i]/64).toFixed(1);return p;};
-    for(const g of [0,30,60]){const y=H-P-(H-2*P)*g/64;p2.append(el('line',{x1:P,x2:W-P,y1:y,y2:y,class:'axis'}));}
-    p2.append(el('path',{d:pr(r),class:'ln-ref'}),el('path',{d:pr(c),class:'ln-act'}));}
-  // pinned story: three steps over the held hero
-  const story=document.getElementById('story');
-  if(story){const steps=story.querySelectorAll('.steps p');const on=()=>{const r=story.getBoundingClientRect();const h=story.offsetHeight-innerHeight;
-      const k=h>0?Math.max(0,Math.min(2,Math.floor(-r.top/h*3))):0;if(story.dataset.step!=k){story.dataset.step=k;steps.forEach((p,i)=>p.classList.toggle('on',i===k));}};
-    addEventListener('scroll',on,{passive:true});on();}
-  // stage slider
-  const S=[['Record 20 minutes','The arm runs chirps, steps and sweeps chosen so each one isolates a few parameters.','Record'],
-    ['Fit every servo','Delay, gains, speed limit, backlash, friction and gravity, fitted per joint on your arm.','Fit'],
-    ['Correct each command','The model shapes each command before it is sent, so the joint arrives where the policy asked.','Correct'],
-    ['Measure at the tip','Accuracy is measured at the tip with a dial indicator, stock against calibrated, before any claim.','Measure']];
-  const sc=document.getElementById('scrub'),box=document.getElementById('stages');
-  if(sc){const h=document.getElementById('stage-title'),n=document.getElementById('stage-note'),lis=box.querySelectorAll('.scrub li'),panes=box.querySelectorAll('.pane');
-    const set=k=>{box.classList.add('swap');setTimeout(()=>{h.textContent=S[k][0];n.textContent=S[k][1];panes.forEach(p=>p.hidden=+p.dataset.stage!==k);
-      lis.forEach((l,i)=>l.classList.toggle('on',i===k));box.classList.remove('swap');},200);sc.value=k;sc.setAttribute('aria-valuetext',S[k][2]);sc.parentElement.style.setProperty('--p',(k/3*100)+'%');};
-    sc.addEventListener('input',()=>set(+sc.value));box.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>set(+b.dataset.go)));}
-  // ledger preview
-  const peek=document.getElementById('peek');
-  if(peek)document.querySelectorAll('.ledger a').forEach(a=>{const show=()=>{const src=a.dataset.img;if(!src)return;
-      peek.src=src;peek.style.top=(a.offsetTop-60)+'px';peek.classList.add('on');};
-    a.addEventListener('mouseenter',show);a.addEventListener('focus',show);});
-  // entrances: stagger the parts of each section
-  const items=document.querySelectorAll('.rise');
-  document.querySelectorAll('main section').forEach(s=>s.querySelectorAll('.rise').forEach((e,i)=>{if(!e.style.getPropertyValue('--i'))e.style.setProperty('--i',i%6);}));
-  if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{rootMargin:'0px 0px -8% 0px'});items.forEach(i=>io.observe(i));}
-  else items.forEach(i=>i.classList.add('in'));
-  if(matchMedia("(prefers-reduced-motion: reduce)").matches)document.querySelectorAll("video[autoplay]").forEach(v=>{v.pause();v.removeAttribute("autoplay");v.controls=true;});
+  function drawCorrect(){
+    if(!p2)return;const box=p2.parentElement,W=box.clientWidth,H=box.clientHeight;if(!W||!H)return;
+    const L=40,Rm=12,Tp=12,B=28,N=1200,r=[],c=[],ymax=64;
+    for(let i=0;i<N;i++){const s=Math.min(Math.max((i*.001-.15)/.4,0),1);r.push(60*(10*s**3-15*s**4+6*s**5));}
+    for(let i=0;i<N;i++){const j=Math.min(N-1,i+10);c.push(r[j]+.5*Math.sign(r[j]-r[Math.max(0,j-1)]));}
+    const X=i=>L+(W-L-Rm)*i/(N-1),Y=v=>H-B-(H-Tp-B)*v/ymax;
+    p2.setAttribute('viewBox',`0 0 ${W} ${H}`);p2.textContent='';
+    for(const g of [0,30,60]){p2.append(el('line',{x1:L,x2:W-Rm,y1:Y(g),y2:Y(g),class:g?'axis':'axis0'}));
+      const t=el('text',{x:L-8,y:Y(g)+4,'text-anchor':'end',class:'axl'});t.textContent=g+'°';p2.append(t);}
+    for(let s=0;s<=1.2001;s+=.4){const x=X(Math.min(N-1,Math.round(s*1000)));const t=el('text',{x,y:H-6,'text-anchor':'middle',class:'axl'});t.textContent=(s===0?'0':s.toFixed(1))+(s>1.1?' s':'');p2.append(t);}
+    const line=s=>{let p='';for(let i=0;i<N;i+=3)p+=(i?'L':'M')+X(i).toFixed(1)+' '+Y(s[i]).toFixed(1);return p;};
+    p2.append(el('path',{d:line(r),class:'ln-ref'}),el('path',{d:line(c),class:'ln-act'}));
+  }
+  function redraw(){drawTrace(false);drawCorrect();}
+  redraw();
+  if('ResizeObserver' in window){let w=0;const ro=new ResizeObserver(es=>{const nw=Math.round(es[0].contentRect.width);if(nw!==w){w=nw;redraw();}});
+    const b=plot&&plot.parentElement;if(b)ro.observe(b);}
+  else addEventListener('resize',redraw);
+
+  if(reduce)document.querySelectorAll('video[autoplay]').forEach(v=>{v.pause();v.removeAttribute('autoplay');v.controls=true;});
 })();

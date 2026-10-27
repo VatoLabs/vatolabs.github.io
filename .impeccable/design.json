@@ -1,0 +1,7 @@
+{
+  "northStar": "The Parts Catalog",
+  "motion": {"trace-draw": {"duration": "0.9s", "easing": "cubic-bezier(.16,1,.3,1)", "use": "servo trace redraw on move-time change; disabled under prefers-reduced-motion"}},
+  "breakpoints": {"tablet": "1100px", "phone": "760px"},
+  "elevation": "flat, no shadows",
+  "rules": ["Red only on data", "Every number in a table row with its source or status", "Square corners, 1px rules, 3px heading bars", "Styro only in the logo"]
+}
