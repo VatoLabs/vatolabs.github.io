@@ -19,7 +19,7 @@
     return {r,a,peak};}
   function el(n,at){const e=document.createElementNS(NS,n);for(const k in at)e.setAttribute(k,at[k]);return e;}
   function path(arr,W,H,pad,max){let p='';const n=arr.length;for(let i=0;i<n;i+=4){const x=pad+(W-2*pad)*i/(n-1),y=H-pad-(H-2*pad)*arr[i]/max;p+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);}return p;}
-  function draw(svg,T){const W=560,H=260,P=24,R=sim(T,60);svg.textContent='';
+  function draw(svg,T){const W=Math.round(svg.clientWidth)||560,H=Math.round(svg.clientHeight)||260,P=24,R=sim(T,60);svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.textContent='';
     for(const g of [0,30,60]){const y=H-P-(H-2*P)*g/66;svg.append(el('line',{x1:P,x2:W-8,y1:y,y2:y,class:'axis'}));const t=el('text',{x:2,y:y+4,class:'axl'});t.textContent=g+'°';svg.append(t);}
     let band='';const n=R.r.length;for(let i=0;i<n;i+=4)band+=(i?'L':'M')+(P+(W-P-8)*i/(n-1)).toFixed(1)+' '+(H-P-(H-2*P)*R.r[i]/66).toFixed(1);
     for(let i=n-1;i>=0;i-=4)band+='L'+(P+(W-P-8)*i/(n-1)).toFixed(1)+' '+(H-P-(H-2*P)*R.a[i]/66).toFixed(1);
@@ -29,7 +29,7 @@
     const lag=document.getElementById('lag');if(lag)lag.textContent=R.peak.toFixed(1)+'°';}
   const plot=document.getElementById('plot');let T=.25;
   if(plot){draw(plot,T);document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{
-    document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));T=+b.dataset.t;draw(plot,T);}));}
+    document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));T=+b.dataset.t;draw(plot,T);}));let rw=0;addEventListener('resize',()=>{const w=plot.clientWidth;if(w!==rw){rw=w;draw(plot,T);}});}
   // corrected command (stage 3): the command leads the target by the modelled delay and is shaped near the speed limit
   const p2=document.getElementById('plot2');
   if(p2){const W=440,H=220,P=20,N=1200,r=[],c=[];for(let i=0;i<N;i++){const s=Math.min(Math.max((i*.001-.15)/.4,0),1);r.push(60*(10*s**3-15*s**4+6*s**5));}
@@ -40,7 +40,7 @@
   // pinned story: the chart holds while three statements pass; the one crossing the middle of the screen sets its state
   const servo=document.getElementById('servo');
   if(servo){const beats=[...servo.querySelectorAll('.beat')];const set=k=>{if(servo.dataset.step!=k){servo.dataset.step=k;beats.forEach((b,i)=>b.classList.toggle('on',i===k));}};
-    if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting)set(beats.indexOf(e.target));},{rootMargin:'-45% 0px -45% 0px'});beats.forEach(b=>io.observe(b));}
+    if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting)set(beats.indexOf(e.target));},{rootMargin:matchMedia('(max-width: 820px)').matches?'-68% 0px -22% 0px':'-45% 0px -45% 0px'});beats.forEach(b=>io.observe(b));}
     set(0);}
   // stage slider
   const S=[['Record 20 minutes','The arm runs chirps, steps and sweeps chosen so each one isolates a few parameters.','Record'],
