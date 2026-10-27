@@ -231,3 +231,86 @@ html:not(.js) .pill__tog { display: none; }
   .close__statement { font-size: clamp(1.75rem, 7.5vw, 2.25rem); }
 }
 .q.band { padding-top: var(--section-gap-s); }
+.peek img.is-photo, .index__img[src*="mrv-"] { filter: grayscale(1) contrast(1.06); }
+.peek img.is-photo { object-fit: cover; }
+
+/* ---------- /portfolio: Ledge hero, bento of work, rows of record, mast ---------- */
+.atoms--ledge h1 { align-self: end; max-width: 14ch; margin-bottom: var(--space-xl); }
+.atoms--ledge .atoms__foot { align-items: flex-end; }
+.atoms--ledge .lead { max-width: 52ch; }
+.atoms__links { display: flex; gap: var(--space-lg); }
+.atoms__links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-film-ink); text-decoration-color: var(--color-film-rule); }
+.atoms__links a:hover { text-decoration-color: var(--color-film-ink); }
+
+.q--bento { padding-top: var(--section-gap-s); }
+.bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--color-rule); border-radius: var(--radius-card); background: var(--color-rule); overflow: hidden; }
+.tile { display: grid; gap: var(--space-xl); align-content: start; padding: var(--space-xl); background: var(--color-paper); }
+.tile h2 { max-width: 18ch; font-size: var(--text-2xl); line-height: 1.1; letter-spacing: -0.02em; }
+.tile h3 { font-size: var(--text-title); letter-spacing: -0.02em; }
+.tile__text { display: grid; gap: var(--space-md); align-content: start; }
+.tile__text > p:not(.tile__when) { max-width: 60ch; color: var(--color-ink-2); }
+.tile__when { font-size: var(--text-sm); color: var(--color-muted); }
+.tile__list { display: grid; gap: var(--space-xs); margin: 0; padding-left: var(--space-md); color: var(--color-ink-2); }
+.src { justify-self: start; display: inline-flex; align-items: center; min-height: 44px; font-weight: 500; color: var(--color-ink); text-decoration-color: var(--color-rule-2); }
+.src:hover { text-decoration-color: var(--color-ink); }
+.tile__media { display: grid; gap: var(--space-sm); margin: 0; }
+.tile__media figcaption { font-size: var(--text-sm); color: var(--color-ink-2); }
+.frame { position: relative; border-radius: var(--radius-pill); overflow: hidden; background: var(--color-plate); }
+.frame video, .frame > img { width: 100%; height: 100%; object-fit: cover; }
+.frame video { filter: grayscale(1) contrast(1.06); }
+.frame--plate { aspect-ratio: 16 / 9; }
+.frame--plate > img { object-fit: contain; }
+.frame--light { background: var(--color-paper-3); }
+.tile--lead { grid-column: 1 / -1; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap-columns); background: var(--color-paper-2); }
+.tile--lead .tile__text { grid-column: 1 / 7; }
+.tile--lead .tile__media { grid-column: 7 / 13; }
+.tile__media--pair { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-md); }
+.tile__media--pair figcaption { grid-column: 1 / -1; }
+.frame--tall { aspect-ratio: 3 / 4; }
+.frame--tall video { object-position: 50% 100%; }
+.tile--spatial { grid-column: 1 / 8; }
+.tile--pendulum { grid-column: 8 / 13; }
+.tile--learning { grid-column: 1 / 6; }
+.tile--cannulation { grid-column: 6 / 13; align-content: end; background: var(--color-paper-2); }
+
+.figs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: var(--space-xs) 0 0; padding-top: var(--space-md); border-top: 1px solid var(--color-rule); }
+.figs--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.figs > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: var(--space-2xs); padding-inline: var(--space-md); border-left: 1px solid var(--color-rule); }
+.figs > div:first-child { padding-left: 0; border-left: 0; }
+.figs dd { margin: 0; font-size: var(--text-2xl); line-height: 1.1; letter-spacing: -0.03em; color: var(--color-ink); white-space: nowrap; }
+.figs dt { font-size: var(--text-sm); line-height: 1.35; color: var(--color-muted); }
+
+.q--cv { padding-top: var(--section-gap); }
+.cvwrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-3xl); row-gap: var(--space-2xl); }
+.cv h2 { margin-bottom: var(--space-xl); font-size: var(--text-section); }
+.cv ul { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--color-rule-2); }
+.cv li { display: grid; gap: var(--space-xs); padding-block: var(--space-lg); border-bottom: 1px solid var(--color-rule); }
+.cv__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--space-2xs) var(--space-md); }
+.cv b { font-weight: 500; font-size: var(--text-lg); }
+.cv time { font-size: var(--text-sm); color: var(--color-muted); white-space: nowrap; }
+.cv p { color: var(--color-ink-2); }
+
+.mast { display: block; width: min(100%, 560px); color: var(--color-ink); line-height: 0; }
+.mast svg { width: 100%; height: auto; }
+.mast:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 6px; }
+
+@media (max-width: 60rem) {
+  .tile--lead .tile__text, .tile--lead .tile__media, .tile--spatial, .tile--pendulum, .tile--learning, .tile--cannulation { grid-column: 1 / -1; }
+  .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--space-lg); }
+  .figs > div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .cvwrap { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 40rem) {
+  .tile { padding: var(--space-lg) var(--space-md); }
+  .atoms--ledge .atoms__still { aspect-ratio: auto; inset: 0; }
+  .atoms--ledge .atoms__still img { object-position: 30% 30%; }
+  .atoms--ledge h1 { margin-bottom: 0; }
+  .figs dd { font-size: var(--text-xl); }
+  .mast { width: 100%; }
+}
+.atoms--ledge .atoms__still::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, color-mix(in oklab, var(--color-film) 80%, transparent) 0%, color-mix(in oklab, var(--color-film) 55%, transparent) 45%, transparent 75%); }
+@media (max-width: 40rem) {
+  .atoms--ledge .atoms__foot { align-items: flex-start; }
+  .atoms--ledge .atoms__still::after { height: auto; background: linear-gradient(to top, var(--color-film) 0%, color-mix(in oklab, var(--color-film) 70%, transparent) 55%, transparent 85%); }
+  .figs dd { white-space: normal; }
+}

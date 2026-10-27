@@ -40,16 +40,20 @@
     return { r, a, peak };
   }
 
+  // labels keep a readable size when the chart is drawn small
+  const scaleOf = (svg, W) => Math.max(1, Math.min(2.2, W / Math.max(1, svg.clientWidth || W)));
   function frame(svg, W, H, L, R, T, B, max, ticks) {
+    const k = scaleOf(svg, W), fs = (12 * k).toFixed(1);
+    L = Math.round(L * k); B = Math.round(B * k);
     const X = (i, n) => L + (W - L - R) * i / (n - 1);
     const Y = (v) => H - B - (H - T - B) * v / max;
     for (const g of ticks) {
       const y = Y(g);
       svg.append(el('line', { x1: L, x2: W - R, y1: y, y2: y, class: 'axis' }));
-      const t = el('text', { x: L - 10, y: y + 4, class: 'axl', 'text-anchor': 'end' }); t.textContent = g + '°'; svg.append(t);
+      const t = el('text', { x: L - 10, y: y + 4 * k, class: 'axl', 'text-anchor': 'end', 'font-size': fs }); t.textContent = g + '°'; svg.append(t);
     }
     for (const s of [0, 0.4, 0.8, 1.2]) {
-      const t = el('text', { x: L + (W - L - R) * s / 1.2, y: H - 6, class: 'axl', 'text-anchor': s === 0 ? 'start' : (s === 1.2 ? 'end' : 'middle') }); t.textContent = s + ' s'; svg.append(t);
+      const t = el('text', { x: L + (W - L - R) * s / 1.2, y: H - 6, class: 'axl', 'font-size': fs, 'text-anchor': s === 0 ? 'start' : (s === 1.2 ? 'end' : 'middle') }); t.textContent = s + ' s'; svg.append(t);
     }
     const path = (arr) => { let p = ''; const n = arr.length; for (let i = 0; i < n; i += 4) p += (i ? 'L' : 'M') + X(i, n).toFixed(1) + ' ' + Y(arr[i]).toFixed(1); return p; };
     return { X, Y, path };
@@ -70,17 +74,20 @@
     let T = 0.25; draw(plot, T);
     const btns = document.querySelectorAll('.seg button');
     btns.forEach((b) => b.addEventListener('click', () => { btns.forEach((x) => x.setAttribute('aria-pressed', String(x === b))); T = +b.dataset.t; draw(plot, T); }));
+    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { draw(plot, T); drawP2(); }, 150); });
   }
 
   // corrected command: it leads the target by the modelled delay and pre-loads the backlash
   const p2 = document.getElementById('plot2');
-  if (p2) {
+  function drawP2() {
+    if (!p2) return; p2.textContent = '';
     const W = 640, H = 260, N = 1200, r = [], c = [];
     for (let i = 0; i < N; i++) { const s = Math.min(Math.max((i * 0.001 - 0.15) / 0.4, 0), 1); r.push(60 * (10 * s ** 3 - 15 * s ** 4 + 6 * s ** 5)); }
     for (let i = 0; i < N; i++) { const j = Math.min(N - 1, i + 10); c.push(r[j] + 0.5 * Math.sign(r[j] - r[Math.max(0, j - 1)])); }
     const f = frame(p2, W, H, 44, 8, 12, 28, 64, [0, 30, 60]);
     p2.append(el('path', { d: f.path(r), class: 'ln-ref' }), el('path', { d: f.path(c), class: 'ln-act' }));
   }
+  drawP2();
 
   // work: the preview follows the row under the pointer or the focus
   const peek = document.getElementById('peek');
@@ -91,7 +98,7 @@
         rows.forEach((x) => x.classList.toggle('is-on', x === a));
         const src = a.dataset.img; if (!src || peek.getAttribute('src') === src) return;
         peek.style.opacity = '0';
-        const im = new Image(); im.onload = () => { peek.src = src; peek.style.opacity = '1'; }; im.src = src;
+        const im = new Image(); im.onload = () => { peek.src = src; peek.classList.toggle('is-photo', /mrv-/.test(src)); peek.style.opacity = '1'; }; im.src = src;
       };
       a.addEventListener('mouseenter', show); a.addEventListener('focus', show);
     });

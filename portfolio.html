@@ -6,100 +6,142 @@
 <meta property="og:title" content="Vato Inasaridze, Vato Labs">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f7f9fa">
+<meta name="theme-color" content="#0b0b0c">
 <meta property="og:image" content="https://vatolabs.com/logo.png">
-<link rel="icon" href="/logo.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css">
-<script>document.documentElement.classList.add('js')</script>
+<link rel="icon" href="logo.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="logo.png">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')d.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link rel="preload" href="fonts/host-grotesk-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/host-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="nav frame">
-  <a class="wordmark" href="/" aria-label="Vato Labs home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.0 -0.0 1920.0 1490.0" role="img" aria-label="Vato Labs"><g fill="currentColor"><path transform="translate(-10.0 735.0) scale(1.00000 -1.00000)" d="M287 0C312 0 327 9 342 42L392 152C421 215 430 257 430 341V700C430 722 417 735 395 735H265C243 735 230 724 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V341C10 257 19 215 48 152L98 42C113 9 128 0 153 0Z"/><path transform="translate(430.0 735.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(870.0 735.0) scale(1.00000 -1.00000)" d="M375 0C397 0 410 13 410 35V700C410 722 397 735 375 735H245C223 735 210 722 210 700V35C210 13 223 0 245 0ZM155 482C177 482 190 495 190 517V700C190 722 177 735 155 735H45C23 735 10 722 10 700V517C10 495 23 482 45 482ZM575 482C597 482 610 495 610 517V700C610 722 597 735 575 735H465C443 735 430 722 430 700V517C430 495 443 482 465 482Z"/><path transform="translate(1490.0 735.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 63 430 174V561C430 672 355 735 266 735H265C243 735 230 722 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H174C85 735 10 672 10 561V174C10 63 85 0 174 0Z"/><path transform="translate(-10.5 1490.0) scale(1.05000 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 722 10 700V35C10 13 23 0 45 0ZM375 0C397 0 410 13 410 35V210C410 232 397 245 375 245H265C243 245 230 232 230 210V35C230 13 243 0 265 0Z"/><path transform="translate(430.0 1490.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(865.7 1490.0) scale(1.42857 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V35C10 11 23 0 45 0ZM266 397C355 397 430 460 430 561V571C430 672 355 735 266 735H265C243 735 230 722 230 700V432C230 410 243 397 265 397ZM266 0C355 0 430 63 430 184V195C430 316 355 379 266 379H265C243 379 230 366 230 344V35C230 13 243 0 265 0Z"/><path transform="translate(1490.0 1490.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 53 430 159V269C430 375 383 413 306 442L252 462C222 473 210 483 210 517V700C210 724 197 735 175 735H174C85 735 10 682 10 576V478C10 372 57 334 134 305L188 285C218 274 230 264 230 230V35C230 11 243 0 265 0ZM395 482C417 482 430 495 430 517V576C430 682 355 735 266 735H265C243 735 230 722 230 700V517C230 493 243 482 265 482ZM175 0C197 0 210 13 210 35V230C210 254 197 265 175 265H45C23 265 10 252 10 230V159C10 53 85 0 174 0Z"/></g></svg>
-</a>
-  <ul><li><a href="/">Lab</a></li><li><a href="#work">Work</a></li><li><a href="#awards">Awards</a></li><li><a class="btn" href="mailto:inasaridzevato@gmail.com">Email me</a></li></ul>
+<a class="skip" href="#main">Skip to content</a>
+<header class="atoms atoms--ledge">
+  <picture class="atoms__still">
+    <source type="image/webp" srcset="img/gears-film-1600.webp">
+    <img src="img/gears-film-1600.jpg" width="1600" height="900" alt="The MRV ratchet gears and springs, close, in low light" fetchpriority="high">
+  </picture>
+  <div class="container atoms__chrome"><nav class="pill" aria-label="Main">
+  <a class="wordmark" href="/" aria-label="Vato Labs home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.0 -0.0 1920.0 1490.0" role="img" aria-label="Vato Labs"><g fill="currentColor"><path transform="translate(-10.0 735.0) scale(1.00000 -1.00000)" d="M287 0C312 0 327 9 342 42L392 152C421 215 430 257 430 341V700C430 722 417 735 395 735H265C243 735 230 724 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V341C10 257 19 215 48 152L98 42C113 9 128 0 153 0Z"/><path transform="translate(430.0 735.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(870.0 735.0) scale(1.00000 -1.00000)" d="M375 0C397 0 410 13 410 35V700C410 722 397 735 375 735H245C223 735 210 722 210 700V35C210 13 223 0 245 0ZM155 482C177 482 190 495 190 517V700C190 722 177 735 155 735H45C23 735 10 722 10 700V517C10 495 23 482 45 482ZM575 482C597 482 610 495 610 517V700C610 722 597 735 575 735H465C443 735 430 722 430 700V517C430 495 443 482 465 482Z"/><path transform="translate(1490.0 735.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 63 430 174V561C430 672 355 735 266 735H265C243 735 230 722 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H174C85 735 10 672 10 561V174C10 63 85 0 174 0Z"/><path transform="translate(-10.5 1490.0) scale(1.05000 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 722 10 700V35C10 13 23 0 45 0ZM375 0C397 0 410 13 410 35V210C410 232 397 245 375 245H265C243 245 230 232 230 210V35C230 13 243 0 265 0Z"/><path transform="translate(430.0 1490.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(865.7 1490.0) scale(1.42857 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V35C10 11 23 0 45 0ZM266 397C355 397 430 460 430 561V571C430 672 355 735 266 735H265C243 735 230 722 230 700V432C230 410 243 397 265 397ZM266 0C355 0 430 63 430 184V195C430 316 355 379 266 379H265C243 379 230 366 230 344V35C230 13 243 0 265 0Z"/><path transform="translate(1490.0 1490.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 53 430 159V269C430 375 383 413 306 442L252 462C222 473 210 483 210 517V700C210 724 197 735 175 735H174C85 735 10 682 10 576V478C10 372 57 334 134 305L188 285C218 274 230 264 230 230V35C230 11 243 0 265 0ZM395 482C417 482 430 495 430 517V576C430 682 355 735 266 735H265C243 735 230 722 230 700V517C230 493 243 482 265 482ZM175 0C197 0 210 13 210 35V230C210 254 197 265 175 265H45C23 265 10 252 10 230V159C10 53 85 0 174 0Z"/></g></svg></a>
+  <ul>
+    <li class="pill__more"><a href="/">Lab</a></li><li><a href="#work">Work</a></li><li class="pill__more"><a href="#awards">Awards</a></li><li><a class="pill__gh" href="mailto:inasaridzevato@gmail.com">Email me</a></li>
+    <li class="pill__tog"><button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><svg class="i-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><svg class="i-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></button></li>
+  </ul>
+</nav></div>
+  <div class="container atoms__grid">
+    <h1>Vato Inasaridze, robotics engineer</h1>
+    <div class="atoms__foot">
+      <p class="lead">Mechanical engineer, First Class from Warwick, admitted to UC Berkeley MEng (Robotics). I build robot learning and 3D perception systems, and the mechanisms, PCBs and firmware to run them.</p>
+      <p class="atoms__links"><a href="https://github.com/termvato">GitHub</a><a href="https://www.linkedin.com/in/vakhtang-inasaridze">LinkedIn</a></p>
+    </div>
+    <p class="atoms__caption">MRV ratchet release, fifth revision.</p>
+  </div>
 </header>
-<main>
-  <div class="p-hero">
-    <h1 class="rise">Vato Inasaridze, robotics engineer</h1>
-    <p class="rise">Mechanical engineer, First Class from Warwick, admitted to UC Berkeley MEng (Robotics). I build robot learning and 3D perception systems, and the mechanisms, PCBs and firmware to run them.</p>
-    <p class="links rise"><a href="https://github.com/termvato">GitHub</a><a href="https://www.linkedin.com/in/vakhtang-inasaridze">LinkedIn</a></p>
-    <figure class="rise"><img src="/img/mrv-robot.jpg" alt="The MRV jumping robot with its two stabilising arms" width="823" height="1200"></figure>
+
+<main id="main" class="bits">
+<section class="q q--bento" id="work" aria-label="Selected work">
+  <div class="container">
+    <div class="bento">
+      <article class="tile tile--lead" id="mrv">
+        <div class="tile__text">
+          <h2>MRV: Monopedal Reconnaissance Vehicle</h2>
+          <p class="tile__when">BEng dissertation, solo, 2025-26</p>
+          <p>A one-legged jumping robot for low-gravity exploration, stabilised by two inertial actuators. Self-proposed; I designed every mechanical part, the 4-layer PCB and the Teensy C++ firmware (120&nbsp;Hz sensor fusion, independent 1&nbsp;kHz safety interrupt).</p>
+          <ul class="tile__list"><li>Five revisions of the spring release; an asymmetric ratchet wedge stored 38% more energy per cycle.</li><li>Root-caused a 43% launch failure rate to a cam concentricity offset.</li></ul>
+          <dl class="figs">
+            <div><dt>mean jump at 360&nbsp;g</dt><dd class="measured">41&nbsp;cm</dd></div>
+            <div><dt>elastic to potential energy</dt><dd class="measured">67.8%</dd></div>
+            <div><dt>attitude recovery</dt><dd class="measured">12.7&deg;</dd></div>
+            <div><dt>of a &pound;300 budget</dt><dd class="measured">&pound;286</dd></div>
+          </dl>
+          <a class="src" href="https://github.com/termvato/MRV">CAD, firmware and BOM on GitHub (MIT)</a>
+        </div>
+        <figure class="tile__media tile__media--pair">
+          <div class="frame frame--tall"><video src="img/mrv-jump.mp4" poster="img/mrv-jump.jpg" muted loop playsinline autoplay preload="metadata" width="720" height="1280" aria-label="MRV jump test beside a tape measure"></video></div>
+          <div class="frame frame--tall" data-slot="mrv" data-alt="The MRV robot"><img src="img/mrv-robot.jpg" alt="The MRV jumping robot with its two stabilising arms" width="823" height="1200" loading="lazy"></div>
+          <figcaption>Jump test, and the robot with its two stabilising arms</figcaption>
+        </figure>
+      </article>
+
+      <article class="tile tile--spatial" id="spatial">
+        <figure class="tile__media"><div class="frame frame--plate"><img src="img/room-change.jpg" alt="Point cloud of a bedroom with moved, added and removed objects labelled" width="800" height="450" loading="lazy"></div><figcaption>The viewer: what moved between two scans</figcaption></figure>
+        <div class="tile__text">
+          <h3>3D room change detection</h3>
+          <p class="tile__when">Oct 2026</p>
+          <p>Two phone videos in; moved, added and removed objects out, named, with ROS occupancy maps. Hosted GPU web app on Modal.</p>
+          <dl class="figs figs--two">
+            <div><dt>AP with free-space voxel carving</dt><dd class="measured">2.4 to 18.0</dd></div>
+            <div><dt>typed AP vs 15.8 for SceneDiff (ECCV 2026)</dt><dd class="measured">21.4</dd></div>
+          </dl>
+          <a class="src" href="https://github.com/termvato/Humanoid-Spatial-Challenge">Code</a>
+        </div>
+      </article>
+
+      <article class="tile tile--pendulum" id="pendulum">
+        <figure class="tile__media"><div class="frame frame--plate frame--light"><img src="img/pendulum.jpg" alt="Recovery from a 7.45 degree lean: LP bound, LQR and PPO" width="1040" height="650" loading="lazy"></div><figcaption>Recovery from 7.45&deg;, the provable limit</figcaption></figure>
+        <div class="tile__text">
+          <h3>Reaction-wheel pendulum: LQR vs PPO</h3>
+          <p class="tile__when">Oct 2026</p>
+          <p>Isaac Sim plant, LQR as a ROS 2 node, PPO trained in Isaac Lab as a drop-in replacement. A linear program over all torque sequences proved no controller beats 7.47&deg;; both reached 7.45&deg;.</p>
+          <a class="src" href="https://github.com/termvato/isaac-ros-pendulum">Code</a>
+        </div>
+      </article>
+
+      <article class="tile tile--learning" id="learning">
+        <div class="tile__text">
+          <h3>Phone-to-robot imitation learning</h3>
+          <p class="tile__when">Oct 2026</p>
+          <p>iPhone LiDAR recordings of my hand turned into robot demonstrations in LIBERO: hand tracking, metric 3D lifting, grasp-anchored retargeting and a demo multiplier.</p>
+          <dl class="figs figs--two">
+            <div><dt>ACT success from 3 phone takes (92% scripted)</dt><dd class="measured">41%</dd></div>
+            <div><dt>pre-registered world-model tests passed</dt><dd class="measured">3/4</dd></div>
+          </dl>
+          <a class="src" href="https://github.com/termvato/Humanoid-Learning-Challenge">Code</a>
+        </div>
+      </article>
+
+      <article class="tile tile--cannulation" id="cannulation">
+        <div class="tile__text">
+          <h3>Cannulation trainer</h3>
+          <p class="tile__when">Medical device, team of 5</p>
+          <p>Forearm simulator for dialysis nurses on a &pound;200 budget. I owned the flesh analogue: silicone matched to forearm Shore hardness, vein found by touch, replaceable vein. Chosen best of five teams by the nurses.</p>
+        </div>
+      </article>
+    </div>
   </div>
+</section>
 
-  <section id="work" aria-label="Selected work">
-    <article class="entry" id="mrv">
-      <div class="txt rise">
-        <h2>MRV: Monopedal Reconnaissance Vehicle</h2>
-        <p class="when">BEng dissertation, solo, 2025-26</p>
-        <p>A one-legged jumping robot for low-gravity exploration, stabilised by two inertial actuators. Self-proposed; I designed every mechanical part, the 4-layer PCB and the Teensy C++ firmware (120 Hz sensor fusion, independent 1 kHz safety interrupt).</p>
-        <ul><li>Five revisions of the spring release; an asymmetric ratchet wedge stored 38% more energy per cycle.</li><li>Root-caused a 43% launch failure rate to a cam concentricity offset.</li></ul>
-        <div class="figs"><div><b>41 cm</b><span>mean jump at 360 g</span></div><div><b>67.8%</b><span>elastic to potential energy</span></div><div><b>12.7&deg;</b><span>attitude recovery</span></div><div><b>&pound;286</b><span>of a &pound;300 budget</span></div></div>
-        <a class="src" href="https://github.com/termvato/MRV">CAD, firmware and BOM on GitHub (MIT)</a>
-      </div>
-      <figure class="pic rise"><div class="pair"><video src="/img/mrv-jump.mp4" poster="/img/mrv-jump.jpg" muted loop playsinline autoplay preload="metadata" width="720" height="1280" aria-label="MRV jump test beside a tape measure" style="aspect-ratio:3/4;object-position:50% 100%"></video><img src="/img/mrv-gears.jpg" alt="MRV ratchet gears and compliant conrods" width="1200" height="1071" loading="lazy"></div><figcaption>Jump test, and the fifth revision of the ratchet release</figcaption></figure>
-    </article>
-    <article class="entry" id="spatial">
-      <div class="txt rise">
-        <h2>3D room change detection</h2>
-        <p class="when">Oct 2026</p>
-        <p>Two phone videos in; moved, added and removed objects out, named, with ROS occupancy maps. Hosted GPU web app on Modal.</p>
-        <div class="figs"><div><b>2.4 to 18.0</b><span>AP with free-space voxel carving</span></div><div><b>21.4</b><span>typed AP vs 15.8 for SceneDiff (ECCV 2026)</span></div></div>
-        <a class="src" href="https://github.com/termvato/Humanoid-Spatial-Challenge">Code</a>
-      </div>
-      <figure class="pic rise"><img src="/img/room-change.jpg" alt="Point cloud of a bedroom with moved, added and removed objects labelled" width="800" height="450" loading="lazy"><figcaption>The viewer: what moved between two scans</figcaption></figure>
-    </article>
-    <article class="entry" id="pendulum">
-      <div class="txt rise">
-        <h2>Reaction-wheel pendulum: LQR vs PPO</h2>
-        <p class="when">Oct 2026</p>
-        <p>Isaac Sim plant, LQR as a ROS 2 node, PPO trained in Isaac Lab as a drop-in replacement. A linear program over all torque sequences proved no controller beats 7.47&deg;; both reached 7.45&deg;.</p>
-        <a class="src" href="https://github.com/termvato/isaac-ros-pendulum">Code</a>
-      </div>
-      <figure class="pic rise"><img src="/img/pendulum.jpg" alt="Recovery from a 7.45 degree lean: LP bound, LQR and PPO" width="1040" height="650" loading="lazy"><figcaption>Recovery from 7.45&deg;, the provable limit</figcaption></figure>
-    </article>
-    <article class="entry duo">
-      <div class="txt rise" id="learning">
-        <h2>Phone-to-robot imitation learning</h2>
-        <p class="when">Oct 2026</p>
-        <p>iPhone LiDAR recordings of my hand turned into robot demonstrations in LIBERO: hand tracking, metric 3D lifting, grasp-anchored retargeting and a demo multiplier.</p>
-        <div class="figs"><div><b>41%</b><span>ACT success from 3 phone takes (92% scripted)</span></div><div><b>3/4</b><span>pre-registered world-model tests passed</span></div></div>
-        <a class="src" href="https://github.com/termvato/Humanoid-Learning-Challenge">Code</a>
-      </div>
-      <div class="txt rise" id="cannulation">
-        <h2>Cannulation trainer</h2>
-        <p class="when">Medical device, team of 5</p>
-        <p>Forearm simulator for dialysis nurses on a &pound;200 budget. I owned the flesh analogue: silicone matched to forearm Shore hardness, vein found by touch, replaceable vein. Chosen best of five teams by the nurses.</p>
-      </div>
-    </article>
-  </section>
-
-  <div class="cvwrap">
-  <section class="cv" id="awards" aria-labelledby="awards-title">
-    <h2 class="small rise" id="awards-title">Awards</h2>
-    <ul>
-      <li class="rise" id="rocky"><b>1st place, Physical AI Hack London</b><time datetime="2026-10-17">17 Oct 2026</time><p>60 builders. Rocky Robotics: quarry autonomy. Simulation, world generation, voice fleet commands, business case.</p></li>
-      <li class="rise"><b>Top 8 of ~180, Accel AI Innovate London</b><time datetime="2026-10-15">15 Oct 2026</time><p>CounterFactual: crash recovery decisions for insurers. Simulator, careful-driver models, CCTV vision, agent team.</p></li>
-      <li class="rise"><b>European Physics Olympiad, represented France</b><time>2023</time><p>Hannover. BPhO Intermediate Challenge Gold.</p></li>
-    </ul>
-  </section>
-
-  <section class="cv" aria-labelledby="cv-title">
-    <h2 class="small rise" id="cv-title">Experience and education</h2>
-    <ul>
-      <li class="rise"><b>UC Berkeley, MEng Mechanical Engineering (Robotics)</b><time>Fall 2027</time><p>Admitted, deferred.</p></li>
-      <li class="rise"><b>University of Warwick, BEng Mechanical Engineering</b><time>2023 to 2026</time><p>First Class Honours. Robotics Society Project Manager: membership 15 to 28.</p></li>
-      <li class="rise"><b>Siemens, Manufacturing Automation Intern</b><time>Summer 2024</time><p>Specified a &pound;400k selective soldering machine and its capital case; approved by six chief engineers and installed.</p></li>
-    </ul>
-  </section>
+<section class="q q--cv" aria-label="Awards, experience and education">
+  <div class="container cvwrap">
+    <section class="cv" id="awards" aria-labelledby="awards-title">
+      <h2 id="awards-title">Awards</h2>
+      <ul>
+        <li id="rocky"><div class="cv__top"><b>1st place, Physical AI Hack London</b><time class="measured" datetime="2026-10-17">17 Oct 2026</time></div><p>60 builders. Rocky Robotics: quarry autonomy. Simulation, world generation, voice fleet commands, business case.</p></li>
+        <li><div class="cv__top"><b>Top 8 of ~180, Accel AI Innovate London</b><time class="measured" datetime="2026-10-15">15 Oct 2026</time></div><p>CounterFactual: crash recovery decisions for insurers. Simulator, careful-driver models, CCTV vision, agent team.</p></li>
+        <li><div class="cv__top"><b>European Physics Olympiad, represented France</b><time class="measured">2023</time></div><p>Hannover. BPhO Intermediate Challenge Gold.</p></li>
+      </ul>
+    </section>
+    <section class="cv" aria-labelledby="cv-title">
+      <h2 id="cv-title">Experience and education</h2>
+      <ul>
+        <li><div class="cv__top"><b>UC Berkeley, MEng Mechanical Engineering (Robotics)</b><time class="measured">Fall 2027</time></div><p>Admitted, deferred.</p></li>
+        <li><div class="cv__top"><b>University of Warwick, BEng Mechanical Engineering</b><time class="measured">2023 to 2026</time></div><p>First Class Honours. Robotics Society Project Manager: membership 15 to 28.</p></li>
+        <li><div class="cv__top"><b>Siemens, Manufacturing Automation Intern</b><time class="measured">Summer 2024</time></div><p>Specified a &pound;400k selective soldering machine and its capital case; approved by six chief engineers and installed.</p></li>
+      </ul>
+    </section>
   </div>
+</section>
 </main>
-<footer class="quiet">
-  <span>Vato Inasaridze, Luton</span>
-  <nav aria-label="Elsewhere"><a href="/">Vato Labs</a><a href="https://github.com/termvato">GitHub</a><a href="https://www.linkedin.com/in/vakhtang-inasaridze">LinkedIn</a><a href="mailto:inasaridzevato@gmail.com">Email</a></nav>
-  <span>2026</span>
+<footer class="close close--mast">
+  <div class="container">
+    <a class="mast" href="/" aria-label="Vato Labs home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.0 -0.0 1920.0 1490.0" role="img" aria-label="Vato Labs"><g fill="currentColor"><path transform="translate(-10.0 735.0) scale(1.00000 -1.00000)" d="M287 0C312 0 327 9 342 42L392 152C421 215 430 257 430 341V700C430 722 417 735 395 735H265C243 735 230 724 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V341C10 257 19 215 48 152L98 42C113 9 128 0 153 0Z"/><path transform="translate(430.0 735.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(870.0 735.0) scale(1.00000 -1.00000)" d="M375 0C397 0 410 13 410 35V700C410 722 397 735 375 735H245C223 735 210 722 210 700V35C210 13 223 0 245 0ZM155 482C177 482 190 495 190 517V700C190 722 177 735 155 735H45C23 735 10 722 10 700V517C10 495 23 482 45 482ZM575 482C597 482 610 495 610 517V700C610 722 597 735 575 735H465C443 735 430 722 430 700V517C430 495 443 482 465 482Z"/><path transform="translate(1490.0 735.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 63 430 174V561C430 672 355 735 266 735H265C243 735 230 722 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H174C85 735 10 672 10 561V174C10 63 85 0 174 0Z"/><path transform="translate(-10.5 1490.0) scale(1.05000 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 722 10 700V35C10 13 23 0 45 0ZM375 0C397 0 410 13 410 35V210C410 232 397 245 375 245H265C243 245 230 232 230 210V35C230 13 243 0 265 0Z"/><path transform="translate(430.0 1490.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(865.7 1490.0) scale(1.42857 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V35C10 11 23 0 45 0ZM266 397C355 397 430 460 430 561V571C430 672 355 735 266 735H265C243 735 230 722 230 700V432C230 410 243 397 265 397ZM266 0C355 0 430 63 430 184V195C430 316 355 379 266 379H265C243 379 230 366 230 344V35C230 13 243 0 265 0Z"/><path transform="translate(1490.0 1490.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 53 430 159V269C430 375 383 413 306 442L252 462C222 473 210 483 210 517V700C210 724 197 735 175 735H174C85 735 10 682 10 576V478C10 372 57 334 134 305L188 285C218 274 230 264 230 230V35C230 11 243 0 265 0ZM395 482C417 482 430 495 430 517V576C430 682 355 735 266 735H265C243 735 230 722 230 700V517C230 493 243 482 265 482ZM175 0C197 0 210 13 210 35V230C210 254 197 265 175 265H45C23 265 10 252 10 230V159C10 53 85 0 174 0Z"/></g></svg></a>
+    <div class="close__row">
+      <a class="btn btn--quiet" href="mailto:inasaridzevato@gmail.com">Email me</a>
+      <nav class="close__links" aria-label="Elsewhere"><a href="/">Vato Labs</a><a href="https://github.com/termvato">GitHub</a><a href="https://www.linkedin.com/in/vakhtang-inasaridze">LinkedIn</a></nav>
+    </div>
+    <p class="close__legal"><span>Vato Inasaridze, Luton</span><span>2026</span></p>
+  </div>
 </footer>
-<script src="/site.js" defer></script>
+<script src="site.js" defer></script>
 </body>
 </html>
