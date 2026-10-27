@@ -79,11 +79,12 @@
             <thead><tr><th>Parameter</th><th>Starting value</th><th>Status</th></tr></thead>
             <tbody>
               <tr><td>Firmware gains</td><td>P 16, D 32</td><td><span class="tag ok">Read from servo</span></td></tr>
-              <tr><td>Speed limit</td><td>5.22 rad/s</td><td><span class="tag">Prior, BAM</span></td></tr>
+              <tr><td>Speed limit</td><td>5.22 rad/s</td><td><span class="tag ok">Pinned, firmware max</span></td></tr>
+              <tr><td>Acceleration ramp</td><td>254</td><td><span class="tag">LeRobot default</span></td></tr>
+              <tr><td>Zero offset</td><td>Per arm</td><td><span class="tag">Measured, phone level</span></td></tr>
               <tr class="sel"><td>Backlash</td><td>&plusmn;0.5&deg;</td><td><span class="tag">Prior, Menagerie</span></td></tr>
+              <tr><td>Friction, stiction</td><td>0.8&deg; error</td><td><span class="tag">Fitted, public bench logs</span></td></tr>
               <tr><td>Command delay</td><td></td><td><span class="tag">To fit</span></td></tr>
-              <tr><td>Friction</td><td></td><td><span class="tag">To fit</span></td></tr>
-              <tr><td>Gravity offset</td><td></td><td><span class="tag">To fit</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -116,7 +117,7 @@
       <h2 class="small rise" id="work-title">Work</h2>
       <img class="peek on" id="peek" src="/img/mrv-robot.jpg" alt="Preview of the selected project" width="420" height="315">
       <ul>
-        <li class="rise"><a href="https://github.com/termvato/so101-sysid" data-img=""><span>so101-sysid</span><span>Calibration</span><span>2026</span></a></li>
+        <li class="rise"><a href="https://github.com/termvato/so101-sysid" data-img="/img/sysid-fit.jpg"><span>so101-sysid</span><span>Calibration</span><span>2026</span></a><img class="mobile-img" src="/img/sysid-fit.jpg" alt="Chart: ready-made servo params err 8.3 degrees on unseen logs, our fits 0.7 to 2 degrees" width="780" height="690" loading="lazy"></li>
         <li class="rise"><a href="/portfolio#rocky" data-img=""><span>Rocky Robotics, 1st place</span><span>Quarry autonomy</span><span>2026</span></a></li>
         <li class="rise"><a href="https://github.com/termvato/Humanoid-Spatial-Challenge" data-img="/img/room-change.jpg"><span>3D room change detection</span><span>Perception</span><span>2026</span></a><img class="mobile-img" src="/img/room-change.jpg" alt="Point cloud of a bedroom with moved, added and removed objects boxed and labelled" width="800" height="450" loading="lazy"></li>
         <li class="rise"><a href="https://github.com/termvato/Humanoid-Learning-Challenge" data-img=""><span>Phone-to-robot learning</span><span>Imitation learning</span><span>2026</span></a></li>
@@ -156,6 +157,8 @@
     <div class="log">
       <h2 class="small rise" id="log-title">Log</h2>
       <ul>
+        <li class="rise"><span><i></i>Calibration motions tested in sim: twins agree within 0.2&deg;, so real servo data is the next lever</span><time datetime="2026-10-27">27 Oct 2026</time></li>
+        <li class="rise"><span><i></i>Servo twin fitted on public 12 V logs: 0.8&deg; error on unseen moves, vs 8.3&deg; with ready-made params</span><time datetime="2026-10-25">25 Oct 2026</time></li>
         <li class="rise"><span><i></i>Lab set up: printer calibrated, servo fit gauges printed, robot station configured</span><time datetime="2026-10-25">25 Oct 2026</time></li>
         <li class="rise"><span><i></i>1st place of 60 builders, Physical AI Hack London</span><time datetime="2026-10-17">17 Oct 2026</time></li>
         <li class="rise"><span><i></i>Top 8 of about 180, Accel AI Innovate London</span><time datetime="2026-10-15">15 Oct 2026</time></li>
