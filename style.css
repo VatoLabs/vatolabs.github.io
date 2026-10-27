@@ -193,6 +193,8 @@ th.n{white-space:normal;text-align:right;font-family:var(--f);font-size:.8125rem
 .pics figure,.pic{counter-increment:fig}
 .pics img,.pics video{width:100%;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--ink)}
 .pics video{object-position:50% 100%}
+.pics .wide{grid-column:1/-1}
+.pics .wide video{aspect-ratio:4/3;object-position:50% 50%}
 figcaption{font-size:.875rem;color:var(--ink-2);padding-top:10px}
 .pics figcaption::before,.pic figcaption::before{content:"Fig. " counter(fig) "  ";font-family:var(--fm);color:var(--ink);white-space:pre}
 
@@ -244,6 +246,7 @@ figcaption{font-size:.875rem;color:var(--ink-2);padding-top:10px}
 .pair{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .pair img,.pair video{aspect-ratio:3/4;object-fit:cover}
 .pair video{object-position:50% 100%}
+.pair .land{grid-column:1/-1;aspect-ratio:4/3;object-position:50% 50%}
 .duo .vh{margin-bottom:10px}
 .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,4.5vw,72px)}
 .cv .revs tbody th{width:34%}
@@ -294,6 +297,7 @@ figcaption{font-size:.875rem;color:var(--ink-2);padding-top:10px}
   .pics{grid-template-columns:1fr 1fr}
   .pics .tall{grid-column:1/-1}
   .pics .tall video{aspect-ratio:4/5}
+  .pics .wide video{aspect-ratio:4/3}
   .parts thead{display:none}
   .parts tbody tr{display:grid;grid-template-columns:40px minmax(0,1fr) auto 84px;grid-template-areas:"b p p t" "b a y t";column-gap:10px;padding:12px 0;border-bottom:1px solid var(--hair)}
   .parts td{border:0;padding:0!important}
@@ -319,5 +323,6 @@ figcaption{font-size:.875rem;color:var(--ink-2);padding-top:10px}
   .pf .caption{margin-top:20px}
   .pair{grid-template-columns:1fr 1fr}
   .pair video{grid-column:1/-1;aspect-ratio:4/5}
+  .pair .land{aspect-ratio:4/3}
   .figs dd{font-size:1.25rem}
 }
