@@ -30,7 +30,7 @@ Branch `redesign-hallmark`. Built with the Hallmark skill (v2.0.0), verb `redesi
 
 ## Reworded or dropped (all recorded in the CSS stamp)
 - Hero sentence shortened to "Open-source calibration that makes each $200 robot arm go where it is told." (full line kept in the meta description).
-- "Chirp 0.1–5 Hz" to "Chirp 0.1 to 5 Hz" (no dashes).
+- "Chirp 0.1 (en dash) 5 Hz" to "Chirp 0.1 to 5 Hz" (no dashes).
 - Section heads became questions; the letter's last paragraph moved to the footer statement.
 - Stage slider and pinned story dropped; their four stage texts all stay, visible at once.
 - "Command delay" got the text "Not yet fitted" in its empty value cell.
