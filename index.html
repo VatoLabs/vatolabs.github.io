@@ -7,171 +7,257 @@
 <meta property="og:description" content="Decoupling robot progress from atoms.">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f7f9fa">
+<meta name="theme-color" content="#0b0b0c">
 <meta property="og:image" content="https://vatolabs.com/logo.png">
-<link rel="icon" href="/logo.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css">
-<script>document.documentElement.classList.add('js')</script>
+<link rel="icon" href="logo.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="logo.png">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')d.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link rel="preload" href="fonts/host-grotesk-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/host-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="story" id="story" data-step="0">
-  <div class="stage">
-    <header class="nav">
-      <a class="wordmark" href="/" aria-label="Vato Labs home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.0 -0.0 1920.0 1490.0" role="img" aria-label="Vato Labs"><g fill="currentColor"><path transform="translate(-10.0 735.0) scale(1.00000 -1.00000)" d="M287 0C312 0 327 9 342 42L392 152C421 215 430 257 430 341V700C430 722 417 735 395 735H265C243 735 230 724 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V341C10 257 19 215 48 152L98 42C113 9 128 0 153 0Z"/><path transform="translate(430.0 735.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(870.0 735.0) scale(1.00000 -1.00000)" d="M375 0C397 0 410 13 410 35V700C410 722 397 735 375 735H245C223 735 210 722 210 700V35C210 13 223 0 245 0ZM155 482C177 482 190 495 190 517V700C190 722 177 735 155 735H45C23 735 10 722 10 700V517C10 495 23 482 45 482ZM575 482C597 482 610 495 610 517V700C610 722 597 735 575 735H465C443 735 430 722 430 700V517C430 495 443 482 465 482Z"/><path transform="translate(1490.0 735.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 63 430 174V561C430 672 355 735 266 735H265C243 735 230 722 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H174C85 735 10 672 10 561V174C10 63 85 0 174 0Z"/><path transform="translate(-10.5 1490.0) scale(1.05000 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 722 10 700V35C10 13 23 0 45 0ZM375 0C397 0 410 13 410 35V210C410 232 397 245 375 245H265C243 245 230 232 230 210V35C230 13 243 0 265 0Z"/><path transform="translate(430.0 1490.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(865.7 1490.0) scale(1.42857 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V35C10 11 23 0 45 0ZM266 397C355 397 430 460 430 561V571C430 672 355 735 266 735H265C243 735 230 722 230 700V432C230 410 243 397 265 397ZM266 0C355 0 430 63 430 184V195C430 316 355 379 266 379H265C243 379 230 366 230 344V35C230 13 243 0 265 0Z"/><path transform="translate(1490.0 1490.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 53 430 159V269C430 375 383 413 306 442L252 462C222 473 210 483 210 517V700C210 724 197 735 175 735H174C85 735 10 682 10 576V478C10 372 57 334 134 305L188 285C218 274 230 264 230 230V35C230 11 243 0 265 0ZM395 482C417 482 430 495 430 517V576C430 682 355 735 266 735H265C243 735 230 722 230 700V517C230 493 243 482 265 482ZM175 0C197 0 210 13 210 35V230C210 254 197 265 175 265H45C23 265 10 252 10 230V159C10 53 85 0 174 0Z"/></g></svg>
-</a>
-      <ul><li><a href="#how">How it works</a></li><li><a href="#work">Work</a></li><li><a href="#log">Log</a></li><li><a class="btn" href="https://github.com/vatolabs">GitHub</a></li></ul>
-    </header>
-    <div class="split">
-      <h1><span class="a">Decoupling robot progress</span> <span class="b">from atoms</span></h1>
-      <figure class="fragment trace" data-ui aria-label="Simulated servo tracking a commanded move">
-        <header><b>Shoulder lift, STS3215 <span class="tag">Simulated</span></b>
-          <span class="seg" role="group" aria-label="Move time">
-            <button type="button" data-t="1" aria-pressed="false">1 s</button><button type="button" data-t="0.5" aria-pressed="false">0.5 s</button><button type="button" data-t="0.25" aria-pressed="true">0.25 s</button><button type="button" data-t="0.15" aria-pressed="false">0.15 s</button>
-          </span></header>
-        <svg id="plot" viewBox="0 0 560 260" preserveAspectRatio="none" role="img" aria-label="Commanded angle and servo angle over 1.2 seconds"></svg>
-        <footer>
-          <span class="key k-ref"><i></i>Command</span><span class="key k-act"><i></i>Servo</span>
-          <span class="readout">Peak lag <strong id="lag">28.2&deg;</strong></span>
-          <span class="model">Speed limit <strong>299&deg;/s</strong>, backlash <strong>&plusmn;0.5&deg;</strong></span>
-        </footer>
-        <p class="simnote">Simulated from datasheet limits; 10 ms delay assumed. Measured trace replaces it after servos arrive.</p>
-      </figure>
+<a class="skip" href="#main">Skip to content</a>
+<header class="atoms">
+  <picture class="atoms__still">
+    <source media="(max-width: 40rem)" type="image/webp" srcset="img/hero-portrait-1200.webp">
+    <source media="(max-width: 40rem)" srcset="img/hero-portrait-1200.jpg">
+    <source type="image/webp" srcset="img/hero-1600.webp 1600w, img/hero-2400.webp 2400w" sizes="100vw">
+    <img src="img/hero-1600.jpg" srcset="img/hero-1600.jpg 1600w, img/hero-2400.jpg 2400w" sizes="100vw" width="1600" height="900" alt="The MRV robot in one jump, frame by frame, rising from a crouch on the left to the top of its arc on the right" fetchpriority="high">
+  </picture>
+  <div class="container atoms__chrome"><nav class="pill" aria-label="Main">
+  <a class="wordmark" href="/" aria-label="Vato Labs home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.0 -0.0 1920.0 1490.0" role="img" aria-label="Vato Labs"><g fill="currentColor"><path transform="translate(-10.0 735.0) scale(1.00000 -1.00000)" d="M287 0C312 0 327 9 342 42L392 152C421 215 430 257 430 341V700C430 722 417 735 395 735H265C243 735 230 724 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V341C10 257 19 215 48 152L98 42C113 9 128 0 153 0Z"/><path transform="translate(430.0 735.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(870.0 735.0) scale(1.00000 -1.00000)" d="M375 0C397 0 410 13 410 35V700C410 722 397 735 375 735H245C223 735 210 722 210 700V35C210 13 223 0 245 0ZM155 482C177 482 190 495 190 517V700C190 722 177 735 155 735H45C23 735 10 722 10 700V517C10 495 23 482 45 482ZM575 482C597 482 610 495 610 517V700C610 722 597 735 575 735H465C443 735 430 722 430 700V517C430 495 443 482 465 482Z"/><path transform="translate(1490.0 735.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 63 430 174V561C430 672 355 735 266 735H265C243 735 230 722 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H174C85 735 10 672 10 561V174C10 63 85 0 174 0Z"/><path transform="translate(-10.5 1490.0) scale(1.05000 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 722 10 700V35C10 13 23 0 45 0ZM375 0C397 0 410 13 410 35V210C410 232 397 245 375 245H265C243 245 230 232 230 210V35C230 13 243 0 265 0Z"/><path transform="translate(430.0 1490.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(865.7 1490.0) scale(1.42857 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V35C10 11 23 0 45 0ZM266 397C355 397 430 460 430 561V571C430 672 355 735 266 735H265C243 735 230 722 230 700V432C230 410 243 397 265 397ZM266 0C355 0 430 63 430 184V195C430 316 355 379 266 379H265C243 379 230 366 230 344V35C230 13 243 0 265 0Z"/><path transform="translate(1490.0 1490.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 53 430 159V269C430 375 383 413 306 442L252 462C222 473 210 483 210 517V700C210 724 197 735 175 735H174C85 735 10 682 10 576V478C10 372 57 334 134 305L188 285C218 274 230 264 230 230V35C230 11 243 0 265 0ZM395 482C417 482 430 495 430 517V576C430 682 355 735 266 735H265C243 735 230 722 230 700V517C230 493 243 482 265 482ZM175 0C197 0 210 13 210 35V230C210 254 197 265 175 265H45C23 265 10 252 10 230V159C10 53 85 0 174 0Z"/></g></svg></a>
+  <ul>
+    <li class="pill__more"><a href="#how">How it works</a></li><li><a href="#work">Work</a></li><li class="pill__more"><a href="#log">Log</a></li><li><a class="pill__gh" href="https://github.com/vatolabs">GitHub</a></li>
+    <li class="pill__tog"><button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><svg class="i-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><svg class="i-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></button></li>
+  </ul>
+</nav></div>
+  <div class="container atoms__grid">
+    <h1>Decoupling robot progress from atoms</h1>
+    <div class="atoms__foot">
+      <p class="lead">Open-source calibration that makes each $200 robot arm go where it is told.</p>
+      <a class="btn" href="https://github.com/vatolabs">Follow on GitHub</a>
     </div>
-    <div class="stage-foot">
-      <p class="say">Vato Labs is building open-source calibration that makes each $200 robot arm go where it is told.</p>
-      <div class="steps" aria-live="polite">
-        <p class="on">Your command: a 60&deg; move. Pick how fast.</p>
-        <p>A stock servo hits its speed limit, lags behind and lands on backlash.</p>
-        <p>Calibration measures those limits on your arm, so software can plan around them.</p>
+    <p class="atoms__caption">MRV jumping robot, built by hand. Frames from one jump.</p>
+  </div>
+</header>
+
+<main id="main" class="bits">
+<section class="q q--miss" id="miss" aria-labelledby="miss-title">
+  <div class="container q__grid">
+    <div class="q__head">
+      <h2 id="miss-title">Why does a $200 arm miss?</h2>
+      <p class="q__line">A stock servo hits its speed limit, lags behind and lands on backlash.</p>
+      <div class="reading" aria-live="polite">
+        <span class="reading__label">Peak lag</span>
+        <strong class="reading__value measured" id="lag">28.2&deg;</strong>
       </div>
-      <a class="btn act" href="https://github.com/vatolabs">Follow on GitHub</a>
+    </div>
+    <figure class="panel trace" aria-label="Simulated servo tracking a commanded move">
+      <div class="panel__bar">
+        <p class="panel__title">Shoulder lift, STS3215 <span class="chip">Simulated</span></p>
+        <div class="seg" role="group" aria-label="Move time">
+          <button type="button" data-t="1" aria-pressed="false">1 s</button><button type="button" data-t="0.5" aria-pressed="false">0.5 s</button><button type="button" data-t="0.25" aria-pressed="true">0.25 s</button><button type="button" data-t="0.15" aria-pressed="false">0.15 s</button>
+        </div>
+      </div>
+      <p class="panel__ask">Your command: a 60&deg; move. Pick how fast.</p>
+      <svg id="plot" class="plot" viewBox="0 0 640 300" role="img" aria-label="Commanded angle and servo angle over 1.2 seconds"></svg>
+      <figcaption class="panel__foot">
+        <span class="key"><i class="key__ref" aria-hidden="true"></i>Command</span>
+        <span class="key"><i class="key__act" aria-hidden="true"></i>Servo</span>
+        <span class="panel__model">Speed limit <b class="measured">299&deg;/s</b>, backlash <b class="measured">&plusmn;0.5&deg;</b></span>
+        <span class="panel__note">Simulated from datasheet limits; 10&nbsp;ms delay assumed. Measured trace replaces it after servos arrive.</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="q q--how" id="how" aria-labelledby="how-title">
+  <div class="container">
+    <div class="q__split">
+      <h2 id="how-title">How does calibration fix it?</h2>
+      <p class="q__line">Calibration measures those limits on your arm, so software can plan around them.</p>
+    </div>
+    <ol class="stages">
+      <li class="stage">
+        <div class="stage__text">
+          <h3>Record 20 minutes</h3>
+          <p>The arm runs chirps, steps and sweeps chosen so each one isolates a few parameters.</p>
+        </div>
+        <table class="tbl">
+          <caption>Planned excitation, per joint</caption>
+          <thead><tr><th scope="col">Joint</th><th scope="col">Motion</th><th scope="col" class="n">Time</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Shoulder pan</th><td>Chirp <span class="measured">0.1 to 5&nbsp;Hz</span></td><td class="n measured">3:00</td></tr>
+            <tr><th scope="row">Shoulder lift</th><td>Steps <span class="measured">&plusmn;20&deg;</span></td><td class="n measured">3:30</td></tr>
+            <tr><th scope="row">Elbow flex</th><td>Steps <span class="measured">&plusmn;20&deg;</span></td><td class="n measured">3:30</td></tr>
+            <tr><th scope="row">Wrist flex</th><td>Chirp <span class="measured">0.1 to 5&nbsp;Hz</span></td><td class="n measured">3:00</td></tr>
+            <tr><th scope="row">Wrist roll</th><td>Slow sweep</td><td class="n measured">2:30</td></tr>
+            <tr><th scope="row">Gripper</th><td>Open, close, hold</td><td class="n measured">2:00</td></tr>
+            <tr><th scope="row">All</th><td>Home and checks</td><td class="n measured">2:30</td></tr>
+          </tbody>
+          <tfoot><tr><th scope="row" colspan="2">Total</th><td class="n measured">20:00</td></tr></tfoot>
+        </table>
+      </li>
+      <li class="stage">
+        <div class="stage__text">
+          <h3>Fit every servo</h3>
+          <p>Delay, gains, speed limit, backlash, friction and gravity, fitted per joint on your arm.</p>
+        </div>
+        <table class="tbl">
+          <caption>Servo model, shoulder lift</caption>
+          <thead><tr><th scope="col">Parameter</th><th scope="col">Starting value</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Firmware gains</th><td class="measured">P 16, D 32</td><td><span class="chip chip--set">Read from servo</span></td></tr>
+            <tr><th scope="row">Speed limit</th><td class="measured">5.22 rad/s</td><td><span class="chip chip--set">Pinned, firmware max</span></td></tr>
+            <tr><th scope="row">Acceleration ramp</th><td class="measured">254</td><td><span class="chip">LeRobot default</span></td></tr>
+            <tr><th scope="row">Zero offset</th><td>Per arm</td><td><span class="chip">Measured, phone level</span></td></tr>
+            <tr><th scope="row">Backlash</th><td class="measured">&plusmn;0.5&deg;</td><td><span class="chip">Prior, Menagerie</span></td></tr>
+            <tr><th scope="row">Friction, stiction</th><td class="measured">0.8&deg; error</td><td><span class="chip">Fitted, public bench logs</span></td></tr>
+            <tr><th scope="row">Command delay</th><td class="tbl__empty">Not yet fitted</td><td><span class="chip">To fit</span></td></tr>
+          </tbody>
+        </table>
+      </li>
+      <li class="stage">
+        <div class="stage__text">
+          <h3>Correct each command</h3>
+          <p>The model shapes each command before it is sent, so the joint arrives where the policy asked.</p>
+        </div>
+        <figure class="panel trace trace--small">
+          <div class="panel__bar"><p class="panel__title">Corrected command</p></div>
+          <svg id="plot2" class="plot" viewBox="0 0 640 260" role="img" aria-label="Target angle and the corrected command that leads it"></svg>
+          <figcaption class="panel__foot">
+            <span class="key"><i class="key__ref" aria-hidden="true"></i>Target</span>
+            <span class="key"><i class="key__act" aria-hidden="true"></i>Command sent</span>
+          </figcaption>
+        </figure>
+      </li>
+      <li class="stage">
+        <div class="stage__text">
+          <h3>Measure at the tip</h3>
+          <p>Accuracy is measured at the tip with a dial indicator, stock against calibrated, before any claim.</p>
+        </div>
+        <table class="tbl">
+          <caption>Gripper tip accuracy, ISO 9283 method</caption>
+          <thead><tr><th scope="col">Arm</th><th scope="col" class="n">Poses</th><th scope="col" class="n">Trials</th><th scope="col">Result</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Stock</th><td class="n measured">5</td><td class="n measured">30 each</td><td><span class="chip">Pending</span></td></tr>
+            <tr><th scope="row">Calibrated</th><td class="n measured">5</td><td class="n measured">30 each</td><td><span class="chip">Pending</span></td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="4">Dial indicator, <span class="measured">0.01&nbsp;mm</span>. Servos arrive 29 Oct.</td></tr></tfoot>
+        </table>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="q q--borrow band" id="borrow" aria-labelledby="borrow-title">
+  <div class="container q__grid">
+    <div class="q__head">
+      <h2 id="borrow-title">Why not borrow the numbers?</h2>
+      <p class="q__line">Ready-made params come from the 7.4&nbsp;V servo version: a different motor winding, so the twin is off.</p>
+      <div class="reading reading--big">
+        <s class="reading__was measured" aria-label="Ready-made params: 8.3 degrees">8.3&deg;</s>
+        <strong class="reading__value measured">0.8&deg;</strong>
+        <span class="reading__label">Average error after fitting your own, on the same 20 unseen 12&nbsp;V logs</span>
+      </div>
+    </div>
+    <div class="evidence">
+      <figure class="panel bars">
+        <div class="panel__bar"><p class="panel__title">Held-out error, lower is better</p></div>
+        <ul class="bars__list" aria-label="Average held-out error per servo model">
+          <li style="--v:146"><span class="bars__name">BAM ready-made, 7.4&nbsp;V (M1)</span><span class="bars__track"><span class="bars__fill bars__fill--ref"></span></span><span class="bars__val measured">146&nbsp;mrad, 8.3&deg;</span></li>
+          <li style="--v:35"><span class="bars__name">Our 12&nbsp;V fit, M1</span><span class="bars__track"><span class="bars__fill"></span></span><span class="bars__val measured">35&nbsp;mrad, 2.0&deg;</span></li>
+          <li style="--v:15"><span class="bars__name">Our 12&nbsp;V fit, M2</span><span class="bars__track"><span class="bars__fill"></span></span><span class="bars__val measured">15&nbsp;mrad, 0.8&deg;</span></li>
+          <li style="--v:13"><span class="bars__name">Our 12&nbsp;V fit, M4</span><span class="bars__track"><span class="bars__fill"></span></span><span class="bars__val measured">13&nbsp;mrad, 0.7&deg;</span></li>
+        </ul>
+        <figcaption class="panel__foot"><span class="panel__note">Real 12&nbsp;V STS3215 logs from the BAM public dataset.</span></figcaption>
+      </figure>
+      <table class="tbl tbl--twin">
+        <caption>Two M2 fits with the same training score are two different twins</caption>
+        <thead><tr><th scope="col">Run</th><th scope="col" class="n">Training error</th><th scope="col" class="n">Unseen logs</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">A, <span class="measured">1,844</span> trials</th><td class="n measured">23.7&nbsp;mrad</td><td class="n measured">14.6&nbsp;mrad</td></tr>
+          <tr><th scope="row">B, <span class="measured">13,562</span> trials</th><td class="n measured">23.4&nbsp;mrad</td><td class="n measured">23.1&nbsp;mrad</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="3">The training logs cannot tell these parameter sets apart; the right motions can.</td></tr></tfoot>
+      </table>
     </div>
   </div>
-</div>
+</section>
 
-<main>
-  <section id="how" aria-labelledby="stage-title">
-    <div class="stages" id="stages">
-      <div class="left">
-        <h2 id="stage-title">Record 20 minutes</h2>
-        <p class="note" id="stage-note">The arm runs chirps, steps and sweeps chosen so each one isolates a few parameters.</p>
-      </div>
-      <div class="right">
-        <div class="pane" data-ui data-stage="0">
-          <table class="tbl"><caption>Planned excitation, per joint</caption>
-            <thead><tr><th>Joint</th><th>Motion</th><th class="n">Time</th></tr></thead>
-            <tbody>
-              <tr><td>Shoulder pan</td><td>Chirp 0.1&ndash;5 Hz</td><td class="n">3:00</td></tr>
-              <tr class="sel"><td>Shoulder lift</td><td>Steps &plusmn;20&deg;</td><td class="n">3:30</td></tr>
-              <tr><td>Elbow flex</td><td>Steps &plusmn;20&deg;</td><td class="n">3:30</td></tr>
-              <tr><td>Wrist flex</td><td>Chirp 0.1&ndash;5 Hz</td><td class="n">3:00</td></tr>
-              <tr><td>Wrist roll</td><td>Slow sweep</td><td class="n">2:30</td></tr>
-              <tr><td>Gripper</td><td>Open, close, hold</td><td class="n">2:00</td></tr>
-              <tr><td>All</td><td>Home and checks</td><td class="n">2:30</td></tr>
-            </tbody>
-            <tfoot><tr><td colspan="2">Total</td><td class="n">20:00</td></tr></tfoot>
-          </table>
-        </div>
-        <div class="pane" data-ui data-stage="1" hidden>
-          <table class="tbl"><caption>Servo model, shoulder lift</caption>
-            <thead><tr><th>Parameter</th><th>Starting value</th><th>Status</th></tr></thead>
-            <tbody>
-              <tr><td>Firmware gains</td><td>P 16, D 32</td><td><span class="tag ok">Read from servo</span></td></tr>
-              <tr><td>Speed limit</td><td>5.22 rad/s</td><td><span class="tag ok">Pinned, firmware max</span></td></tr>
-              <tr><td>Acceleration ramp</td><td>254</td><td><span class="tag">LeRobot default</span></td></tr>
-              <tr><td>Zero offset</td><td>Per arm</td><td><span class="tag">Measured, phone level</span></td></tr>
-              <tr class="sel"><td>Backlash</td><td>&plusmn;0.5&deg;</td><td><span class="tag">Prior, Menagerie</span></td></tr>
-              <tr><td>Friction, stiction</td><td>0.8&deg; error</td><td><span class="tag">Fitted, public bench logs</span></td></tr>
-              <tr><td>Command delay</td><td></td><td><span class="tag">To fit</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="pane trace" data-ui data-stage="2" hidden>
-          <header><b>Corrected command</b></header>
-          <svg id="plot2" viewBox="0 0 440 220" preserveAspectRatio="none" role="img" aria-label="Target angle and the corrected command that leads it"></svg>
-          <footer><span class="key k-ref"><i></i>Target</span><span class="key k-act"><i></i>Command sent</span></footer>
-        </div>
-        <div class="pane" data-ui data-stage="3" hidden>
-          <table class="tbl"><caption>Gripper tip accuracy, ISO 9283 method</caption>
-            <thead><tr><th>Arm</th><th class="n">Poses</th><th class="n">Trials</th><th>Result</th></tr></thead>
-            <tbody>
-              <tr><td>Stock</td><td class="n">5</td><td class="n">30 each</td><td><span class="tag">Pending</span></td></tr>
-              <tr class="sel"><td>Calibrated</td><td class="n">5</td><td class="n">30 each</td><td><span class="tag">Pending</span></td></tr>
-            </tbody>
-            <tfoot><tr><td colspan="4">Dial indicator, 0.01 mm. Servos arrive 29 Oct.</td></tr></tfoot>
-          </table>
-        </div>
-      </div>
-      <div class="scrub">
-        <span class="rail"></span><span class="fill"></span>
-        <input id="scrub" type="range" min="0" max="3" step="1" value="0" aria-label="Stage" aria-valuetext="Record">
-        <ol><li class="on"><button type="button" data-go="0">Record</button></li><li><button type="button" data-go="1">Fit</button></li><li><button type="button" data-go="2">Correct</button></li><li><button type="button" data-go="3">Measure</button></li></ol>
-      </div>
-    </div>
-  </section>
-
-  <section id="work" aria-labelledby="work-title">
+<section class="q q--work" id="work" aria-labelledby="work-title">
+  <div class="container">
+    <h2 id="work-title">What else has been built?</h2>
     <div class="ledger">
-      <h2 class="small rise" id="work-title">Work</h2>
-      <img class="peek on" id="peek" src="/img/mrv-robot.jpg" alt="Preview of the selected project" width="420" height="315">
-      <ul>
-        <li class="rise"><a href="https://github.com/termvato/so101-sysid" data-img="/img/sysid-fit.jpg"><span>so101-sysid</span><span>Calibration</span><span>2026</span></a><img class="mobile-img" src="/img/sysid-fit.jpg" alt="Chart: ready-made servo params err 8.3 degrees on unseen logs, our fits 0.7 to 2 degrees" width="780" height="690" loading="lazy"></li>
-        <li class="rise"><a href="/portfolio#rocky" data-img=""><span>Rocky Robotics, 1st place</span><span>Quarry autonomy</span><span>2026</span></a></li>
-        <li class="rise"><a href="https://github.com/termvato/Humanoid-Spatial-Challenge" data-img="/img/room-change.jpg"><span>3D room change detection</span><span>Perception</span><span>2026</span></a><img class="mobile-img" src="/img/room-change.jpg" alt="Point cloud of a bedroom with moved, added and removed objects boxed and labelled" width="800" height="450" loading="lazy"></li>
-        <li class="rise"><a href="https://github.com/termvato/Humanoid-Learning-Challenge" data-img=""><span>Phone-to-robot learning</span><span>Imitation learning</span><span>2026</span></a></li>
-        <li class="rise"><a href="https://github.com/termvato/isaac-ros-pendulum" data-img="/img/pendulum.jpg"><span>Reaction-wheel pendulum</span><span>Control, LQR vs PPO</span><span>2026</span></a><img class="mobile-img" src="/img/pendulum.jpg" alt="Plot of body angle and arm speed recovering from a 7.45 degree lean" width="1040" height="650" loading="lazy"></li>
-        <li class="group" aria-hidden="true"></li>
-        <li class="rise"><a href="https://github.com/termvato/MRV" data-img="/img/mrv-robot.jpg"><span>MRV jumping robot</span><span>Hardware, dissertation</span><span>2026</span></a><img class="mobile-img" src="/img/mrv-robot.jpg" alt="The MRV one-legged jumping robot with its two stabilising arms" width="823" height="1200" loading="lazy"></li>
-        <li class="rise"><a href="/portfolio#cannulation" data-img=""><span>Cannulation trainer</span><span>Medical device</span><span>BEng</span></a></li>
+      <ul class="index">
+        <li class="index__lead"><a href="https://github.com/termvato/so101-sysid" data-img="img/sysid-fit.jpg" data-alt="Chart: ready-made servo params err 8.3 degrees on unseen logs, our fits 0.7 to 2 degrees"><span class="index__name">so101-sysid</span><span class="index__field">Calibration</span><span class="index__year measured">2026</span></a><img class="index__img" src="img/sysid-fit.jpg" alt="Chart: ready-made servo params err 8.3 degrees on unseen logs, our fits 0.7 to 2 degrees" width="780" height="690" loading="lazy"></li>
+        <li><a href="/portfolio#rocky" data-img=""><span class="index__name">Rocky Robotics, 1st place</span><span class="index__field">Quarry autonomy</span><span class="index__year measured">2026</span></a></li>
+        <li><a href="https://github.com/termvato/Humanoid-Spatial-Challenge" data-img="img/room-change.jpg" data-alt="Point cloud of a bedroom with moved, added and removed objects boxed and labelled"><span class="index__name">3D room change detection</span><span class="index__field">Perception</span><span class="index__year measured">2026</span></a><img class="index__img" src="img/room-change.jpg" alt="Point cloud of a bedroom with moved, added and removed objects boxed and labelled" width="800" height="450" loading="lazy"></li>
+        <li><a href="https://github.com/termvato/Humanoid-Learning-Challenge" data-img=""><span class="index__name">Phone-to-robot learning</span><span class="index__field">Imitation learning</span><span class="index__year measured">2026</span></a></li>
+        <li><a href="https://github.com/termvato/isaac-ros-pendulum" data-img="img/pendulum.jpg" data-alt="Plot of body angle and arm speed recovering from a 7.45 degree lean"><span class="index__name">Reaction-wheel pendulum</span><span class="index__field">Control, LQR vs PPO</span><span class="index__year measured">2026</span></a><img class="index__img" src="img/pendulum.jpg" alt="Plot of body angle and arm speed recovering from a 7.45 degree lean" width="1040" height="650" loading="lazy"></li>
+        <li><a href="https://github.com/termvato/MRV" data-img="img/mrv-robot.jpg" data-alt="The MRV one-legged jumping robot with its two stabilising arms"><span class="index__name">MRV jumping robot</span><span class="index__field">Hardware, dissertation</span><span class="index__year measured">2026</span></a><img class="index__img" src="img/mrv-robot.jpg" alt="The MRV one-legged jumping robot with its two stabilising arms" width="823" height="1200" loading="lazy"></li>
+        <li><a href="/portfolio#cannulation" data-img=""><span class="index__name">Cannulation trainer</span><span class="index__field">Medical device</span><span class="index__year">BEng</span></a></li>
       </ul>
+      <figure class="peek" aria-hidden="true">
+        <img id="peek" src="img/sysid-fit.jpg" alt="" width="780" height="690" loading="lazy">
+      </figure>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="bench" aria-labelledby="bench-title">
-    <div class="head">
-      <h2 class="rise" id="bench-title">Built by hand first</h2>
-      <p class="rise" style="--i:1">Before software, hardware: the last robot here was designed, printed, wired and cast from scratch, and it jumps 41 cm.</p>
+<section class="q q--bench" id="mrv" aria-labelledby="bench-title">
+  <div class="container q__grid">
+    <div class="q__head">
+      <h2 id="bench-title">What jumped in the film?</h2>
+      <p class="q__line">Before software, hardware: the last robot here was designed, printed, wired and cast from scratch, and it jumps 41&nbsp;cm.</p>
     </div>
     <div class="pics">
-      <figure class="rise"><video src="/img/mrv-jump.mp4" poster="/img/mrv-jump.jpg" muted loop playsinline autoplay preload="metadata" width="720" height="1280" aria-label="MRV jump test beside a tape measure"></video><figcaption>Jump test: 41 cm mean at 360 g</figcaption></figure>
-      <figure class="rise" style="--i:1"><img src="/img/mrv-gears.jpg" alt="Close-up of the MRV ratchet gears and compliant conrods" width="1200" height="1071" loading="lazy"><figcaption>Ratchet release, fifth revision</figcaption></figure>
-      <figure class="rise" style="--i:2"><img src="/img/mrv-pcb.jpg" alt="Four-layer MRV control board" width="1153" height="1021" loading="lazy"><figcaption>Four-layer control board</figcaption></figure>
+      <figure class="pics__a"><div class="frame"><video src="img/mrv-jump.mp4" poster="img/mrv-jump.jpg" muted loop playsinline autoplay preload="metadata" width="720" height="1280" aria-label="MRV jump test beside a tape measure"></video></div><figcaption>Jump test: <span class="measured">41&nbsp;cm</span> mean at <span class="measured">360&nbsp;g</span></figcaption></figure>
+      <figure class="pics__b"><div class="frame" data-slot="gears" data-alt="Close-up of the MRV ratchet gears"><img src="img/mrv-gears.jpg" alt="Close-up of the MRV ratchet gears and compliant conrods" width="1200" height="1071" loading="lazy"></div><figcaption>Ratchet release, fifth revision</figcaption></figure>
+      <figure class="pics__c"><div class="frame" data-slot="pcb" data-alt="The MRV control board"><img src="img/mrv-pcb.jpg" alt="Four-layer MRV control board" width="1153" height="1021" loading="lazy"></div><figcaption>Four-layer control board</figcaption></figure>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="field" aria-labelledby="letter-title">
+<section class="q q--letter" id="letter" aria-labelledby="letter-title">
+  <div class="container q__grid">
+    <div class="q__head">
+      <h2 id="letter-title">Who is building this?</h2>
+    </div>
     <div class="letter">
-      <h2 class="small rise" id="letter-title">Why this lab</h2>
-      <p class="rise">I&rsquo;m Vato. I studied mechanical engineering at Warwick and start an MEng at Berkeley in Fall 2027. Until then, I&rsquo;m building this.</p>
-      <p class="rise">Cheap robot arms are good enough to do real work. What holds them back is that nobody models their servos, so the arm doesn&rsquo;t go where the policy tells it to.</p>
-      <p class="rise">The goal: a $200 arm makes my breakfast every morning, learned from a video of my own hands. <mark>That needs an arm that goes exactly where it is told</mark>, so that is where I&rsquo;m starting.</p>
-      <p class="rise">Every result here comes with its trial count, its failures and its cost. If it breaks, you&rsquo;ll see it break.</p>
-      <p class="sign rise">Vato Inasaridze</p>
-      <p class="role">Founder, Vato Labs. <a href="mailto:inasaridzevato@gmail.com">inasaridzevato@gmail.com</a></p>
+      <p class="letter__open">I&rsquo;m Vato. I studied mechanical engineering at Warwick and start an MEng at Berkeley in Fall 2027. Until then, I&rsquo;m building this.</p>
+      <p>Cheap robot arms are good enough to do real work. What holds them back is that nobody models their servos, so the arm doesn&rsquo;t go where the policy tells it to.</p>
+      <p>The goal: a $200 arm makes my breakfast every morning, learned from a video of my own hands. That needs an arm that goes exactly where it is told, so that is where I&rsquo;m starting.</p>
+      <p class="letter__sign">Vato Inasaridze<br><span>Founder, Vato Labs. <a href="mailto:inasaridzevato@gmail.com">inasaridzevato@gmail.com</a></span></p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="log" aria-labelledby="log-title">
-    <div class="log">
-      <h2 class="small rise" id="log-title">Log</h2>
-      <ul>
-        <li class="rise"><span><i></i>Calibration motions tested in sim: twins agree within 0.2&deg;, so real servo data is the next lever</span><time datetime="2026-10-27">27 Oct 2026</time></li>
-        <li class="rise"><span><i></i>Servo twin fitted on public 12 V logs: 0.8&deg; error on unseen moves, vs 8.3&deg; with ready-made params</span><time datetime="2026-10-25">25 Oct 2026</time></li>
-        <li class="rise"><span><i></i>Lab set up: printer calibrated, servo fit gauges printed, robot station configured</span><time datetime="2026-10-25">25 Oct 2026</time></li>
-        <li class="rise"><span><i></i>1st place of 60 builders, Physical AI Hack London</span><time datetime="2026-10-17">17 Oct 2026</time></li>
-        <li class="rise"><span><i></i>Top 8 of about 180, Accel AI Innovate London</span><time datetime="2026-10-15">15 Oct 2026</time></li>
-      </ul>
+<section class="q q--log" id="log" aria-labelledby="log-title">
+  <div class="container q__grid">
+    <div class="q__head">
+      <h2 id="log-title">What has happened so far?</h2>
     </div>
-  </section>
+    <ol class="trail" reversed>
+      <li><time class="measured" datetime="2026-10-27">27 Oct 2026</time><p>Calibration motions tested in sim: twins agree within 0.2&deg;, so real servo data is the next lever</p></li>
+      <li><time class="measured" datetime="2026-10-25">25 Oct 2026</time><p>Servo twin fitted on public 12&nbsp;V logs: 0.8&deg; error on unseen moves, vs 8.3&deg; with ready-made params</p></li>
+      <li><time class="measured" datetime="2026-10-25">25 Oct 2026</time><p>Lab set up: printer calibrated, servo fit gauges printed, robot station configured</p></li>
+      <li><time class="measured" datetime="2026-10-17">17 Oct 2026</time><p>1st place of 60 builders, Physical AI Hack London</p></li>
+      <li><time class="measured" datetime="2026-10-15">15 Oct 2026</time><p>Top 8 of about 180, Accel AI Innovate London</p></li>
+    </ol>
+  </div>
+</section>
 </main>
-
-<footer class="quiet">
-  <span>Vato Labs, Luton</span>
-  <nav aria-label="Elsewhere"><a href="https://github.com/vatolabs">GitHub</a><a href="https://huggingface.co/vatolabs">Hugging Face</a><a href="https://www.linkedin.com/in/vakhtang-inasaridze">LinkedIn</a><a href="/portfolio">Portfolio</a></nav>
-  <span>2026</span>
+<footer class="close">
+  <div class="container">
+    <p class="close__statement">Every result here comes with its trial count, its failures and its cost. If it breaks, you&rsquo;ll see it break.</p>
+    <div class="close__row">
+      <a class="btn btn--quiet" href="https://github.com/vatolabs">Follow on GitHub</a>
+      <nav class="close__links" aria-label="Elsewhere"><a href="https://huggingface.co/vatolabs">Hugging Face</a><a href="https://www.linkedin.com/in/vakhtang-inasaridze">LinkedIn</a><a href="/portfolio">Portfolio</a></nav>
+    </div>
+    <p class="close__legal"><span>Vato Labs, Luton</span><span>2026</span></p>
+  </div>
 </footer>
-<script src="/site.js" defer></script>
+<script src="site.js" defer></script>
 </body>
 </html>
