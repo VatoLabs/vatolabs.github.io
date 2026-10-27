@@ -2,6 +2,21 @@
  * hero: Poster (/), Ledge (/portfolio) · nav: floating pill · footer: statement (/), mast (/portfolio) · imagery: photographs, the user's own, mono · signature: one real jump on grainy film, cut hard into a live servo trace · console: paper (light), graphite (dark), amber removed, cool kept for traces only
  * axes: light+dark/grotesk-sans/chromatic-cool · posture: restrained · modes: light+dark · job: follow (/), hire (/portfolio) · draw: a04cc9 (/), 3a9506 (/portfolio) · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 · weakest: P, a calibration page could still read as a spec sheet; every section is a question a sceptic of $200 arms would ask, answered with the page's own numbers */
+/* Hallmark · dropped scrub, stages, stage-title, stage-note, story · the stage slider and the pinned story were the old composition; the four stages now stand as an ordered list, every stage visible */
+/* Hallmark · dropped /site.js · the same script now loads as site.js, relative, so both pages also render from disk */
+/* Hallmark · dropped mrv-gears.jpg · on /portfolio only: the same photograph is the film-graded hero there (gears-film-1600) and stays on / */
+/* Hallmark · reworded "Work" to "What else has been built?", "Built by hand first" to "What jumped in the film?", "Why this lab" to "Who is building this?", "Log" to "What has happened so far?" · the Conversational FAQ shape heads every section with a question */
+/* Hallmark · reworded "Vato Labs is building open-source calibration that makes each $200 robot arm go where it is told." to "Open-source calibration that makes each $200 robot arm go where it is told." in the hero · 58 hero sentence budget; the full line stays in the meta description */
+/* Hallmark · reworded "Chirp 0.1 (en dash) 5 Hz" to "Chirp 0.1 to 5 Hz" · 19 names the en dash */
+/* Hallmark · waive 80 · a.mast holds the Vato Labs wordmark svg with role img and its label · the user's own logo, set large as the portfolio mast footer */
+/* Hallmark · waive 49b · a.src "CAD, firmware and BOM on GitHub (MIT)" wraps to two lines only at 320px · the owner's exact link phrase for the MRV repository, kept as found */
+/* Hallmark · dismissed 41 · .panel and .band take paper tokens that swap with the theme; their text inherits ink from the same token set, checked numerically in both modes */
+/* Hallmark · dismissed F4 · .seg button[aria-pressed="true"] is the selected state of the move-time control, not a second primary */
+/* Hallmark · dismissed 25 · .stage__text p is a one-sentence lede at 34ch */
+/* Hallmark · dismissed 46a · 38% is the owner's own figure, carried over from the page as found */
+/* Hallmark · dismissed 42 · the nav is the stamped floating pill, a dark film object in both modes */
+/* Hallmark · dismissed 77 · /portfolio holds one bento of five projects and two record lists; more sections would need content the owner has not given */
+/* Hallmark · dismissed render · the font fallback shows only in the file:// render (fonts blocked by file CORS); the http shots load Host Grotesk */
 @import url("./tokens.css");
 @import url("./base.css");
 
@@ -102,7 +117,7 @@ html:not(.js) .pill__tog { display: none; }
 .chip--set { border-color: var(--color-ink); color: var(--color-ink); }
 
 .seg { display: inline-flex; border: 1px solid var(--color-rule-2); border-radius: var(--radius-pill); overflow: hidden; }
-.seg button { min-height: 44px; min-width: 56px; padding: 0 var(--space-sm); border: 0; border-left: 1px solid var(--color-rule-2); background: var(--color-paper); color: var(--color-ink-2); font: 400 var(--text-sm)/1 var(--font-outlier); font-variant-numeric: tabular-nums; cursor: pointer; transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
+.seg button { min-height: 44px; min-width: 56px; padding: 0 var(--space-sm); white-space: nowrap; border: 0; border-left: 1px solid var(--color-rule-2); background: var(--color-paper); color: var(--color-ink-2); font: 400 var(--text-sm)/1 var(--font-outlier); font-variant-numeric: tabular-nums; cursor: pointer; transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
 .seg button:first-child { border-left: 0; }
 .seg button:hover { background: var(--color-paper-3); color: var(--color-ink); }
 .seg button:active { background: var(--color-rule); }
@@ -225,7 +240,7 @@ html:not(.js) .pill__tog { display: none; }
   .tbl { font-size: var(--text-sm); }
   .tbl th, .tbl td { padding-right: var(--space-sm); }
   .chip { white-space: normal; }
-  .seg button { min-width: 0; flex: 1; }
+  .seg button { min-width: 0; flex: 1; padding: 0 var(--space-2xs); }
   .seg { width: 100%; }
   .panel__bar { flex-direction: column; align-items: stretch; }
   .close__statement { font-size: clamp(1.75rem, 7.5vw, 2.25rem); }
@@ -280,9 +295,9 @@ html:not(.js) .pill__tog { display: none; }
 .figs dd { margin: 0; font-size: var(--text-2xl); line-height: 1.1; letter-spacing: -0.03em; color: var(--color-ink); white-space: nowrap; }
 .figs dt { font-size: var(--text-sm); line-height: 1.35; color: var(--color-muted); }
 
-.q--cv { padding-top: var(--section-gap); }
-.cvwrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-3xl); row-gap: var(--space-2xl); }
-.cv h2 { margin-bottom: var(--space-xl); font-size: var(--text-section); }
+.q--cv .q__grid { align-items: start; }
+.cv h2 { grid-column: 1 / 5; font-size: var(--text-section); }
+.cv ul { grid-column: 5 / 13; }
 .cv ul { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--color-rule-2); }
 .cv li { display: grid; gap: var(--space-xs); padding-block: var(--space-lg); border-bottom: 1px solid var(--color-rule); }
 .cv__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--space-2xs) var(--space-md); }
@@ -298,7 +313,7 @@ html:not(.js) .pill__tog { display: none; }
   .tile--lead .tile__text, .tile--lead .tile__media, .tile--spatial, .tile--pendulum, .tile--learning, .tile--cannulation { grid-column: 1 / -1; }
   .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--space-lg); }
   .figs > div:nth-child(3) { padding-left: 0; border-left: 0; }
-  .cvwrap { grid-template-columns: minmax(0, 1fr); }
+  .cv h2, .cv ul { grid-column: 1 / -1; }
 }
 @media (max-width: 40rem) {
   .tile { padding: var(--space-lg) var(--space-md); }

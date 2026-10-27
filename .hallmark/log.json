@@ -1,0 +1,35 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "site",
+  "shape": "Conversational FAQ",
+  "theme": "console",
+  "axes": "light+dark/grotesk-sans/chromatic-cool",
+  "hero": "Poster",
+  "nav": "floating pill",
+  "footer": "statement",
+  "imagery": "photographs, the user's own, mono",
+  "photos": [],
+  "entry": "hard cut",
+  "fingerprint": "Hanging|Asymmetric spans|Hairline|Solid|Full-bleed|None",
+  "sections": [
+   "Hero",
+   "Split",
+   "Steps",
+   "Band",
+   "Index",
+   "Showcase",
+   "Letter",
+   "Rows",
+   "Footer"
+  ],
+  "signature": "film jump cut into live servo trace",
+  "waived": [
+   "80",
+   "49b"
+  ],
+  "prompt": "open-source calibration lab for cheap robot arms",
+  "date": "2026-10-27"
+ }
+]
