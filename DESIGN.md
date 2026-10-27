@@ -1,184 +1,207 @@
 ---
 name: Vato Labs
-description: Open-source calibration for $200 robot arms, presented as a black and white parts catalog.
+description: Open-source servo calibration for $200 robot arms, shown as one film still above an engineering drawing sheet.
 colors:
-  paper: "#fdfdfc"
-  ink: "#141414"
-  ink-secondary: "#45464a"
-  rule: "#d4d4d0"
-  panel: "#f2f2ef"
-  markup-red: "#c3161c"
+  film: "#020202"
+  film-ink: "#f2f2f0"
+  film-ink-secondary: "#b4b4b0"
+  sheet: "#fcfcfb"
+  ink: "#111214"
+  ink-secondary: "#4a4d52"
+  hairline: "#cbced2"
+  band: "#eff0f1"
+  redline: "#c2112e"
+  sheet-dark: "#131518"
+  ink-dark: "#e8eaed"
+  ink-secondary-dark: "#a3a8af"
+  hairline-dark: "#30343a"
+  band-dark: "#1b1e22"
+  redline-dark: "#ff5c66"
 typography:
   display:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(2.5rem, 1.4rem + 4vw, 5.25rem)"
-    fontWeight: 800
-    lineHeight: 0.98
+    fontFamily: "Overpass, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(2.75rem, 1.1rem + 4vw, 5rem)"
+    fontWeight: 750
+    lineHeight: 0.97
     letterSpacing: "-0.025em"
-    fontVariation: "'wdth' 82"
   headline:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(1.625rem, 1.3rem + 1.2vw, 2.25rem)"
+    fontFamily: "Overpass, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(1.5rem, 1.15rem + 1.3vw, 2.25rem)"
     fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "-0.015em"
-    fontVariation: "'wdth' 88"
+    lineHeight: 1.12
+    letterSpacing: "-0.012em"
   title:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "1.375rem"
+    fontFamily: "Overpass, Helvetica Neue, Arial, sans-serif"
+    fontSize: "1.3125rem"
     fontWeight: 700
     lineHeight: 1.2
   body:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Overpass, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem)"
     fontWeight: 400
     lineHeight: 1.55
   label:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "0.875rem"
+    fontFamily: "Overpass, Helvetica Neue, Arial, sans-serif"
+    fontSize: "0.8125rem"
     fontWeight: 600
-    lineHeight: 1.3
-  display-portfolio:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(2.5rem, 1.6rem + 3vw, 4.5rem)"
-    fontWeight: 800
-    lineHeight: 0.98
-  figure-value:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "1.25rem"
-    fontWeight: 700
-  list-title:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "1.125rem"
-    fontWeight: 600
-  ui:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "1rem"
-    fontWeight: 400
-  compact:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    letterSpacing: "0.04em"
+  figure:
+    fontFamily: "Overpass Mono, ui-monospace, Menlo, monospace"
     fontSize: "0.9375rem"
-    fontWeight: 400
-  chart-axis:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "16px"
     fontWeight: 500
+    fontFeature: "'tnum'"
+  field-label:
+    fontFamily: "Overpass Mono, ui-monospace, Menlo, monospace"
+    fontSize: "0.75rem"
+    fontWeight: 500
+    letterSpacing: "0.06em"
 rounded:
   none: "0px"
+  balloon: "50%"
 spacing:
-  gutter: "clamp(16px, 3vw, 48px)"
-  section: "clamp(64px, 8vw, 112px)"
-  rail: "236px"
+  edge: "clamp(6px, 1.1vw, 16px)"
+  gutter: "clamp(16px, 3.2vw, 48px)"
+  section: "clamp(56px, 7vw, 104px)"
+  ruler: "30px"
 components:
-  button-primary:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
+  button-film:
+    backgroundColor: "{colors.film-ink}"
+    textColor: "{colors.film}"
     rounded: "{rounded.none}"
-    padding: "0 20px"
+    padding: "0 18px"
     height: "44px"
-  button-primary-hover:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-  option-button:
-    backgroundColor: "{colors.paper}"
+  button-film-outline:
+    textColor: "{colors.film-ink}"
+    rounded: "{rounded.none}"
+    padding: "0 18px"
+    height: "44px"
+  segment:
     textColor: "{colors.ink}"
     rounded: "{rounded.none}"
     height: "44px"
-  option-button-selected:
+  segment-selected:
     backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
+    textColor: "{colors.sheet}"
+  status-confirmed:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.sheet}"
+    rounded: "{rounded.none}"
+    padding: "3px 7px"
+  item-balloon:
+    textColor: "{colors.ink}"
+    rounded: "{rounded.balloon}"
+    size: "30px"
 ---
 
 # Design System: Vato Labs
 
 ## Overview
 
-**Creative North Star: "The Parts Catalog"**
+**Creative North Star: "The Drawing Sheet Under the Film Still"**
 
-The lab reads like a page from the engineering parts catalog every mechanical engineer knows by heart: an index rail on the left, a presentation drawing, spec tables with option buttons, listing tables with thumbnails, photos as numbered figure plates. Dense where the data is dense, quiet where the letter speaks. Black ink on white stock; the only colour is the red markup on measured or simulated data.
+Every page has two materials and a hard cut between them. On top, atoms: one low-key, grainy black-and-white film still of real hardware, full bleed, with the headline set in its empty dark space. Below, bits: a mechanical engineering drawing sheet, framed by a 2px border with a zone-numbered ruler at the top and bottom and an ISO-style title block as the footer. The sheet is where everything is drawn, dimensioned, tabulated and revision-dated.
+
+Light theme is a drawing print: near-white stock, black linework in two weights. Dark theme is CAD model space: graphite ground, pale linework, same geometry. In both, the film still keeps its own deeper black and grain, so the cut stays visible. The only colour is redline red, and it only marks data: the servo trace, its lag band and the lag dimension.
 
 **Key Characteristics:**
-- Index rail navigation, sticky on desktop, a top bar with a scrolling index on phones.
-- Every number sits in a table row with its label, status or source.
-- Square corners, 1px rules, 3px black heading bars.
-- One authored motion: the servo trace draws when the move time changes.
+- A full-bleed film still above, a framed sheet below, a zone ruler as the seam.
+- Two line weights: 1px for rules and hairlines, 2px for the frame, view-title underlines and step heads.
+- Every number sits in a table, a spec list, a dimension or a figure cell, set in Overpass Mono with tabular figures.
+- Square corners everywhere except the item balloons.
+- One authored motion: the servo trace redraws and the lag re-dimensions when the move time changes.
 
 ## Colors
 
-Black and white with one data colour.
+Black and white with one data colour; the theme swaps the sheet, never the film.
 
 ### Primary
-- **Catalog Ink** (#141414): text, heading bars, buttons, selected options, table head rules.
-
-### Tertiary
-- **Markup Red** (#c3161c): only the servo trace, its lag band (12% wash) and the live peak-lag value. Never on chrome, links or buttons.
+- **Redline** (#c2112e light, #ff5c66 dark): the simulated servo trace, the lag wash (9% / 15%), the dimension line, arrowheads and value, and the live peak-lag readout. Nothing else.
 
 ### Neutral
-- **Catalog Stock** (#fdfdfc): page ground.
-- **Secondary Ink** (#45464a): captions, table secondary columns, nav at rest (8.9:1 on stock).
-- **Hairline** (#d4d4d0): row rules, rail divider, link underline at rest.
-- **Table Head** (#f2f2ef): table header band and row hover.
+- **Film Black** (#020202): the still's ground, matched to the photograph's own black so its edges disappear.
+- **Film Ink** (#f2f2f0) and **Film Ink Secondary** (#b4b4b0): headline, offer, nav and caption over the still, in both themes.
+- **Print Stock** (#fcfcfb) / **Model Space** (#131518): the sheet ground.
+- **Linework** (#111214 / #e8eaed): text, frame, ruler, table head rules, solid status tags, selected segment.
+- **Secondary Linework** (#4a4d52 / #a3a8af): notes, captions, field labels, dates, axis labels.
+- **Hairline** (#cbced2 / #30343a): row rules, view separators, link underline at rest.
+- **Table Band** (#eff0f1 / #1b1e22): table head band and row hover.
 
 ### Named Rules
-**The Data Colour Rule.** Red appears only on data. If it is not a trace or a measured value, it is black.
+**The Redline Rule.** Red marks data, never chrome. If it is not a trace, a lag or a dimension, it is linework.
+
+**The Two Blacks Rule.** The film black and the sheet ground are never the same value; in dark mode a 2px pale ruler line marks where film ends.
 
 ## Typography
 
-**Body and display:** Archivo variable (self-hosted, `/fonts/archivo-var.woff2`), width axis 82 to 100.
-**Logo only:** Styro lettering, as the inline SVG wordmark. Never set text in it.
+**Display and Body Font:** Overpass (variable, self-hosted, with Helvetica Neue, Arial)
+**Figure Font:** Overpass Mono (variable, self-hosted, with ui-monospace)
+**Logo only:** the Styro "VATO LABS" wordmark as inline SVG. Never set text in it.
 
-**Character:** an industrial grotesque. Condensed and heavy for headings, normal width for reading.
+**Character:** Overpass descends from Highway Gothic, the lettering of road signs and engineering drawings; heavy and tight for headlines, open for reading. The mono is for measured values only.
 
 ### Hierarchy
-- **Display** (800, wdth 82, up to 5.25rem): the one h1 per page.
-- **Headline** (700, wdth 88, up to 2.25rem): section heads under a 3px bar.
-- **Title** (700, 1.375rem): step and entry subheads.
-- **Body** (400, 17 to 19px, 1.55): prose capped at 62 to 64ch.
-- **Label** (600, 0.875rem): table heads, captions, figure numbers.
+- **Display** (750, clamp 2.75 to 5rem, 0.97): the one headline per page, over the film still.
+- **Headline** (700, clamp 1.5 to 2.25rem, 1.12): view titles, always underlined at 2px like a drawing view title.
+- **Title** (700, 1.3125rem, 1.2): process step heads and sub-views.
+- **Body** (400, 17 to 19px, 1.55): prose capped at 52 to 62ch; the letter runs larger (18 to 21px).
+- **Label** (600, 0.8125rem, 0.04em, uppercase): table head cells only.
+- **Field label** (Mono 500, 0.75rem, 0.06em, uppercase): title block field names and the ruler numerals.
+- **Figure** (Mono, tabular): every numeric cell, dimension, spec value, date and figure number.
 
-Tabular figures on every table and chart label.
+### Named Rules
+**The Measured Mono Rule.** Mono only for things that were measured, counted or dated. Prose and headings never go mono.
 
 ## Layout
 
-Two-column shell: 236px index rail plus fluid main column with a clamp gutter. Hero is headline, offer, then a presentation block split 1.6 : 1 (drawing | spec). Below 1100px the presentation stacks and the spec splits in two; below 760px the rail becomes a top bar and tables reflow into stacked rows. Sections start 64 to 112px apart under a heading bar.
+Hero: 100svh minus the ruler height, so the first ruler shows at the bottom of the first viewport. Headline top-left in the still's empty field, offer and primary action bottom-right, caption bottom-left. Below 700px the portrait crop runs at full width, the headline overlaps its dark lower half, and offer, action and caption follow on the same black.
+
+Sheet: inset from the viewport by a 6 to 16px edge, 2px frame left and right, ruler (8 zones, 4 on phones) at top and bottom, title block last. Views are separated by hairlines and padded 56 to 104px with a 16 to 48px gutter. Desktop views split notes from drawing roughly 1 : 2; process steps sit on a two-column grid. Breakpoints: 1100px (lag view and evidence stack), 860px (all two-column views stack), 700px (phone: tables reflow into stacked rows, title block goes two-up).
 
 ## Elevation & Depth
 
-Flat. No shadows. Depth is rules and the table-head band.
+Flat. No shadows anywhere. Depth comes from the two materials (photograph above, linework below), the table band and the 1px / 2px line weights.
 
 ## Shapes
 
-Square corners everywhere. Borders are 1px hairline or 1px ink; heading bars 3px ink. Status tags are boxed: solid ink for confirmed, outline for priors, dashed outline for pending or to-fit.
+Square corners on every frame, button, tag, table and figure. The only curve is the item balloon (a 30px circle with a mono numeral), borrowed from parts-list callouts. Status is carried by border style: solid fill for confirmed, outline for priors and defaults, dashed outline for pending or to-fit, dashed for the Simulated tag.
 
 ## Components
 
 ### Buttons
-- **Primary:** solid ink, paper text, 44px high, square. Hover inverts to outline.
+- **Shape:** square (0px), 44px high, 18px side padding, 1px border.
+- **Film primary:** Film Ink fill, Film Black text; hover drops to outline.
+- **Film outline:** Film Ink border and text; hover fills.
+- Buttons only live on the film; on the sheet, actions are underlined links.
 
-### Option buttons (move-time filter)
-- Joined row of bordered cells; selected cell is solid ink. aria-pressed carries state.
+### Segmented control (move time)
+- Joined 44px cells in a 1px Linework box, mono labels. Selected cell is solid Linework with sheet-coloured text; `aria-pressed` carries the state.
 
 ### Tables
-- Head band in Table Head with ink rules above and below; rows separated by hairlines; numeric columns right-aligned; row hover in Table Head.
+- Head band in Table Band between two Linework rules; hairline row rules; numeric columns right-aligned in mono. On phones the parts list becomes balloon / name and area / thumbnail rows, and the log and CV tables become date-over-entry stacks.
 
-### Listing
-- Thumbnail table, whole row clickable, name underlines on hover. Phone: thumb left, name and area right.
+### Parts list
+- Item balloon, project link (the whole row is the hit area), area, year, a grayscale thumbnail that regains colour on hover.
 
 ### Navigation
-- Index rail, secondary ink at rest, ink and 2px underline for hover and the section in view.
+- Over the film only: wordmark left, text links in Film Ink Secondary, theme toggle (44px square, half-filled circle icon, `aria-pressed`) and a GitHub or Email outline button. Phones keep wordmark, toggle and button.
 
-### Drawing (chart)
-- Inline SVG in viewBox units, never stretched. Command dashed ink, servo solid red, lag as red wash. Always carries the "Simulated" tag while the data is simulated.
+### Lag drawing (signature)
+- Inline SVG redrawn at the box's pixel size. Command dashed Linework, servo solid Redline, lag as Redline wash. At the peak, dotted extension lines run from both curves to a dimension line with arrowheads and the value in Redline mono, haloed in the sheet colour. Arrowheads flip outside when the gap is under 22px. Always carries the dashed Simulated tag while the data is simulated.
+
+### Title block
+- The footer: a grid of Linework-ruled cells, each a mono field label over a value (lab wordmark, drawn by, place, year, sheet n of 2, elsewhere links).
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** put every new number in a table row with its source or status.
-- **Do** caption photos as "Fig. n".
-- **Do** keep headings as heading bars, never pills or cards.
+- **Do** put every new number in a table row, a spec list or a dimension, with its source or status beside it.
+- **Do** underline every view title at 2px.
+- **Do** number figures ("Fig. n") with a CSS counter in mono.
+- **Do** keep the film still a real photograph of real hardware, graded low-key black and white, with text only in its empty space.
 
 ### Don't:
-- **Don't** use red outside data.
-- **Don't** add rounded cards, shadows or gradients.
+- **Don't** use red outside data (The Redline Rule).
+- **Don't** add rounded cards, shadows or gradients to the sheet.
 - **Don't** put a label above a heading.
 - **Don't** set any text in the Styro logo face.
+- **Don't** let the sheet ground match the film black in dark mode.

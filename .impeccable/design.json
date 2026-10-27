@@ -1,7 +1,179 @@
 {
-  "northStar": "The Parts Catalog",
-  "motion": {"trace-draw": {"duration": "0.9s", "easing": "cubic-bezier(.16,1,.3,1)", "use": "servo trace redraw on move-time change; disabled under prefers-reduced-motion"}},
-  "breakpoints": {"tablet": "1100px", "phone": "760px"},
-  "elevation": "flat, no shadows",
-  "rules": ["Red only on data", "Every number in a table row with its source or status", "Square corners, 1px rules, 3px heading bars", "Styro only in the logo"]
+ "schemaVersion": 2,
+ "generatedAt": "2026-10-27T19:42:57.927339+00:00",
+ "title": "Design System: Vato Labs",
+ "extensions": {
+  "colorMeta": {
+   "redline": {
+    "role": "primary",
+    "displayName": "Redline",
+    "canonical": "#c2112e",
+    "tonalRamp": [
+     "#3d0610",
+     "#5e0918",
+     "#800c21",
+     "#a20f29",
+     "#c2112e",
+     "#e0596d",
+     "#f0a3ae",
+     "#fbe3e7"
+    ]
+   },
+   "ink": {
+    "role": "neutral",
+    "displayName": "Linework",
+    "canonical": "#111214",
+    "tonalRamp": [
+     "#111214",
+     "#26282c",
+     "#3b3e43",
+     "#4a4d52",
+     "#73777d",
+     "#a3a8af",
+     "#cbced2",
+     "#eff0f1"
+    ]
+   },
+   "sheet": {
+    "role": "neutral",
+    "displayName": "Print Stock",
+    "canonical": "#fcfcfb"
+   },
+   "sheet-dark": {
+    "role": "neutral",
+    "displayName": "Model Space",
+    "canonical": "#131518"
+   },
+   "film": {
+    "role": "neutral",
+    "displayName": "Film Black",
+    "canonical": "#020202"
+   }
+  },
+  "typographyMeta": {
+   "display": {
+    "displayName": "Display",
+    "purpose": "The one headline per page, over the film still."
+   },
+   "headline": {
+    "displayName": "View title",
+    "purpose": "Underlined 2px, like a drawing view title."
+   },
+   "figure": {
+    "displayName": "Figure",
+    "purpose": "Measured, counted or dated values only."
+   }
+  },
+  "shadows": [],
+  "motion": [
+   {
+    "name": "trace-draw",
+    "value": "0.9s cubic-bezier(.16,1,.3,1)",
+    "purpose": "Servo trace redraw on move-time change; the dimension fades in after 0.55s. Off under prefers-reduced-motion."
+   }
+  ],
+  "breakpoints": [
+   {
+    "name": "tablet",
+    "value": "1100px"
+   },
+   {
+    "name": "narrow",
+    "value": "860px"
+   },
+   {
+    "name": "phone",
+    "value": "700px"
+   }
+  ]
+ },
+ "components": [
+  {
+   "name": "Film button",
+   "kind": "button",
+   "refersTo": "button-film",
+   "description": "Primary action on the film still.",
+   "html": "<a class=\"ds-btn\" href=\"#\">Follow on GitHub</a>",
+   "css": ".ds-btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;background:#f2f2f0;color:#020202;border:1px solid #f2f2f0;font:600 .9375rem/1 Overpass,Arial,sans-serif;text-decoration:none;transition:background .2s,color .2s}.ds-btn:hover{background:transparent;color:#f2f2f0}.ds-btn:focus-visible{outline:2px solid #f2f2f0;outline-offset:3px}"
+  },
+  {
+   "name": "Segmented control",
+   "kind": "custom",
+   "refersTo": "segment",
+   "description": "Move-time picker for the lag drawing.",
+   "html": "<div class=\"ds-seg\"><button aria-pressed=\"false\">1 s</button><button aria-pressed=\"true\">0.25 s</button></div>",
+   "css": ".ds-seg{display:inline-flex;border:1px solid var(--ink,#111214)}.ds-seg button{min-height:44px;min-width:58px;border:0;background:transparent;color:var(--ink,#111214);font:500 .875rem 'Overpass Mono',monospace;cursor:pointer}.ds-seg button+button{border-left:1px solid var(--ink,#111214)}.ds-seg button:hover{background:var(--band,#eff0f1)}.ds-seg button[aria-pressed=true]{background:var(--ink,#111214);color:var(--sheet,#fcfcfb)}"
+  },
+  {
+   "name": "Status tag",
+   "kind": "chip",
+   "refersTo": "status-confirmed",
+   "description": "Solid = confirmed, outline = prior, dashed = pending.",
+   "html": "<span class=\"ds-st ok\">Read from servo</span> <span class=\"ds-st\">Prior, Menagerie</span> <span class=\"ds-st todo\">To fit</span>",
+   "css": ".ds-st{display:inline-block;font:400 .8125rem/1.2 Overpass,Arial,sans-serif;padding:3px 7px;border:1px solid #4a4d52;color:#111214}.ds-st.ok{background:#111214;border-color:#111214;color:#fcfcfb}.ds-st.todo{border-style:dashed;color:#4a4d52}"
+  },
+  {
+   "name": "Item balloon",
+   "kind": "custom",
+   "refersTo": "item-balloon",
+   "description": "Parts-list callout number.",
+   "html": "<span class=\"ds-balloon\">3</span>",
+   "css": ".ds-balloon{display:inline-grid;place-items:center;width:30px;height:30px;border:1px solid #111214;border-radius:50%;font:600 .8125rem 'Overpass Mono',monospace}"
+  },
+  {
+   "name": "View title",
+   "kind": "custom",
+   "description": "Section heading underlined at 2px.",
+   "html": "<h2 class=\"ds-vh\">How it works</h2>",
+   "css": ".ds-vh{font:700 2rem/1.12 Overpass,Arial,sans-serif;letter-spacing:-.012em;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.22em}"
+  },
+  {
+   "name": "Title block cell",
+   "kind": "custom",
+   "description": "Footer field.",
+   "html": "<div class=\"ds-tb\"><span>Drawn by</span>Vato Inasaridze</div>",
+   "css": ".ds-tb{padding:14px 16px;border:1px solid #111214;font:600 1rem Overpass,Arial,sans-serif}.ds-tb span{display:block;font:500 .75rem/1 'Overpass Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#4a4d52;margin-bottom:10px}"
+  }
+ ],
+ "narrative": {
+  "northStar": "The Drawing Sheet Under the Film Still",
+  "overview": "Every page has two materials and a hard cut between them: a grainy film still of real hardware above, an engineering drawing sheet below, framed, zone-ruled and closed by a title block. Light is a drawing print, dark is CAD model space; the only colour is redline red on data.",
+  "keyCharacteristics": [
+   "A full-bleed film still above, a framed sheet below, a zone ruler as the seam.",
+   "Two line weights: 1px for rules and hairlines, 2px for the frame, view-title underlines and step heads.",
+   "Every number sits in a table, a spec list, a dimension or a figure cell, set in Overpass Mono with tabular figures.",
+   "Square corners everywhere except the item balloons.",
+   "One authored motion: the servo trace redraws and the lag re-dimensions when the move time changes."
+  ],
+  "rules": [
+   {
+    "name": "The Redline Rule",
+    "body": "Red marks data, never chrome. If it is not a trace, a lag or a dimension, it is linework.",
+    "section": "colors"
+   },
+   {
+    "name": "The Two Blacks Rule",
+    "body": "The film black and the sheet ground are never the same value; in dark mode a 2px pale ruler line marks where film ends.",
+    "section": "colors"
+   },
+   {
+    "name": "The Measured Mono Rule",
+    "body": "Mono only for things that were measured, counted or dated. Prose and headings never go mono.",
+    "section": "typography"
+   }
+  ],
+  "dos": [
+   "Do put every new number in a table row, a spec list or a dimension, with its source or status beside it.",
+   "Do underline every view title at 2px.",
+   "Do number figures (\"Fig. n\") with a CSS counter in mono.",
+   "Do keep the film still a real photograph of real hardware, graded low-key black and white, with text only in its empty space."
+  ],
+  "donts": [
+   "Don't use red outside data (The Redline Rule).",
+   "Don't add rounded cards, shadows or gradients to the sheet.",
+   "Don't put a label above a heading.",
+   "Don't set any text in the Styro logo face.",
+   "Don't let the sheet ground match the film black in dark mode."
+  ]
+ }
 }

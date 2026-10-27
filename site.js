@@ -29,7 +29,7 @@
   let T=.25;
   function drawTrace(animate){
     if(!plot)return;const box=plot.parentElement,W=box.clientWidth,H=box.clientHeight;if(!W||!H)return;
-    const L=40,R=Math.min(96,W*.18),Tp=14,B=30,ymax=66,N=1200,R0=sim(T,60);
+    const L=40,R=Math.min(76,W*.16),Tp=14,B=30,ymax=66,N=1200,R0=sim(T,60);
     const X=i=>L+(W-L-R)*i/(N-1), Y=v=>H-B-(H-Tp-B)*v/ymax;
     plot.setAttribute('viewBox',`0 0 ${W} ${H}`);plot.textContent='';plot.classList.remove('drawn');
     for(const g of [0,30,60]){plot.append(el('line',{x1:L,x2:W-R+8,y1:Y(g),y2:Y(g),class:g?'axis':'axis0'}));
