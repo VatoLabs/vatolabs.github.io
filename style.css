@@ -65,6 +65,7 @@ img{display:block;max-width:100%;height:auto}
 .seg button[aria-pressed="true"]:hover{color:#fff}
 .trace svg{width:100%;height:100%;display:block}
 .trace footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;padding:8px 12px;border-top:1px solid #e3e8eb;color:var(--muted);font-size:13px} /* taste-skill-ignore: inside data-ui fragment */
+.simnote{padding:0 12px 10px;color:var(--muted);font-size:12px} /* taste-skill-ignore: inside data-ui fragment */
 .trace footer strong{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
 .key{display:inline-flex;align-items:center;gap:6px}
 .key i{display:inline-block;width:14px;height:2px;background:currentColor}

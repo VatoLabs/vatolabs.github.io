@@ -26,7 +26,7 @@
     <div class="split">
       <h1><span class="a">Decoupling robot progress</span> <span class="b">from atoms</span></h1>
       <figure class="fragment trace" data-ui aria-label="Simulated servo tracking a commanded move">
-        <header><b>Shoulder lift, STS3215</b>
+        <header><b>Shoulder lift, STS3215 <span class="tag">Simulated</span></b>
           <span class="seg" role="group" aria-label="Move time">
             <button type="button" data-t="1" aria-pressed="false">1 s</button><button type="button" data-t="0.5" aria-pressed="false">0.5 s</button><button type="button" data-t="0.25" aria-pressed="true">0.25 s</button><button type="button" data-t="0.15" aria-pressed="false">0.15 s</button>
           </span></header>
@@ -36,6 +36,7 @@
           <span class="readout">Peak lag <strong id="lag">28.2&deg;</strong></span>
           <span class="model">Speed limit <strong>299&deg;/s</strong>, backlash <strong>&plusmn;0.5&deg;</strong></span>
         </footer>
+        <p class="simnote">Simulated from datasheet limits; 10 ms delay assumed. Measured trace replaces it after servos arrive.</p>
       </figure>
     </div>
     <div class="stage-foot">
