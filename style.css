@@ -182,7 +182,7 @@ th.n{white-space:normal;text-align:right;font-family:var(--f);font-size:.8125rem
 .balloon{display:inline-grid;place-items:center;width:30px;height:30px;border:1px solid var(--ink);border-radius:50%;font:600 .8125rem var(--fm)}
 .thumbh{width:120px}
 .thumb{width:120px;padding-right:10px!important}
-.thumb img{width:108px;height:64px;object-fit:cover;border:1px solid var(--hair);filter:grayscale(1) contrast(1.05) brightness(var(--dim));transition:filter .3s}
+.thumb img{width:108px;height:64px;object-fit:cover;border:1px solid var(--hair);filter:brightness(var(--dim));transition:filter .3s}
 .parts tr:hover .thumb img{filter:brightness(var(--dim))}
 
 /* bench */
@@ -194,6 +194,8 @@ th.n{white-space:normal;text-align:right;font-family:var(--f);font-size:.8125rem
 .pics img,.pics video{width:100%;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--ink)}
 .pics video{object-position:50% 100%}
 .pics .wide{grid-column:1/-1}
+.pics .wide img{aspect-ratio:auto;object-fit:contain;background:#fff}
+.pics .fit img{object-fit:contain;background:#000}
 .pics .wide video{aspect-ratio:4/3;object-position:50% 50%}
 figcaption{font-size:.875rem;color:var(--ink-2);padding-top:10px}
 .pics figcaption::before,.pic figcaption::before{content:"Fig. " counter(fig) "  ";font-family:var(--fm);color:var(--ink);white-space:pre}
