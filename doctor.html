@@ -35,18 +35,17 @@
   <div class="dr-hero">
     <div class="dr-text">
       <h1 id="tool">so101-doctor</h1>
-      <p>A free tool for the SO-101 robot arm. It checks how your six servos are set up and writes a twin: a simulated copy of the arm for the free MuJoCo simulator, built for the servo gain your arm runs. On our arm the twin came to rest about twice as close to the real arm as the stock model (one arm, not yet replicated). It only reads: it cannot move the arm or change a setting.</p>
+      <p>A free tool for the SO-101 arm. It checks how your six servos are set up and writes a MuJoCo twin of the arm, built for the servo gain your arm runs. On our arm the twin rests about twice as close to the real arm as the stock model (one arm, not yet replicated). Read only: it cannot move the arm or change a setting.</p>
     </div>
     <div class="dr-install">
-      <pre class="cmd steps-cmd" aria-label="Install and run, macOS or Linux"><code><span class="cm"># In a terminal on macOS or Linux, with Python 3.10 or newer: make a private Python folder</span>
+      <pre class="cmd steps-cmd" aria-label="Install and run, macOS or Linux"><code><span class="cm"># macOS or Linux, Python 3.10 or newer: install</span>
 <span class="pr">$ </span>python3 -m venv ~/so101
-<span class="cm"># Install the tool and MuJoCo into it</span>
 <span class="pr">$ </span>~/so101/bin/pip install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0
-<span class="cm"># Plug in and power the arm, quit LeRobot, then check it and write the twin (no arm: it still writes the twin)</span>
+<span class="cm"># Arm powered and plugged in, LeRobot closed: check it and write the twin (works without an arm too)</span>
 <span class="pr">$ </span>~/so101/bin/so101-doctor --export-mujoco ~/so101_twin
 <span class="cm"># Open the twin</span>
 <span class="pr">$ </span>~/so101/bin/python -m mujoco.viewer --mjcf ~/so101_twin/scene.xml</code></pre>
-      <p class="dr-note">New to this, or on Windows? <a href="#start">Go step by step</a>. <a href="#agents">For AI agents</a>.</p>
+      <p class="dr-note">On Windows, or stuck? <a href="#start">Step by step</a>. <a href="#agents">For AI agents</a>.</p>
       <div class="dr-btns"><a class="btn solid" href="https://github.com/VatoLabs/so101-doctor">Get the code</a><a class="btn" href="https://github.com/VatoLabs/STS3215_profile">Read the findings</a></div>
     </div>
   </div>
@@ -59,70 +58,56 @@
     <div class="bench-head">
       <h2 class="vh" id="start-title">Start here</h2>
       <div>
-        <p>Six steps, about five minutes. Every command is pasted into a terminal, then Enter. On a Mac: press Cmd and Space, type Terminal, press Enter. On Windows: open the Start menu, type PowerShell, press Enter.</p>
-        <p class="simnote">You need Python 3.10 or newer and an internet connection. The arm is needed for step 4 only; step 5 reads it if it is plugged in and works without it.</p>
-        <p class="simnote">Words used here: a <strong>twin</strong> is a simulated copy of the arm. <strong>MuJoCo</strong> is a free physics simulator. The <strong>P gain</strong> is a servo setting for how hard it pulls toward its goal: LeRobot sets 16, the factory value is 32. A <strong>register</strong> is one numbered setting stored in a servo.</p>
+        <p>Four steps, about five minutes. Paste each command into a terminal (Mac: Terminal, Windows: PowerShell) and press Enter. You need Python 3.10 or newer. Without an arm, skip step 2.</p>
+        <p class="simnote">A <strong>twin</strong> is a simulated copy of the arm, here for the free MuJoCo simulator. The <strong>P gain</strong> is how hard a servo pulls toward its goal: LeRobot sets 16, the factory value is 32. A <strong>register</strong> is one numbered servo setting.</p>
       </div>
     </div>
     <ol class="how">
       <li>
-        <h3>Check Python</h3>
-        <div class="oscmd"><span class="os">macOS or Linux</span><pre class="code">python3 --version</pre></div>
-          <div class="oscmd"><span class="os">Windows (PowerShell)</span><pre class="code">py --version</pre></div>
-        <p>It should print Python 3.10 or newer. If Python is missing or older, install it from <a href="https://www.python.org/downloads/">python.org</a>, open a new terminal and check again.</p>
-      </li>
-      <li>
-        <h3>Make a private folder for the tools</h3>
-        <div class="oscmd"><span class="os">macOS or Linux</span><pre class="code">python3 -m venv ~/so101</pre></div>
-          <div class="oscmd"><span class="os">Windows (PowerShell)</span><pre class="code">py -m venv "$HOME\so101"</pre></div>
-        <p>It prints nothing: that means it worked. This makes a Python virtual environment, a folder with its own copy of Python. Everything below installs into it, nothing else on your computer changes, and deleting the folder removes it all. On Debian or Ubuntu, if it says ensurepip is not available, run <code>sudo apt install python3-venv</code> and try again.</p>
-      </li>
-      <li>
-        <h3>Install so101-doctor and MuJoCo</h3>
-        <div class="oscmd"><span class="os">macOS or Linux</span><pre class="code">~/so101/bin/pip install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0</pre></div>
-          <div class="oscmd"><span class="os">Windows (PowerShell)</span><pre class="code">&amp; "$HOME\so101\Scripts\pip" install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0</pre></div>
-        <p>The last line should start with &ldquo;Successfully installed&rdquo;. A notice about upgrading pip is harmless. On Windows the <code>&amp;</code> at the start of the line is needed.</p>
+        <h3>Install</h3>
+        <div class="oscmd"><span class="os">macOS or Linux</span><pre class="code">python3 -m venv ~/so101
+~/so101/bin/pip install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0</pre></div>
+          <div class="oscmd"><span class="os">Windows (PowerShell)</span><pre class="code">py -m venv "$HOME\so101"
+&amp; "$HOME\so101\Scripts\pip" install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0</pre></div>
+        <p>The first line makes a folder with its own Python; everything installs there and deleting it removes it all. The last line printed should start with &ldquo;Successfully installed&rdquo;. On Windows the <code>&amp;</code> is needed.</p>
       </li>
       <li>
         <h3>Check your arm</h3>
-        <p>Plug the power supply into the servo board, then the USB cable into your computer. Close any terminal that is running LeRobot (teleoperation, recording, calibration) or another script that talks to the arm. Then:</p>
+        <p>Power the servo board, plug in the USB cable, and close LeRobot or anything else that talks to the arm.</p>
         <div class="oscmd"><span class="os">macOS or Linux</span><pre class="code">~/so101/bin/so101-doctor</pre></div>
           <div class="oscmd"><span class="os">Windows (PowerShell)</span><pre class="code">&amp; "$HOME\so101\Scripts\so101-doctor"</pre></div>
-        <p>The first line should say &ldquo;6 of 6 servos read&rdquo; and &ldquo;scan complete&rdquo;. Below it you get one row per servo and any warnings in plain words. A warning is not an error, and nothing on your arm was changed. No arm? Add <code>--demo</code> to see example output. If it finds no port or the wrong one, see <a href="#fix">Fixes</a>.</p>
+        <p>The first line should say &ldquo;6 of 6 servos read&rdquo;. Then one row per servo and any warnings in plain words. Nothing on the arm is changed. No arm? Add <code>--demo</code> for example output. Port trouble: see <a href="#fix">Fixes</a>.</p>
       </li>
       <li>
         <h3>Write the twin</h3>
         <div class="oscmd"><span class="os">macOS or Linux</span><pre class="code">~/so101/bin/so101-doctor --export-mujoco ~/so101_twin</pre></div>
           <div class="oscmd"><span class="os">Windows (PowerShell)</span><pre class="code">&amp; "$HOME\so101\Scripts\so101-doctor" --export-mujoco "$HOME\so101_twin"</pre></div>
-        <p>With the arm plugged in it reads the P gain of joints 1 to 5 and writes the twin built for it. Near the end it says which one you got, for example &ldquo;Exported the SO-101 MuJoCo twin for P 16 (read from your arm)&rdquo;, and whether your servos match what the twin assumes.</p>
-        <p>Without an arm it writes the P 16 twin, the gain LeRobot sets. If your arm runs P 32, add <code>--twin-p 32</code>. Give it a new or empty folder: the tool never overwrites other files.</p>
+        <p>It reads the P gain of joints 1 to 5 and writes the twin for it. The last lines say which one you got and whether your servos match it. Without an arm you get the P 16 twin; add <code>--twin-p 32</code> for an arm at 32. Use a new or empty folder: nothing is overwritten.</p>
       </li>
       <li>
-        <h3>Open the twin in MuJoCo</h3>
+        <h3>Open the twin</h3>
         <div class="oscmd"><span class="os">macOS or Linux</span><pre class="code">~/so101/bin/python -m mujoco.viewer --mjcf ~/so101_twin/scene.xml</pre></div>
           <div class="oscmd"><span class="os">Windows (PowerShell)</span><pre class="code">&amp; "$HOME\so101\Scripts\python" -m mujoco.viewer --mjcf "$HOME\so101_twin\scene.xml"</pre></div>
-        <p>A window opens with the arm on a floor. The Control panel on the right has one slider per joint: each sets that joint&rsquo;s goal, as the goal register does on the real servo. Space pauses, Backspace resets.</p>
+        <p>A window opens with the arm. Each slider on the right sets one joint&rsquo;s goal. Space pauses, Backspace resets.</p>
       </li>
     </ol>
-    <p class="src">Checked by us: every step on Ubuntu 24.04 with Python 3.10 (in step 6 the window opened with the twin; its sliders and keys were not tried), steps 3 and 5 also with Python 3.12, and the register check on macOS. Not yet checked by us: the Windows lines, and steps 5 and 6 on macOS. If a step fails, <a href="https://github.com/VatoLabs/so101-doctor/issues">open an issue</a> with the line it printed.</p>
+    <p class="src">Checked by us: every step on Ubuntu 24.04 with Python 3.10 (in step 4 the window opened with the twin; its sliders and keys were not tried), steps 1 and 3 also with Python 3.12, and step 2 on macOS. Not yet checked: the Windows lines, and steps 3 and 4 on macOS. If a step fails, <a href="https://github.com/VatoLabs/so101-doctor/issues">open an issue</a> with the line it printed. If it worked, a <a href="https://github.com/VatoLabs/so101-doctor">star on GitHub</a> helps others find it.</p>
   </section>
 
   <section class="view entry" id="twin" aria-labelledby="twin-title">
     <div class="txt">
       <h2 class="vh" id="twin-title">Vato&rsquo;s twin</h2>
-      <p>The twin is the SO-101 model from MuJoCo Menagerie with its five arm servos replaced by a model of the real STS3215: the servo&rsquo;s P loop on motor voltage, its 12 V limit, the motor&rsquo;s back-EMF and a limit that stands in for the firmware&rsquo;s acceleration profile. It is one plain MuJoCo file with nothing to install besides MuJoCo.</p>
-      <p>It comes in two versions, for P 16 (what LeRobot writes) and for P 32 (the servo&rsquo;s factory value). so101-doctor gives you the one your arm runs.</p>
+      <p>MuJoCo Menagerie&rsquo;s SO-101 with the five arm servos replaced by a model of the real STS3215: its P loop on motor voltage, the 12 V limit, back-EMF and a limit that stands in for the firmware&rsquo;s acceleration profile. One plain MuJoCo file, in two versions: P 16 (what LeRobot writes) and P 32 (the factory value). so101-doctor gives you the one your arm runs.</p>
       <ol class="notes">
-        <li><span><code>scene.xml</code> is the arm on a floor, <code>so101_twin.xml</code> the arm alone.</span></li>
-        <li><span><code>values.json</code> and <code>README.md</code> list the nine servo values and where each comes from.</span></li>
+        <li><span><code>scene.xml</code> is the arm on a floor, <code>so101_twin.xml</code> the arm alone. <code>values.json</code> and <code>README.md</code> list the nine servo values and where each comes from.</span></li>
         <li><span>Drive it like the servo: <code>ctrl</code> is the joint goal in radians. The gripper keeps Menagerie&rsquo;s actuator.</span></li>
-        <li><span>Angles are Menagerie&rsquo;s. LeRobot&rsquo;s degrees are counted from the middle of the range you swept when calibrating (wrist roll: from the pose you held; the gripper is 0 to 100, not degrees), and the twin works in radians. So the two differ by an offset per joint that depends on your arm. so101-doctor does not work that offset out yet, so do not copy joint numbers between LeRobot and the twin.</span></li>
+        <li><span>Angles are Menagerie&rsquo;s, in radians. LeRobot&rsquo;s degrees are counted from a zero that depends on your calibration, so do not copy joint numbers between LeRobot and the twin.</span></li>
       </ol>
-      <p class="simnote">From Python: save this as <code>try_twin.py</code> and run it with <code>~/so101/bin/python try_twin.py</code> (Windows: <code>&amp; "$HOME\so101\Scripts\python" try_twin.py</code>). With the P 16 twin it prints about 0.29, -0.48, 0.41, 0.30, -0.19.</p>
+      <p class="simnote">From Python: save as <code>try_twin.py</code>, run <code>~/so101/bin/python try_twin.py</code> (Windows: <code>&amp; "$HOME\so101\Scripts\python" try_twin.py</code>). The P 16 twin prints about 0.29, -0.48, 0.41, 0.30, -0.19.</p>
       <pre class="code" aria-label="Python example">import os
 import mujoco
 
-path = os.path.expanduser("~/so101_twin/scene.xml")  # from step 5
+path = os.path.expanduser("~/so101_twin/scene.xml")  # from step 3
 m = mujoco.MjModel.from_xml_path(path)
 d = mujoco.MjData(m)
 # joint goals in rad: pan, lift, elbow, wrist flex, wrist roll
@@ -139,25 +124,18 @@ print(d.qpos[:5].round(3))  # where the joints are now</pre>
           <tr><td>P 16</td><td class="n">6.4 mm</td><td class="n">15.2 mm</td><td>180</td><td><span class="st todo">Not yet replicated</span></td></tr>
           <tr><td>P 32</td><td class="n">3.7 mm</td><td class="n">7.7 mm</td><td>164</td><td><span class="st todo">Not yet replicated</span></td></tr>
         </tbody>
-        <tfoot><tr><td colspan="5">The same commands went to the real arm and to the simulation. The number is the distance between the two gripper tips once both have come to rest, mean over the holds. Tip positions are computed from the joint encoders, not seen by a camera. A hold is one pose the arm moved to and rested at. P 16 measured 8 Nov 2026, P 32 on 10 Nov 2026.</td></tr></tfoot>
+        <tfoot><tr><td colspan="5">Same commands to the real arm and the simulation. Distance between the two gripper tips at rest, mean over the holds (a hold is one pose the arm rested at), computed from the joint encoders, not a camera. P 16 measured 8 Nov 2026, P 32 on 10 Nov 2026.</td></tr></tfoot>
       </table></div>
-      <p class="src">One arm, bare, nothing in the gripper, one session per row. In motion at P 16 the twin tracked the joints to 1.25&deg; RMSE (the typical error) against 2.23&deg; for stock Menagerie, and was closer on every joint of all five teleoperation recordings replayed (same arm, recorded 2 Nov 2026, not yet replicated). Stock Menagerie is <a href="https://github.com/google-deepmind/mujoco_menagerie/tree/main/robotstudio_so101">robotstudio_so101</a> from mujoco_menagerie at repository commit f3b6013 (23 Oct 2026).</p>
-      <p class="src">Not checked: a second arm, a load in the gripper, the 7.4 V servo version, P gains other than 16 or 32 or different gains per joint, fast teleoperation at P 32. Scored on MuJoCo 3.17.0 (only the 2.23&deg; for stock Menagerie in motion was computed on 4.0.0); on 4.0.0 the twin loads and one 3 s test move ended at the same joint angles.</p>
-      <p class="src">The servo torque law is BAM&rsquo;s (<a href="https://github.com/Rhoban/bam">Rhoban</a>, arXiv 2410.08650). The body, meshes and gripper are Menagerie&rsquo;s (derived from The Robot Studio&rsquo;s SO-ARM100 model), so the exported folder is Apache-2.0.</p>
+      <p class="src">One arm, nothing in the gripper, one session per row. In motion at P 16 the twin tracked the joints to 1.25&deg; RMSE against 2.23&deg; for stock Menagerie, closer on every joint of five replayed teleoperation recordings (same arm, recorded 2 Nov 2026, not yet replicated). Stock Menagerie is <a href="https://github.com/google-deepmind/mujoco_menagerie/tree/main/robotstudio_so101">robotstudio_so101</a> at repository commit f3b6013 (23 Oct 2026).</p>
+      <p class="src">Not checked: a second arm, a load in the gripper, the 7.4 V servo version, other or mixed P gains, fast teleoperation at P 32. Scored on MuJoCo 3.17.0 (only the 2.23&deg; was computed on 4.0.0); on 4.0.0 the twin loads and one 3 s test move ended at the same joint angles.</p>
+      <p class="src">Servo torque law: BAM (<a href="https://github.com/Rhoban/bam">Rhoban</a>, arXiv 2410.08650). Body, meshes and gripper: Menagerie (derived from The Robot Studio&rsquo;s SO-ARM100 model).</p>
     </div>
   </section>
 
   <section class="view" id="output" aria-labelledby="out-title">
     <div class="bench-head">
       <h2 class="vh" id="out-title">What it prints</h2>
-      <div>
-        <p>One row per servo, then warnings in plain words. With <code>--export-mujoco</code> it adds a line for each servo setting that differs from what the twin assumes.</p>
-        <ol class="notes">
-          <li>The acceleration limit the firmware puts on its internal target, from registers 41 and 85, and the shortest time that allows for a 60&deg; move.</li>
-          <li>Firmware, supply voltage against the servo&rsquo;s own limits, temperature, gains and fault bits.</li>
-          <li>Warnings when register 85 caps the acceleration you asked for, joints are set up differently, the supply is above a servo&rsquo;s voltage setting, a servo is missing or a position is outside one turn.</li>
-        </ol>
-      </div>
+      <p>One row per servo, then warnings in plain words. With <code>--export-mujoco</code> it adds a line for each servo setting that differs from what the twin assumes.</p>
     </div>
     <figure class="term-fig" aria-labelledby="term-title">
       <figcaption class="plot-head">
@@ -175,38 +153,36 @@ so101-doctor: 6 of 6 servos read on DEMO (example values, not a real arm) (scan 
  4  wrist_flex    3.10   12.0  30C  16/32/0    254   254          39.0      0.33 s
  5  wrist_roll    3.10   12.0  30C  16/32/0    254   254          39.0      0.33 s
  6  gripper       3.10   12.0  30C  16/32/0      0   254           7.7      0.74 s  Acceleration 0 acts as 50</pre>
-<pre class="wrap">accel = the acceleration limit the firmware puts on its internal target, from registers 41 and 85: 100 steps/s^2 x min(Acceleration, Maximum_Acceleration), Acceleration 0 acting as 50 (a change to 85 counts from the next write of 41; LeRobot writes both on connect).
-60 deg min = the shortest time that acceleration allows for a 60 deg move (speed limits only make it longer).
-
-WARNING  servo 3 (elbow_flex): Acceleration 254 asks for 39.0 rad/s^2 but Maximum_Acceleration (register 85) = 50 caps it at 7.7 rad/s^2: 5.1x lower, so a move from rest takes up to 2.3x longer
+<pre class="wrap">WARNING  servo 3 (elbow_flex): Acceleration 254 asks for 39.0 rad/s^2 but Maximum_Acceleration (register 85) = 50 caps it at 7.7 rad/s^2: 5.1x lower, so a move from rest takes up to 2.3x longer
 WARNING  joints 1-5 differ in maximum_acceleration: [50, 254]. Joints set up differently move differently.
 note     Acceleration (register 41) reads 0 on servo 6. The register is not stored: it goes back to 0 each time the servo is powered. LeRobot writes 254 when it connects, so this is the arm as it is now, not as LeRobot runs it.
 
 Read only: nothing was written to the servos. Method and measurements: https://github.com/VatoLabs/STS3215_profile</pre>
       </div>
-      <p class="simnote">Built-in example values, not a real arm. Run on your arm, it shows your own registers. How to read it: the WARNING lines matter most. &ldquo;capped&rdquo; means that joint speeds up more slowly than the others. What to do about each is in the table below.</p>
+      <p class="simnote">Example values, not a real arm; the two legend lines are left out. <em>accel</em> is the acceleration limit the firmware applies, <em>60 deg min</em> the shortest time it allows for a 60&deg; move. The WARNING lines matter most: what to do about each is in the table below.</p>
     </figure>
   </section>
 
   <section class="view" id="fix" aria-labelledby="fix-title">
     <div class="bench-head">
       <h2 class="vh" id="fix-title">If something is off</h2>
-      <p>What you might see, and what to do about it.</p>
+      <p>What you might see, and what to do.</p>
     </div>
     <div class="tw"><table class="fixes">
-      <thead><tr><th scope="col">You see</th><th scope="col">What it means and what to do</th></tr></thead>
+      <thead><tr><th scope="col">You see</th><th scope="col">What to do</th></tr></thead>
       <tbody>
-        <tr><td>&ldquo;No USB serial port found&rdquo;</td><td>The board is not seen. Check the USB cable and the power supply, then run it again. <code>--list-ports</code> shows what the computer sees.</td></tr>
-        <tr><td>It lists several ports and asks for <code>--port</code></td><td>More than one servo board is plugged in, or no port looks like the usual board (USB vendor 1a86). Run it again with the arm&rsquo;s port, for example <code>--port /dev/ttyACM0</code> (Linux), <code>--port /dev/cu.usbmodem...</code> (Mac) or <code>--port COM3</code> (Windows). <code>--list-ports</code> shows the names.</td></tr>
-        <tr><td>&ldquo;Permission denied&rdquo; on Linux</td><td>Your user is not allowed to open serial ports. Run <code>sudo usermod -aG dialout $USER</code> (it adds your user to the group that may use them), then log out and back in.</td></tr>
-        <tr><td>The port is busy, or no servo answers</td><td>Quit LeRobot, teleoperation and calibration scripts: only one program can use the port. Check that the servos have power; USB alone does not power them.</td></tr>
-        <tr><td>Acceleration 0 on every joint</td><td>You just powered the arm. That register goes back to 0 at every power-on and LeRobot writes 254 when it connects. Connect with LeRobot once, close it, run so101-doctor again.</td></tr>
-        <tr><td>&ldquo;capped by Maximum_Acceleration&rdquo;</td><td>Register 85 limits that joint&rsquo;s acceleration below what register 41 asks for, so the joint moves slower than the others. LeRobot writes 254 to both when it connects.</td></tr>
-        <tr><td>P 16 on some joints and 32 on others</td><td>Not tested with the twin. You get the P 16 twin and a note. Set joints 1 to 5 to the same value, 16 or 32.</td></tr>
-        <tr><td>About 7 V instead of 12 V</td><td>You have the 7.4 V servo version. The register check works; the twin is not made for it yet.</td></tr>
-        <tr><td>&ldquo;holds the twin for P 32, not P 16: pass a new folder&rdquo;, or the folder is not empty</td><td>The tool never overwrites other files. Give <code>--export-mujoco</code> a new folder name.</td></tr>
-        <tr><td>pip cannot find mujoco 3.17.0</td><td>Your Python is older than 3.10. Install a newer Python and start again from step 2.</td></tr>
-        <tr><td>On a Mac, your own script with <code>launch_passive</code> fails</td><td>Run that script with <code>~/so101/bin/mjpython script.py</code> instead of python. The viewer command in step 6 does not need this.</td></tr>
+        <tr><td>&ldquo;No USB serial port found&rdquo;</td><td>Check the USB cable and the power supply. <code>--list-ports</code> shows what the computer sees.</td></tr>
+        <tr><td>It lists several ports and asks for <code>--port</code></td><td>More than one servo board is plugged in, or none looks like the usual board (USB vendor 1a86). Pass the arm&rsquo;s port: <code>--port /dev/ttyACM0</code> (Linux), <code>--port /dev/cu.usbmodem...</code> (Mac) or <code>--port COM3</code> (Windows).</td></tr>
+        <tr><td>&ldquo;Permission denied&rdquo; on Linux</td><td>Run <code>sudo usermod -aG dialout $USER</code>, then log out and back in.</td></tr>
+        <tr><td>The port is busy, or no servo answers</td><td>Quit LeRobot and other arm scripts: only one program can use the port. Check the servos have power; USB alone does not power them.</td></tr>
+        <tr><td>Acceleration 0 on every joint</td><td>Normal right after power-on. Connect with LeRobot once (it writes 254), close it, run so101-doctor again.</td></tr>
+        <tr><td>&ldquo;capped by Maximum_Acceleration&rdquo;</td><td>Register 85 limits that joint below what register 41 asks for, so it moves slower than the others. LeRobot writes 254 to both when it connects.</td></tr>
+        <tr><td>P 16 on some joints and 32 on others</td><td>Not tested with the twin. You get the P 16 twin and a note. Set joints 1 to 5 all to 16 or all to 32.</td></tr>
+        <tr><td>About 7 V instead of 12 V</td><td>You have the 7.4 V servo version. The check works; the twin is not made for it yet.</td></tr>
+        <tr><td>&ldquo;holds the twin for P 32, not P 16: pass a new folder&rdquo;, or the folder is not empty</td><td>Nothing is overwritten. Give <code>--export-mujoco</code> a new folder name.</td></tr>
+        <tr><td>Python is missing, or pip cannot find mujoco 3.17.0</td><td>You need Python 3.10 or newer. Install it from <a href="https://www.python.org/downloads/">python.org</a>, open a new terminal and redo step 1.</td></tr>
+        <tr><td>&ldquo;ensurepip is not available&rdquo; (Debian, Ubuntu)</td><td>Run <code>sudo apt install python3-venv</code>, then redo step 1.</td></tr>
+        <tr><td>On a Mac, your own script with <code>launch_passive</code> fails</td><td>Run it with <code>~/so101/bin/mjpython script.py</code>. Step 4 does not need this.</td></tr>
       </tbody>
     </table></div>
   </section>
@@ -214,16 +190,7 @@ Read only: nothing was written to the servos. Method and measurements: https://g
   <section class="view entry" id="why" aria-labelledby="why-title">
     <div class="txt">
       <h2 class="vh" id="why-title">Why the acceleration matters</h2>
-      <p>The STS3215 does not drive straight to the goal you send. It moves an internal target toward the goal at a constant acceleration, braking in time to stop on it, and the position loop follows that target. The acceleration is <strong>a = 100 steps/s&sup2; &times; min(register 41, register 85)</strong>, with register 41 at 0 acting as 50. A simulator without this profile has the servo chase the goal itself, which the real one does not do.</p>
-      <div class="tw"><table>
-        <caption>Acceleration the firmware uses, firmware 3.10</caption>
-        <thead><tr><th scope="col">Registers 41 / 85</th><th scope="col" class="n">Accel</th><th scope="col" class="n">60&deg; move</th><th scope="col">Status</th></tr></thead>
-        <tbody>
-          <tr><td>254 / 254, LeRobot</td><td class="n">38.96 rad/s&sup2;</td><td class="n">0.33 s</td><td><span class="st">From the rule</span></td></tr>
-          <tr><td>254 / 50, 85 left at factory</td><td class="n">7.7 rad/s&sup2;</td><td class="n">0.74 s</td><td><span class="st">From the rule</span></td></tr>
-        </tbody>
-        <tfoot><tr><td colspan="4">60&deg; move: the shortest time that acceleration allows, as so101-doctor computes it.</td></tr></tfoot>
-      </table></div>
+      <p>The STS3215 does not drive straight to the goal you send. It moves an internal target toward it at a constant acceleration, <strong>a = 100 steps/s&sup2; &times; min(register 41, register 85)</strong> (register 41 at 0 acts as 50), and the position loop follows that target. A simulator without this profile has the servo chase the goal itself, which the real one does not do.</p>
     </div>
     <figure class="bars" aria-labelledby="why-cap" style="--max:68.3">
       <figcaption id="why-cap">Mean position error against the real servo, on a held-out 0.58 N&middot;m load. Lower is better.</figcaption>
@@ -232,21 +199,21 @@ Read only: nothing was written to the servos. Method and measurements: https://g
         <li style="--v:18.1"><span class="bl">BAM&rsquo;s STS3215 model, goal as sent</span><span class="bar"></span><span class="bv">18.1 mrad <small>1.0&deg;</small></span></li>
         <li style="--v:7.1" class="own"><span class="bl">Same model, goal through the profile</span><span class="bar"></span><span class="bv">7.1 mrad <small>0.4&deg;</small></span></li>
       </ol>
-      <p class="src">One bench servo at LeRobot&rsquo;s settings, measured 30 Oct to 1 Nov 2026. The 68.3 to 18.1 step is BAM&rsquo;s model (Rhoban), fitted by us only on T-K-233&rsquo;s public logs; the profile&rsquo;s own share is 18.1 to 7.1. On six servos at one light load the profile took 18.4&ndash;18.9 mrad down to 5.2&ndash;7.4. T-K-233 first showed register 85&rsquo;s role in <a href="https://github.com/Rhoban/bam/pull/20">Rhoban/bam PR #20</a>. Method, limits and credits: <a href="https://github.com/VatoLabs/STS3215_profile">VatoLabs/STS3215_profile</a>.</p>
+      <p class="src">One bench servo at LeRobot&rsquo;s settings, 30 Oct to 1 Nov 2026. The 68.3 to 18.1 step is BAM&rsquo;s model (Rhoban), fitted by us only on T-K-233&rsquo;s public logs; the profile&rsquo;s share is 18.1 to 7.1. On six servos at one light load: 18.4&ndash;18.9 mrad down to 5.2&ndash;7.4. T-K-233 first showed register 85&rsquo;s role in <a href="https://github.com/Rhoban/bam/pull/20">Rhoban/bam PR #20</a>. Method, limits and credits: <a href="https://github.com/VatoLabs/STS3215_profile">VatoLabs/STS3215_profile</a>.</p>
     </figure>
   </section>
 
   <section class="view" id="safe" aria-labelledby="safe-title">
     <div class="bench-head">
       <h2 class="vh" id="safe-title">Read only</h2>
-      <p>so101-doctor can send the servos two instructions, PING and READ, and nothing else. It has no way to write a register, so it cannot move the arm, change a setting or switch torque on or off. Its tests check that only those two are ever sent. If LeRobot or another script has the port open, close it first. Source and tests: <a href="https://github.com/VatoLabs/so101-doctor">VatoLabs/so101-doctor</a>.</p>
+      <p>so101-doctor sends the servos PING and READ and nothing else, and its tests check that. It cannot write a register, so it cannot move the arm, change a setting or switch torque. Source: <a href="https://github.com/VatoLabs/so101-doctor">VatoLabs/so101-doctor</a>.</p>
     </div>
   </section>
 
   <section class="view" id="agents" aria-labelledby="agents-title">
     <div class="bench-head">
       <h2 class="vh" id="agents-title">For AI agents</h2>
-      <p>If you are an assistant setting this up for someone, this block is the whole job. The same text is at <a href="/llms.txt">vatolabs.com/llms.txt</a>.</p>
+      <p>Setting this up for someone? This block is the whole job. Same text: <a href="/llms.txt">vatolabs.com/llms.txt</a>.</p>
     </div>
     <pre class="code agent">so101-doctor 0.1.4: check an SO-101 arm's servos (read only) and export its MuJoCo twin.
 Needs: Python 3.10+, internet for the install. Linux: the user must be in group dialout.
@@ -281,7 +248,7 @@ Facts
 
   <section class="view" id="next" aria-labelledby="next-title">
     <h2 class="vh" id="next-title">Coming soon</h2>
-    <p class="lead-in">This is the first step. The twin above is the same for every arm. Next is a twin fitted to your own arm.</p>
+    <p class="lead-in">This is the first step. The twin above is the same for every arm; next is one fitted to yours.</p>
     <div class="steps">
       <article class="step">
         <h3>Per-arm calibration</h3>
