@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <title>so101-doctor, Vato Labs</title>
-<meta name="description" content="so101-doctor reads every servo register on an SO-101 arm and tells you what your servos really do. Free, read only.">
+<meta name="description" content="so101-doctor reads the configuration and status registers of the servos on an SO-101 arm and tells you what your servos really do. Free, read only.">
 <meta property="og:title" content="so101-doctor, Vato Labs">
-<meta property="og:description" content="Reads every servo register on an SO-101 arm and tells you what your servos really do. Read only.">
+<meta property="og:description" content="Reads the configuration and status registers of the servos on an SO-101 arm and tells you what your servos really do. Read only.">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light dark">
@@ -32,7 +32,7 @@
   <div class="dr-hero">
     <div class="dr-text">
       <h1 id="tool">so101-doctor</h1>
-      <p>A free tool that reads every register of the six STS3215 servos on an SO-101 arm and tells you what they really do. It only reads.</p>
+      <p>A free tool that reads the configuration and status registers of the six STS3215 servos on an SO-101 arm and tells you what they really do. It only reads.</p>
     </div>
     <div class="dr-install">
       <pre class="cmd steps-cmd" aria-label="Install and run"><code><span class="cm"># 1. In a terminal (macOS or Linux, Python 3.9 or newer), make a home for it</span>
@@ -58,9 +58,9 @@
       <div>
         <p>One row per servo, then warnings in plain words.</p>
         <ol class="notes">
-          <li>The acceleration the firmware really uses, from registers 41 and 85, and the shortest time that allows for a 60&deg; move.</li>
+          <li>The acceleration limit the firmware puts on its internal target, from registers 41 and 85, and the shortest time that allows for a 60&deg; move.</li>
           <li>Firmware, supply voltage against the servo&rsquo;s own limits, temperature, gains and fault bits.</li>
-          <li>Warnings when register 85 caps the acceleration you asked for, joints are set up differently, the supply is above a servo&rsquo;s voltage setting, a servo is missing or a position is outside its limits.</li>
+          <li>Warnings when register 85 caps the acceleration you asked for, joints are set up differently, the supply is above a servo&rsquo;s voltage setting, a servo is missing or a position is outside one turn.</li>
         </ol>
       </div>
     </div>
@@ -71,7 +71,7 @@
       </figcaption>
       <div class="term">
 <pre class="wrap"><span class="pr">$ </span>so101-doctor --demo
-so101-doctor: 6 of 6 servos on DEMO (example values, not a real arm)</pre>
+so101-doctor: 6 of 6 servos read on DEMO (example values, not a real arm) (scan complete)</pre>
 <pre class="grid" tabindex="0" aria-label="Servo table, scrolls sideways">id  joint         fw    volts temp  P/D/I      acc max85  accel rad/s2  60 deg min  note
 ----------------------------------------------------------------------------------------
  1  shoulder_pan  3.10   12.0  30C  16/32/0    254   254          39.0      0.33 s
@@ -80,11 +80,12 @@ so101-doctor: 6 of 6 servos on DEMO (example values, not a real arm)</pre>
  4  wrist_flex    3.10   12.0  30C  16/32/0    254   254          39.0      0.33 s
  5  wrist_roll    3.10   12.0  30C  16/32/0    254   254          39.0      0.33 s
  6  gripper       3.10   12.0  30C  16/32/0      0   254           7.7      0.74 s  Acceleration 0 acts as 50</pre>
-<pre class="wrap">accel = the acceleration the servo's firmware really uses, from registers 41 and 85: 100 steps/s^2 x min(Acceleration, Maximum_Acceleration), Acceleration 0 acting as 50 (a change to 85 counts from the next write of 41; LeRobot writes both on connect).
+<pre class="wrap">accel = the acceleration limit the firmware puts on its internal target, from registers 41 and 85: 100 steps/s^2 x min(Acceleration, Maximum_Acceleration), Acceleration 0 acting as 50 (a change to 85 counts from the next write of 41; LeRobot writes both on connect).
 60 deg min = the shortest time that acceleration allows for a 60 deg move (speed limits only make it longer).
 
-WARNING  servo 3 (elbow_flex): Acceleration 254 asks for 39.0 rad/s^2 but Maximum_Acceleration (register 85) = 50 caps it at 7.7 rad/s^2, 5.1x slower
+WARNING  servo 3 (elbow_flex): Acceleration 254 asks for 39.0 rad/s^2 but Maximum_Acceleration (register 85) = 50 caps it at 7.7 rad/s^2: 5.1x lower, so a move from rest takes up to 2.3x longer
 WARNING  joints 1-5 differ in maximum_acceleration: [50, 254]. Joints set up differently move differently.
+note     Acceleration (register 41) reads 0 on servo 6. The register is not stored: it goes back to 0 each time the servo is powered. LeRobot writes 254 when it connects, so this is the arm as it is now, not as LeRobot runs it.
 
 Read only: nothing was written to the servos. Method and measurements: https://github.com/VatoLabs/STS3215_profile</pre>
       </div>
@@ -102,7 +103,6 @@ Read only: nothing was written to the servos. Method and measurements: https://g
         <tbody>
           <tr><td>254 / 254, LeRobot</td><td class="n">38.96 rad/s&sup2;</td><td class="n">0.33 s</td><td><span class="st">From the rule</span></td></tr>
           <tr><td>254 / 50, 85 left at factory</td><td class="n">7.7 rad/s&sup2;</td><td class="n">0.74 s</td><td><span class="st">From the rule</span></td></tr>
-          <tr><td>Factory cap 50, bench</td><td class="n">6.6&#8209;7.2 rad/s&sup2;</td><td class="n">&nbsp;</td><td><span class="st ok">Measured, 2 servos</span></td></tr>
         </tbody>
         <tfoot><tr><td colspan="4">60&deg; move: the shortest time that acceleration allows, as so101-doctor computes it.</td></tr></tfoot>
       </table></div>
