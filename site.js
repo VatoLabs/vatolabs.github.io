@@ -76,5 +76,14 @@
     const b=plot&&plot.parentElement;if(b)ro.observe(b);}
   else addEventListener('resize',redraw);
 
+  // OS tabs: the head script picked the computer; a click or arrow key changes it for every tab bar and persists
+  const bars=document.querySelectorAll('.ostabs'),OS=['mac','linux','windows'];
+  const setOS=(o,from)=>{d.setAttribute('data-osc',o);try{localStorage.setItem('os',o);}catch(e){}
+    bars.forEach(b=>b.querySelectorAll('[role=tab]').forEach(t=>{const on=t.dataset.tab===o;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;if(on&&b===from)t.focus();}));};
+  bars.forEach(b=>b.querySelectorAll('[role=tab]').forEach((t,i)=>{
+    t.addEventListener('click',()=>setOS(t.dataset.tab));
+    t.addEventListener('keydown',ev=>{const k=ev.key==='ArrowRight'?1:ev.key==='ArrowLeft'?-1:0;if(!k)return;ev.preventDefault();setOS(OS[(i+k+3)%3],b);});}));
+  if(bars.length)setOS(d.getAttribute('data-osc')||'mac');
+
   if(reduce)document.querySelectorAll('video[autoplay]').forEach(v=>{v.pause();v.removeAttribute('autoplay');v.controls=true;});
 })();

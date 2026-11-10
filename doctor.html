@@ -13,7 +13,7 @@
 <meta property="og:image" content="https://vatolabs.com/logo.png">
 <link rel="icon" href="/logo.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/logo.png">
 <link rel="preload" href="/fonts/overpass-var.woff2" as="font" type="font/woff2" crossorigin>
-<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('theme')}catch(e){}if(t==='light'||t==='dark')d.setAttribute('data-theme',t);d.classList.add('js')})()</script>
+<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('theme')}catch(e){}if(t==='light'||t==='dark')d.setAttribute('data-theme',t);d.classList.add('js');var o=null;try{o=localStorage.getItem('os')}catch(e){}if(o!=='mac'&&o!=='linux'&&o!=='windows'){var u=navigator.userAgent;o=/Windows/.test(u)?'windows':/Linux|X11/.test(u)&&!/Android/.test(u)?'linux':'mac'}d.setAttribute('data-osc',o)})()</script>
 <link rel="stylesheet" href="/style.css">
 </head>
 <body class="dr">
@@ -35,17 +35,27 @@
   <div class="dr-hero">
     <div class="dr-text">
       <h1 id="tool">so101-doctor</h1>
-      <p>A free tool for the SO-101 arm. It checks how your six servos are set up and writes a MuJoCo twin of the arm, built for the servo gain your arm runs. On our arm the twin rests about twice as close to the real arm as the stock model (one arm, not yet replicated). Read only: it cannot move the arm or change a setting.</p>
+      <p>A free tool for the SO-101 arm. It checks your six servos and writes a MuJoCo twin (a simulated copy) for the servo gain your arm runs. On our arm the twin rests about twice as close to the real arm as the stock model (one arm, not yet replicated). Read only: it cannot move the arm or change a setting.</p>
     </div>
     <div class="dr-install">
-      <pre class="cmd steps-cmd" aria-label="Install and run, macOS or Linux"><code><span class="cm"># macOS or Linux, Python 3.10 or newer: install</span>
+      <div class="dr-cmds">
+        <div class="ostabs" role="tablist" aria-label="Your computer"><button type="button" role="tab" data-tab="mac">macOS</button><button type="button" role="tab" data-tab="linux">Linux</button><button type="button" role="tab" data-tab="windows">Windows</button></div>
+        <div data-os="mac linux"><span class="os">macOS or Linux</span><pre class="cmd steps-cmd" aria-label="Install and run, macOS or Linux"><code><span class="cm"># install (Python 3.10 or newer)</span>
 <span class="pr">$ </span>python3 -m venv ~/so101
 <span class="pr">$ </span>~/so101/bin/pip install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0
-<span class="cm"># Arm powered and plugged in, LeRobot closed: check it and write the twin (works without an arm too)</span>
+<span class="cm"># check the arm and write its twin (works without an arm)</span>
 <span class="pr">$ </span>~/so101/bin/so101-doctor --export-mujoco ~/so101_twin
-<span class="cm"># Open the twin</span>
-<span class="pr">$ </span>~/so101/bin/python -m mujoco.viewer --mjcf ~/so101_twin/scene.xml</code></pre>
-      <p class="dr-note">On Windows, or stuck? <a href="#start">Step by step</a>. <a href="#agents">For AI agents</a>.</p>
+<span class="cm"># open the twin</span>
+<span class="pr">$ </span>~/so101/bin/python -m mujoco.viewer --mjcf ~/so101_twin/scene.xml</code></pre></div>
+        <div data-os="windows"><span class="os">Windows (PowerShell)</span><pre class="cmd steps-cmd" aria-label="Install and run, Windows PowerShell"><code><span class="cm"># install (Python 3.10 or newer)</span>
+<span class="pr">&gt; </span>py -m venv "$HOME\so101"
+<span class="pr">&gt; </span>&amp; "$HOME\so101\Scripts\pip" install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0
+<span class="cm"># check the arm and write its twin (works without an arm)</span>
+<span class="pr">&gt; </span>&amp; "$HOME\so101\Scripts\so101-doctor" --export-mujoco "$HOME\so101_twin"
+<span class="cm"># open the twin</span>
+<span class="pr">&gt; </span>&amp; "$HOME\so101\Scripts\python" -m mujoco.viewer --mjcf "$HOME\so101_twin\scene.xml"</code></pre></div>
+      </div>
+      <p class="dr-note">Stuck? <a href="#start">Step by step</a>. <a href="#agents">For AI agents</a>.</p>
       <div class="dr-btns"><a class="btn solid" href="https://github.com/VatoLabs/so101-doctor">Get the code</a><a class="btn" href="https://github.com/VatoLabs/STS3215_profile">Read the findings</a></div>
     </div>
   </div>
@@ -58,52 +68,53 @@
     <div class="bench-head">
       <h2 class="vh" id="start-title">Start here</h2>
       <div>
-        <p>Four steps, about five minutes. Paste each command into a terminal (Mac: Terminal, Windows: PowerShell) and press Enter. You need Python 3.10 or newer. Without an arm, skip step 2.</p>
-        <p class="simnote">A <strong>twin</strong> is a simulated copy of the arm, here for the free MuJoCo simulator. The <strong>P gain</strong> is how hard a servo pulls toward its goal: LeRobot sets 16, the factory value is 32. A <strong>register</strong> is one numbered servo setting.</p>
+        <p>Pick your computer. Paste each command into a terminal. Needs Python 3.10 or newer.</p>
+        <div class="ostabs" role="tablist" aria-label="Your computer"><button type="button" role="tab" data-tab="mac">macOS</button><button type="button" role="tab" data-tab="linux">Linux</button><button type="button" role="tab" data-tab="windows">Windows</button></div>
       </div>
     </div>
     <ol class="how">
       <li>
         <h3>Install</h3>
-        <div class="oscmd"><span class="os">macOS or Linux</span><pre class="code">python3 -m venv ~/so101
+        <div class="oscmd" data-os="mac linux"><span class="os">macOS or Linux</span><pre class="code">python3 -m venv ~/so101
 ~/so101/bin/pip install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0</pre></div>
-          <div class="oscmd"><span class="os">Windows (PowerShell)</span><pre class="code">py -m venv "$HOME\so101"
+        <div class="oscmd" data-os="windows"><span class="os">Windows (PowerShell)</span><pre class="code">py -m venv "$HOME\so101"
 &amp; "$HOME\so101\Scripts\pip" install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0</pre></div>
-        <p>The first line makes a folder with its own Python; everything installs there and deleting it removes it all. The last line printed should start with &ldquo;Successfully installed&rdquo;. On Windows the <code>&amp;</code> is needed.</p>
+        <p>Ends with &ldquo;Successfully installed&rdquo;.</p>
       </li>
       <li>
         <h3>Check your arm</h3>
-        <p>Power the servo board, plug in the USB cable, and close LeRobot or anything else that talks to the arm.</p>
-        <div class="oscmd"><span class="os">macOS or Linux</span><pre class="code">~/so101/bin/so101-doctor</pre></div>
-          <div class="oscmd"><span class="os">Windows (PowerShell)</span><pre class="code">&amp; "$HOME\so101\Scripts\so101-doctor"</pre></div>
-        <p>The first line should say &ldquo;6 of 6 servos read&rdquo;. Then one row per servo and any warnings in plain words. Nothing on the arm is changed. No arm? Add <code>--demo</code> for example output. Port trouble: see <a href="#fix">Fixes</a>.</p>
+        <p>Arm powered, USB plugged in, LeRobot closed.</p>
+        <div class="oscmd" data-os="mac linux"><span class="os">macOS or Linux</span><pre class="code">~/so101/bin/so101-doctor</pre></div>
+        <div class="oscmd" data-os="windows"><span class="os">Windows (PowerShell)</span><pre class="code">&amp; "$HOME\so101\Scripts\so101-doctor"</pre></div>
+        <p>Starts with &ldquo;6 of 6 servos read&rdquo;. Nothing on the arm is changed. No arm: add <code>--demo</code>.</p>
+        <p data-os="linux">Linux, &ldquo;Permission denied&rdquo;: run <code>sudo usermod -aG dialout $USER</code>, then log out and back in.</p>
       </li>
       <li>
         <h3>Write the twin</h3>
-        <div class="oscmd"><span class="os">macOS or Linux</span><pre class="code">~/so101/bin/so101-doctor --export-mujoco ~/so101_twin</pre></div>
-          <div class="oscmd"><span class="os">Windows (PowerShell)</span><pre class="code">&amp; "$HOME\so101\Scripts\so101-doctor" --export-mujoco "$HOME\so101_twin"</pre></div>
-        <p>It reads the P gain of joints 1 to 5 and writes the twin for it. The last lines say which one you got and whether your servos match it. Without an arm you get the P 16 twin; add <code>--twin-p 32</code> for an arm at 32. Use a new or empty folder: nothing is overwritten.</p>
+        <div class="oscmd" data-os="mac linux"><span class="os">macOS or Linux</span><pre class="code">~/so101/bin/so101-doctor --export-mujoco ~/so101_twin</pre></div>
+        <div class="oscmd" data-os="windows"><span class="os">Windows (PowerShell)</span><pre class="code">&amp; "$HOME\so101\Scripts\so101-doctor" --export-mujoco "$HOME\so101_twin"</pre></div>
+        <p>Writes the twin for the P gain it read, 16 or 32. No arm: P 16, or add <code>--twin-p 32</code>.</p>
       </li>
       <li>
         <h3>Open the twin</h3>
-        <div class="oscmd"><span class="os">macOS or Linux</span><pre class="code">~/so101/bin/python -m mujoco.viewer --mjcf ~/so101_twin/scene.xml</pre></div>
-          <div class="oscmd"><span class="os">Windows (PowerShell)</span><pre class="code">&amp; "$HOME\so101\Scripts\python" -m mujoco.viewer --mjcf "$HOME\so101_twin\scene.xml"</pre></div>
-        <p>A window opens with the arm. Each slider on the right sets one joint&rsquo;s goal. Space pauses, Backspace resets.</p>
+        <div class="oscmd" data-os="mac linux"><span class="os">macOS or Linux</span><pre class="code">~/so101/bin/python -m mujoco.viewer --mjcf ~/so101_twin/scene.xml</pre></div>
+        <div class="oscmd" data-os="windows"><span class="os">Windows (PowerShell)</span><pre class="code">&amp; "$HOME\so101\Scripts\python" -m mujoco.viewer --mjcf "$HOME\so101_twin\scene.xml"</pre></div>
+        <p>A window opens with the arm. The sliders on the right move the joints.</p>
       </li>
     </ol>
-    <p class="src">Checked by us: every step on Ubuntu 24.04 with Python 3.10 (in step 4 the window opened with the twin; its sliders and keys were not tried), steps 1 and 3 also with Python 3.12, and step 2 on macOS. Not yet checked: the Windows lines, and steps 3 and 4 on macOS. If a step fails, <a href="https://github.com/VatoLabs/so101-doctor/issues">open an issue</a> with the line it printed. If it worked, a <a href="https://github.com/VatoLabs/so101-doctor">star on GitHub</a> helps others find it.</p>
+    <p class="src">Checked: every step on Ubuntu 24.04 (step 4: the window opened, sliders not tried) and step 2 on macOS. Not yet: Windows, steps 3 and 4 on macOS. Stuck? <a href="https://github.com/VatoLabs/so101-doctor/issues">Open an issue</a>. Worked? A <a href="https://github.com/VatoLabs/so101-doctor">star on GitHub</a> helps.</p>
   </section>
 
   <section class="view entry" id="twin" aria-labelledby="twin-title">
     <div class="txt">
       <h2 class="vh" id="twin-title">Vato&rsquo;s twin</h2>
-      <p>MuJoCo Menagerie&rsquo;s SO-101 with the five arm servos replaced by a model of the real STS3215: its P loop on motor voltage, the 12 V limit, back-EMF and a limit that stands in for the firmware&rsquo;s acceleration profile. One plain MuJoCo file, in two versions: P 16 (what LeRobot writes) and P 32 (the factory value). so101-doctor gives you the one your arm runs.</p>
+      <p>MuJoCo Menagerie&rsquo;s SO-101 with the five arm servos replaced by a model of the real STS3215: P loop on motor voltage, 12 V limit, back-EMF, acceleration limit. One plain MuJoCo file, for P 16 (what LeRobot writes) or P 32 (the factory value).</p>
       <ol class="notes">
-        <li><span><code>scene.xml</code> is the arm on a floor, <code>so101_twin.xml</code> the arm alone. <code>values.json</code> and <code>README.md</code> list the nine servo values and where each comes from.</span></li>
-        <li><span>Drive it like the servo: <code>ctrl</code> is the joint goal in radians. The gripper keeps Menagerie&rsquo;s actuator.</span></li>
-        <li><span>Angles are Menagerie&rsquo;s, in radians. LeRobot&rsquo;s degrees are counted from a zero that depends on your calibration, so do not copy joint numbers between LeRobot and the twin.</span></li>
+        <li><span><code>scene.xml</code>: the arm on a floor. <code>so101_twin.xml</code>: the arm alone. <code>values.json</code>, <code>README.md</code>: the nine servo values and their sources.</span></li>
+        <li><span><code>ctrl</code> is the joint goal in radians, as on the servo. The gripper keeps Menagerie&rsquo;s actuator.</span></li>
+        <li><span>Angles are Menagerie&rsquo;s. LeRobot&rsquo;s zero depends on your calibration: do not copy joint numbers between the two.</span></li>
       </ol>
-      <p class="simnote">From Python: save as <code>try_twin.py</code>, run <code>~/so101/bin/python try_twin.py</code> (Windows: <code>&amp; "$HOME\so101\Scripts\python" try_twin.py</code>). The P 16 twin prints about 0.29, -0.48, 0.41, 0.30, -0.19.</p>
+      <p class="simnote">From Python: save as <code>try_twin.py</code>, run <span data-os="mac linux"><code>~/so101/bin/python try_twin.py</code></span><span data-os="windows"><code>&amp; "$HOME\so101\Scripts\python" try_twin.py</code></span>. The P 16 twin prints about 0.29, -0.48, 0.41, 0.30, -0.19.</p>
       <pre class="code" aria-label="Python example">import os
 import mujoco
 
@@ -124,7 +135,7 @@ print(d.qpos[:5].round(3))  # where the joints are now</pre>
           <tr><td>P 16</td><td class="n">6.4 mm</td><td class="n">15.2 mm</td><td>180</td><td><span class="st todo">Not yet replicated</span></td></tr>
           <tr><td>P 32</td><td class="n">3.7 mm</td><td class="n">7.7 mm</td><td>164</td><td><span class="st todo">Not yet replicated</span></td></tr>
         </tbody>
-        <tfoot><tr><td colspan="5">Same commands to the real arm and the simulation. Distance between the two gripper tips at rest, mean over the holds (a hold is one pose the arm rested at), computed from the joint encoders, not a camera. P 16 measured 8 Nov 2026, P 32 on 10 Nov 2026.</td></tr></tfoot>
+        <tfoot><tr><td colspan="5">Same commands to the arm and the simulation. Mean distance between the two gripper tips at rest, from the joint encoders, not a camera. A hold is one pose the arm rested at. P 16: 8 Nov 2026. P 32: 10 Nov 2026.</td></tr></tfoot>
       </table></div>
       <p class="src">One arm, nothing in the gripper, one session per row. In motion at P 16 the twin tracked the joints to 1.25&deg; RMSE against 2.23&deg; for stock Menagerie, closer on every joint of five replayed teleoperation recordings (same arm, recorded 2 Nov 2026, not yet replicated). Stock Menagerie is <a href="https://github.com/google-deepmind/mujoco_menagerie/tree/main/robotstudio_so101">robotstudio_so101</a> at repository commit f3b6013 (23 Oct 2026).</p>
       <p class="src">Not checked: a second arm, a load in the gripper, the 7.4 V servo version, other or mixed P gains, fast teleoperation at P 32. Scored on MuJoCo 3.17.0 (only the 2.23&deg; was computed on 4.0.0); on 4.0.0 the twin loads and one 3 s test move ended at the same joint angles.</p>
@@ -135,7 +146,7 @@ print(d.qpos[:5].round(3))  # where the joints are now</pre>
   <section class="view" id="output" aria-labelledby="out-title">
     <div class="bench-head">
       <h2 class="vh" id="out-title">What it prints</h2>
-      <p>One row per servo, then warnings in plain words. With <code>--export-mujoco</code> it adds a line for each servo setting that differs from what the twin assumes.</p>
+      <p>One row per servo, then warnings in plain words. With <code>--export-mujoco</code>: one more line per servo setting that differs from the twin&rsquo;s.</p>
     </div>
     <figure class="term-fig" aria-labelledby="term-title">
       <figcaption class="plot-head">
@@ -159,7 +170,7 @@ note     Acceleration (register 41) reads 0 on servo 6. The register is not stor
 
 Read only: nothing was written to the servos. Method and measurements: https://github.com/VatoLabs/STS3215_profile</pre>
       </div>
-      <p class="simnote">Example values, not a real arm; the two legend lines are left out. <em>accel</em> is the acceleration limit the firmware applies, <em>60 deg min</em> the shortest time it allows for a 60&deg; move. The WARNING lines matter most: what to do about each is in the table below.</p>
+      <p class="simnote">Example values, legend left out. <em>accel</em>: the acceleration limit the firmware applies. <em>60 deg min</em>: the shortest time it allows for a 60&deg; move. What to do about each warning: table below.</p>
     </figure>
   </section>
 
@@ -173,7 +184,7 @@ Read only: nothing was written to the servos. Method and measurements: https://g
       <tbody>
         <tr><td>&ldquo;No USB serial port found&rdquo;</td><td>Check the USB cable and the power supply. <code>--list-ports</code> shows what the computer sees.</td></tr>
         <tr><td>It lists several ports and asks for <code>--port</code></td><td>More than one servo board is plugged in, or none looks like the usual board (USB vendor 1a86). Pass the arm&rsquo;s port: <code>--port /dev/ttyACM0</code> (Linux), <code>--port /dev/cu.usbmodem...</code> (Mac) or <code>--port COM3</code> (Windows).</td></tr>
-        <tr><td>&ldquo;Permission denied&rdquo; on Linux</td><td>Run <code>sudo usermod -aG dialout $USER</code>, then log out and back in.</td></tr>
+        <tr data-os="linux"><td>&ldquo;Permission denied&rdquo; on Linux</td><td>Run <code>sudo usermod -aG dialout $USER</code>, then log out and back in.</td></tr>
         <tr><td>The port is busy, or no servo answers</td><td>Quit LeRobot and other arm scripts: only one program can use the port. Check the servos have power; USB alone does not power them.</td></tr>
         <tr><td>Acceleration 0 on every joint</td><td>Normal right after power-on. Connect with LeRobot once (it writes 254), close it, run so101-doctor again.</td></tr>
         <tr><td>&ldquo;capped by Maximum_Acceleration&rdquo;</td><td>Register 85 limits that joint below what register 41 asks for, so it moves slower than the others. LeRobot writes 254 to both when it connects.</td></tr>
@@ -181,8 +192,8 @@ Read only: nothing was written to the servos. Method and measurements: https://g
         <tr><td>About 7 V instead of 12 V</td><td>You have the 7.4 V servo version. The check works; the twin is not made for it yet.</td></tr>
         <tr><td>&ldquo;holds the twin for P 32, not P 16: pass a new folder&rdquo;, or the folder is not empty</td><td>Nothing is overwritten. Give <code>--export-mujoco</code> a new folder name.</td></tr>
         <tr><td>Python is missing, or pip cannot find mujoco 3.17.0</td><td>You need Python 3.10 or newer. Install it from <a href="https://www.python.org/downloads/">python.org</a>, open a new terminal and redo step 1.</td></tr>
-        <tr><td>&ldquo;ensurepip is not available&rdquo; (Debian, Ubuntu)</td><td>Run <code>sudo apt install python3-venv</code>, then redo step 1.</td></tr>
-        <tr><td>On a Mac, your own script with <code>launch_passive</code> fails</td><td>Run it with <code>~/so101/bin/mjpython script.py</code>. Step 4 does not need this.</td></tr>
+        <tr data-os="linux"><td>&ldquo;ensurepip is not available&rdquo; (Debian, Ubuntu)</td><td>Run <code>sudo apt install python3-venv</code>, then redo step 1.</td></tr>
+        <tr data-os="mac"><td>On a Mac, your own script with <code>launch_passive</code> fails</td><td>Run it with <code>~/so101/bin/mjpython script.py</code>. Step 4 does not need this.</td></tr>
       </tbody>
     </table></div>
   </section>
@@ -190,7 +201,7 @@ Read only: nothing was written to the servos. Method and measurements: https://g
   <section class="view entry" id="why" aria-labelledby="why-title">
     <div class="txt">
       <h2 class="vh" id="why-title">Why the acceleration matters</h2>
-      <p>The STS3215 does not drive straight to the goal you send. It moves an internal target toward it at a constant acceleration, <strong>a = 100 steps/s&sup2; &times; min(register 41, register 85)</strong> (register 41 at 0 acts as 50), and the position loop follows that target. A simulator without this profile has the servo chase the goal itself, which the real one does not do.</p>
+      <p>The STS3215 does not drive straight to the goal. It moves an internal target toward it at a constant acceleration, <strong>a = 100 steps/s&sup2; &times; min(register 41, register 85)</strong> (register 41 at 0 acts as 50), and the position loop follows that target. A simulator without this profile chases the goal itself.</p>
     </div>
     <figure class="bars" aria-labelledby="why-cap" style="--max:68.3">
       <figcaption id="why-cap">Mean position error against the real servo, on a held-out 0.58 N&middot;m load. Lower is better.</figcaption>
