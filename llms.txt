@@ -1,0 +1,43 @@
+# Vato Labs
+
+Vato Labs (Vato Inasaridze) builds open tools for the SO-101 robot arm. Site: https://vatolabs.com
+
+## so101-doctor: instructions for AI agents
+
+Page for people: https://vatolabs.com/doctor
+Source: https://github.com/VatoLabs/so101-doctor
+Servo measurements behind it: https://github.com/VatoLabs/STS3215_profile
+
+so101-doctor 0.1.4: check an SO-101 arm's servos (read only) and export its MuJoCo twin.
+Needs: Python 3.10+, internet for the install. Linux: the user must be in group dialout.
+
+macOS / Linux
+  python3 -m venv ~/so101
+  ~/so101/bin/pip install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0
+  ~/so101/bin/so101-doctor --json                         # read the arm; add --demo when no arm is connected
+  ~/so101/bin/so101-doctor --export-mujoco ~/so101_twin   # a new or empty folder; works with no arm connected
+  ~/so101/bin/python -m mujoco.viewer --mjcf ~/so101_twin/scene.xml
+
+Windows (PowerShell)
+  py -m venv "$HOME\so101"
+  & "$HOME\so101\Scripts\pip" install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0
+  & "$HOME\so101\Scripts\so101-doctor" --json                              # as above: add --demo when no arm is connected
+  & "$HOME\so101\Scripts\so101-doctor" --export-mujoco "$HOME\so101_twin"
+  & "$HOME\so101\Scripts\python" -m mujoco.viewer --mjcf "$HOME\so101_twin\scene.xml"
+
+Facts
+- Read only: the tool sends PING and READ packets and nothing else. It cannot move the arm, write a register or switch torque.
+- It needs the serial port to itself: ask the user to quit LeRobot first. One board with USB vendor 1a86 is picked automatically; otherwise pass --port.
+- --export-mujoco reads the P gain of servos 1 to 5 and writes the twin for it (16 or 32). No arm: the P 16 twin. --twin-p 16 or --twin-p 32 chooses by hand.
+- --json prints one JSON object: version, source, complete, bus_error, servos, findings (level, text) and, with --export-mujoco, twin (exported, p, p_source, checked, reason, match, mismatches, mixed_p, assumes). p_source is arm, option (--twin-p), default (no arm read, mixed gains, or a P other than 16 or 32) or demo.
+- Exit codes: 0 report printed, 1 nothing could be read (port busy, no servo answered, or no port found), 2 bad command line or an export folder that holds other files or the other P's twin (the same twin again is left as it is and is not an error), 3 with --strict when there is a warning or the scan is incomplete. With --export-mujoco and no port found the twin is still written and the exit code is 0.
+- The viewer opens a window and blocks. Without a display, load the file with mujoco.MjModel.from_xml_path("scene.xml") and step it; ctrl = joint goal in rad.
+- No arm connected: skip the plug-in step. The export needs no --demo; use --demo only to show example output.
+- A freshly powered arm reads Acceleration 0 on every joint until LeRobot has connected once. That is not a fault.
+- Do not write servo registers to make the check pass unless the owner asks for it.
+- Accuracy, do not overstate it: one arm, bare, one session per gain, not yet replicated. Tip error at rest 6.4 mm at P 16 (180 holds, 8 Nov 2026) and 3.7 mm at P 32 (164 holds, 10 Nov 2026), against 15.2 and 7.7 mm for stock Menagerie.
+- Licence: the tool is PolyForm Noncommercial 1.0.0 (free for personal, hobby, research and study use and for schools, universities, charities, public research and government; a company needs a licence from Vato Labs). The exported twin folder is Apache-2.0.
+
+Platforms checked by the author: every step on Ubuntu 24.04 with Python 3.10 (the viewer window opened with the
+twin; its sliders and keys were not tried), install, demo and export also with Python 3.12; the register check on macOS. The Windows lines, and the export and viewer steps on macOS,
+are not yet checked: report what fails at https://github.com/VatoLabs/so101-doctor/issues
