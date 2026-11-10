@@ -46,6 +46,17 @@
   <div class="ruler" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
 
   <section id="work" aria-label="Selected work">
+    <article class="view entry" id="so101">
+      <div class="txt">
+        <h2 class="vh">SO-101 servo twin and so101-doctor</h2>
+        <p class="when">Vato Labs, solo, Oct 2026 to now</p>
+        <p>A MuJoCo model of the $200 SO-101 arm with the servo&rsquo;s real control loop, and a read-only tool that checks the six servos on a real arm. Free and public since 10 Nov 2026.</p>
+        <ul class="notes"><li>On a bench servo, adding the firmware&rsquo;s acceleration profile to BAM&rsquo;s servo model took simulation error from 18.1 to 7.1 mrad.</li><li>Every number is from one arm and is not yet replicated.</li></ul>
+        <dl class="figs"><div><dt>Twin tip error at rest, P 16 (stock model 15.2 mm)</dt><dd>6.4 mm</dd></div><div><dt>Twin tip error at rest, P 32 (stock model 7.7 mm)</dt><dd>3.7 mm</dd></div><div><dt>Joint error in motion, P 16, five teleop recordings (stock model 2.23&deg;)</dt><dd>1.25&deg;</dd></div><div><dt>Tip error with 200 g, first per-arm calibration</dt><dd>5.1&times; lower</dd></div></dl>
+        <a class="src" href="/doctor">Install it, numbers and limits</a>
+      </div>
+      <figure class="pic"><img src="/img/so101-twin.jpg" alt="The SO-101 twin rendered in MuJoCo" width="1200" height="900" loading="lazy"><figcaption>The twin in MuJoCo. Body and meshes: MuJoCo Menagerie</figcaption></figure>
+    </article>
     <article class="view entry" id="mrv">
       <div class="txt">
         <h2 class="vh">MRV: Monopedal Reconnaissance Vehicle</h2>

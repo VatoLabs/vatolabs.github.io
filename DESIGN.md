@@ -1,6 +1,6 @@
 ---
 name: Vato Labs
-description: Open-source servo calibration for $200 robot arms, shown as one film still above an engineering drawing sheet.
+description: Servo software for $200 robot arms, shown as one film still above an engineering drawing sheet.
 colors:
   film: "#020202"
   film-ink: "#f2f2f0"

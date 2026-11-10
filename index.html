@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <title>Vato Labs</title>
-<meta name="description" content="Vato Labs builds open-source calibration that makes each $200 robot arm go where it is told.">
+<meta name="description" content="Vato Labs makes software that makes a $200 robot arm go where it is told. First release: so101-doctor, a free servo check and MuJoCo twin for the SO-101 arm.">
 <meta property="og:title" content="Vato Labs">
 <meta property="og:description" content="Decoupling robot progress from atoms.">
 <meta charset="utf-8">
@@ -27,7 +27,7 @@
   <nav class="nav" aria-label="Main">
     <a class="wordmark" href="/" aria-label="Vato Labs home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.0 -0.0 1920.0 1490.0" role="img" aria-label="Vato Labs"><g fill="currentColor"><path transform="translate(-10.0 735.0) scale(1.00000 -1.00000)" d="M287 0C312 0 327 9 342 42L392 152C421 215 430 257 430 341V700C430 722 417 735 395 735H265C243 735 230 724 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V341C10 257 19 215 48 152L98 42C113 9 128 0 153 0Z"/><path transform="translate(430.0 735.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(870.0 735.0) scale(1.00000 -1.00000)" d="M375 0C397 0 410 13 410 35V700C410 722 397 735 375 735H245C223 735 210 722 210 700V35C210 13 223 0 245 0ZM155 482C177 482 190 495 190 517V700C190 722 177 735 155 735H45C23 735 10 722 10 700V517C10 495 23 482 45 482ZM575 482C597 482 610 495 610 517V700C610 722 597 735 575 735H465C443 735 430 722 430 700V517C430 495 443 482 465 482Z"/><path transform="translate(1490.0 735.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 63 430 174V561C430 672 355 735 266 735H265C243 735 230 722 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H174C85 735 10 672 10 561V174C10 63 85 0 174 0Z"/><path transform="translate(-10.5 1490.0) scale(1.05000 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 722 10 700V35C10 13 23 0 45 0ZM375 0C397 0 410 13 410 35V210C410 232 397 245 375 245H265C243 245 230 232 230 210V35C230 13 243 0 265 0Z"/><path transform="translate(430.0 1490.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(865.7 1490.0) scale(1.42857 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V35C10 11 23 0 45 0ZM266 397C355 397 430 460 430 561V571C430 672 355 735 266 735H265C243 735 230 722 230 700V432C230 410 243 397 265 397ZM266 0C355 0 430 63 430 184V195C430 316 355 379 266 379H265C243 379 230 366 230 344V35C230 13 243 0 265 0Z"/><path transform="translate(1490.0 1490.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 53 430 159V269C430 375 383 413 306 442L252 462C222 473 210 483 210 517V700C210 724 197 735 175 735H174C85 735 10 682 10 576V478C10 372 57 334 134 305L188 285C218 274 230 264 230 230V35C230 11 243 0 265 0ZM395 482C417 482 430 495 430 517V576C430 682 355 735 266 735H265C243 735 230 722 230 700V517C230 493 243 482 265 482ZM175 0C197 0 210 13 210 35V230C210 254 197 265 175 265H45C23 265 10 252 10 230V159C10 53 85 0 174 0Z"/></g></svg></a>
     <ul>
-      <li class="opt"><a href="#how">How it works</a></li>
+      <li class="opt"><a href="#now">Status</a></li>
       <li class="opt"><a href="#work">Work</a></li>
       <li class="opt"><a href="#log">Log</a></li>
       <li class="opt"><a href="/doctor">so101-doctor</a></li>
@@ -38,8 +38,8 @@
   </nav>
   <h1 id="mission">Decoupling robot progress from atoms</h1>
   <div class="offer">
-    <p>Vato Labs is building open-source calibration that makes each $200 robot arm go where it is told.</p>
-    <a class="btn solid" href="https://github.com/vatolabs">Follow on GitHub</a>
+    <p>Software that makes a $200 robot arm go where it is told. First release: so101-doctor, a free servo check and simulated twin for the SO-101 arm.</p>
+    <a class="btn solid" href="/doctor">Get so101-doctor</a>
   </div>
   <p class="caption">MRV jumping robot, built by hand. Frames from one jump.</p>
 </header>
@@ -70,97 +70,50 @@
       </div>
       <div class="plot-box"><svg id="plot" role="img" aria-label="Commanded angle and simulated servo angle over 1.2 seconds, with the peak lag dimensioned"></svg></div>
       <p class="key"><span class="k-ref">Command</span><span class="k-act">Servo</span><span class="k-dim">Peak lag</span></p>
-      <p class="simnote">Simulated from datasheet limits; 10 ms delay assumed. Measured trace replaces it after servos arrive.</p>
+      <p class="simnote">Simulated from datasheet limits; 10 ms delay assumed. Not a measurement.</p>
     </figure>
   </section>
 
-  <section class="view" id="how" aria-labelledby="how-title">
-    <h2 class="vh" id="how-title">How it works</h2>
+  <section class="view" id="now" aria-labelledby="now-title">
+    <h2 class="vh" id="now-title">Where it stands</h2>
     <div class="steps">
       <article class="step">
-        <h3>Record 20 minutes</h3>
-        <p>The arm runs chirps, steps and sweeps chosen so each one isolates a few parameters.</p>
-        <div class="tw"><table>
-          <caption>Planned excitation, per joint</caption>
-          <thead><tr><th scope="col">Joint</th><th scope="col">Motion</th><th scope="col" class="n">Time</th></tr></thead>
-          <tbody>
-            <tr><td>Shoulder pan</td><td>Chirp 0.1&ndash;5 Hz</td><td class="n">3:00</td></tr>
-            <tr><td>Shoulder lift</td><td>Steps &plusmn;20&deg;</td><td class="n">3:30</td></tr>
-            <tr><td>Elbow flex</td><td>Steps &plusmn;20&deg;</td><td class="n">3:30</td></tr>
-            <tr><td>Wrist flex</td><td>Chirp 0.1&ndash;5 Hz</td><td class="n">3:00</td></tr>
-            <tr><td>Wrist roll</td><td>Slow sweep</td><td class="n">2:30</td></tr>
-            <tr><td>Gripper</td><td>Open, close, hold</td><td class="n">2:00</td></tr>
-            <tr><td>All</td><td>Home and checks</td><td class="n">2:30</td></tr>
-          </tbody>
-          <tfoot><tr><th scope="row" colspan="2">Total</th><td class="n">20:00</td></tr></tfoot>
-        </table></div>
+        <h3>1. Check the servos</h3>
+        <p>so101-doctor reads the settings of your six servos and warns about the ones that are off. It cannot move the arm or change a setting.</p>
+        <p><span class="st ok">Released</span> <a href="/doctor">Install and run it</a>. Free, Apache-2.0.</p>
       </article>
       <article class="step">
-        <h3>Fit every servo</h3>
-        <p>Delay, gains, speed limit, backlash, friction and gravity, fitted per joint on your arm.</p>
+        <h3>2. Simulate the real servo</h3>
+        <p>A MuJoCo twin (a simulated copy) of the SO-101 with the servo&rsquo;s real control loop. It rests about twice as close to the real arm as the stock model.</p>
         <div class="tw"><table>
-          <caption>Servo model, shoulder lift</caption>
-          <thead><tr><th scope="col">Parameter</th><th scope="col">Starting value</th><th scope="col">Status</th></tr></thead>
+          <caption>Distance from the simulated gripper tip to the real one, at rest. Lower is better.</caption>
+          <thead><tr><th scope="col">Arm set to</th><th scope="col" class="n">Twin</th><th scope="col" class="n">Stock model</th></tr></thead>
           <tbody>
-            <tr><td>Firmware gains</td><td class="m">P 16, D 32</td><td><span class="st ok">Read from servo</span></td></tr>
-            <tr><td>Speed limit</td><td class="m">5.22 rad/s</td><td><span class="st ok">Pinned, firmware max</span></td></tr>
-            <tr><td>Acceleration ramp</td><td class="m">254</td><td><span class="st">LeRobot default</span></td></tr>
-            <tr><td>Zero offset</td><td>Per arm</td><td><span class="st">Measured, phone level</span></td></tr>
-            <tr><td>Backlash</td><td class="m">&plusmn;0.5&deg;</td><td><span class="st">Prior, Menagerie</span></td></tr>
-            <tr><td>Friction, stiction</td><td class="m">0.8&deg; error</td><td><span class="st ok">Fitted, public bench logs</span></td></tr>
-            <tr><td>Command delay</td><td class="m" aria-label="not yet fitted">&nbsp;</td><td><span class="st todo">To fit</span></td></tr>
+            <tr><td>P 16</td><td class="n">6.4 mm</td><td class="n">15.2 mm</td></tr>
+            <tr><td>P 32</td><td class="n">3.7 mm</td><td class="n">7.7 mm</td></tr>
           </tbody>
+          <tfoot><tr><td colspan="3">One arm, nothing in the gripper, from the joint encoders. 180 holds on 8 Nov 2026 (P 16), 164 on 10 Nov 2026 (P 32). Stock model: MuJoCo Menagerie. <a href="/doctor#twin">The twin and its limits</a>.</td></tr></tfoot>
         </table></div>
+        <p><span class="st ok">Released</span> <span class="st todo">Not yet replicated</span> It comes with so101-doctor.</p>
       </article>
       <article class="step">
-        <h3>Correct each command</h3>
-        <p>The model shapes each command before it is sent, so the joint arrives where the policy asked.</p>
-        <figure class="mini">
-          <div class="plot-box short"><svg id="plot2" role="img" aria-label="Target angle and the corrected command that leads it"></svg></div>
-          <figcaption class="key"><span class="k-ref">Target</span><span class="k-act">Command sent</span></figcaption>
-        </figure>
+        <h3>3. Calibrate each arm</h3>
+        <p>A twin of your own arm, fitted from a short recording session, used to make the real arm more precise.</p>
+        <div class="tw"><table>
+          <caption>Early result, our arm</caption>
+          <thead><tr><th scope="col">Measure</th><th scope="col" class="n">Result</th></tr></thead>
+          <tbody>
+            <tr><td>Tip error with 200 g at the jaw</td><td class="n">5.1&times; lower</td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="2">Measured by camera at a tag on the gripper. One arm, one session, 9 Nov 2026.</td></tr></tfoot>
+        </table></div>
+        <p><span class="st">In progress</span> <span class="st todo">Not yet replicated</span> Not released.</p>
       </article>
       <article class="step">
-        <h3>Measure at the tip</h3>
-        <p>Accuracy is measured at the tip with a dial indicator, stock against calibrated, before any claim.</p>
-        <div class="tw"><table>
-          <caption>Gripper tip accuracy, ISO 9283 method</caption>
-          <thead><tr><th scope="col">Arm</th><th scope="col" class="n">Poses</th><th scope="col" class="n">Trials</th><th scope="col">Result</th></tr></thead>
-          <tbody>
-            <tr><td>Stock</td><td class="n">5</td><td class="n">30 each</td><td><span class="st todo">Pending</span></td></tr>
-            <tr><td>Calibrated</td><td class="n">5</td><td class="n">30 each</td><td><span class="st todo">Pending</span></td></tr>
-          </tbody>
-          <tfoot><tr><td colspan="4">Dial indicator, 0.01 mm. Servos arrive 29 Oct.</td></tr></tfoot>
-        </table></div>
+        <h3>4. Payload and force</h3>
+        <p>Payload and contact force from the servos&rsquo; own load readings, with no added sensor.</p>
+        <p><span class="st todo">Planned</span></p>
       </article>
-    </div>
-  </section>
-
-  <section class="view evidence" aria-labelledby="ev-title">
-    <h2 class="vh" id="ev-title">Ready-made params from another servo version vs fitting your own</h2>
-    <div class="ev">
-      <figure class="bars" aria-labelledby="bars-cap">
-        <figcaption id="bars-cap">Average error on the same 20 unseen 12 V logs. Lower is better.</figcaption>
-        <ol>
-          <li style="--v:146"><span class="bl">BAM&rsquo;s ready-made 7.4 V params (M1)</span><span class="bar"></span><span class="bv">8.3&deg; <small>146 mrad</small></span></li>
-          <li style="--v:35"><span class="bl">Our 12 V fit, M1</span><span class="bar"></span><span class="bv">2.0&deg; <small>35 mrad</small></span></li>
-          <li style="--v:15" class="own"><span class="bl">Our 12 V fit, M2</span><span class="bar"></span><span class="bv">0.8&deg; <small>15 mrad</small></span></li>
-          <li style="--v:13"><span class="bl">Our 12 V fit, M4</span><span class="bar"></span><span class="bv">0.7&deg; <small>13 mrad</small></span></li>
-        </ol>
-        <p class="src">The ready-made params come from the 7.4 V servo version: a different motor winding, so the twin is off. Real 12 V STS3215 logs, BAM public dataset.</p>
-      </figure>
-      <div class="twins">
-        <h3>Two fits with the same training score are two different twins</h3>
-        <div class="tw"><table>
-          <caption class="sr">Training and unseen error for two M2 fits</caption>
-          <thead><tr><th scope="col">M2 fit</th><th scope="col" class="n">Trials</th><th scope="col" class="n">Training error</th><th scope="col" class="n">Unseen logs</th></tr></thead>
-          <tbody>
-            <tr><td>Run A</td><td class="n">1,844</td><td class="n">23.7 mrad</td><td class="n">14.6 mrad</td></tr>
-            <tr><td>Run B</td><td class="n">13,562</td><td class="n">23.4 mrad</td><td class="n">23.1 mrad</td></tr>
-          </tbody>
-        </table></div>
-        <p>The training logs cannot tell these parameter sets apart; the right motions can.</p>
-      </div>
     </div>
   </section>
 
@@ -170,7 +123,7 @@
       <caption class="sr">Projects</caption>
       <thead><tr><th scope="col" class="c">Item</th><th scope="col">Project</th><th scope="col">Area</th><th scope="col" class="n">Year</th><th scope="col" class="thumbh"><span class="sr">Picture</span></th></tr></thead>
       <tbody>
-        <tr><td class="c"><span class="balloon">1</span></td><td><a href="https://github.com/termvato/so101-sysid">so101-sysid</a></td><td>Calibration</td><td class="n">2026</td><td class="thumb"><img src="/img/sysid-fit.jpg" alt="Chart: ready-made servo params err 8.3 degrees on unseen logs, our fits 0.7 to 2 degrees" width="780" height="690" loading="lazy"></td></tr>
+        <tr><td class="c"><span class="balloon">1</span></td><td><a href="/doctor">so101-doctor</a></td><td>Servo check, MuJoCo twin</td><td class="n">2026</td><td class="thumb"><img src="/img/so101-twin.jpg" alt="The SO-101 twin rendered in MuJoCo" width="1200" height="900" loading="lazy"></td></tr>
         <tr><td class="c"><span class="balloon">2</span></td><td><a href="/portfolio#rocky">Rocky Robotics, 1st place</a></td><td>Quarry autonomy</td><td class="n">2026</td><td class="thumb"></td></tr>
         <tr><td class="c"><span class="balloon">3</span></td><td><a href="https://github.com/termvato/Humanoid-Spatial-Challenge">3D room change detection</a></td><td>Perception</td><td class="n">2026</td><td class="thumb"><img src="/img/room-change.jpg" alt="Point cloud of a bedroom with moved, added and removed objects boxed and labelled" width="800" height="450" loading="lazy"></td></tr>
         <tr><td class="c"><span class="balloon">4</span></td><td><a href="https://github.com/termvato/Humanoid-Learning-Challenge">Phone-to-robot learning</a></td><td>Imitation learning</td><td class="n">2026</td><td class="thumb"></td></tr>
@@ -199,7 +152,7 @@
     <h2 class="vh" id="letter-title">Why this lab</h2>
     <div class="letter-body">
       <p>I&rsquo;m Vato. I studied mechanical engineering at Warwick and start an MEng at Berkeley in Fall 2027. Until then, I&rsquo;m building this.</p>
-      <p>Cheap robot arms are good enough to do real work. What holds them back is that nobody models their servos, so the arm doesn&rsquo;t go where the policy tells it to.</p>
+      <p>Cheap robot arms are good enough to do real work. What holds them back is that their servos are rarely modelled, so the arm doesn&rsquo;t go where the policy tells it to.</p>
       <p>The goal: a $200 arm makes my breakfast every morning, learned from a video of my own hands. <strong>That needs an arm that goes exactly where it is told</strong>, so that is where I&rsquo;m starting.</p>
       <p>Every result here comes with its trial count, its failures and its cost. If it breaks, you&rsquo;ll see it break.</p>
       <p class="sign">Vato Inasaridze</p>
@@ -214,6 +167,10 @@
       <thead><tr><th scope="col">Entry</th><th scope="col" class="n">Date</th></tr></thead>
       <tbody>
         <tr><td><a href="/doctor">so101-doctor</a> released: a read-only servo check for the SO-101 and a MuJoCo twin for arms at P 16 or P 32</td><td class="n"><time datetime="2026-11-10">10 Nov 2026</time></td></tr>
+        <tr><td>Twin checked on the arm at P 32: tip 3.7 mm from the real one, 7.7 mm for the stock model (164 holds, not yet replicated)</td><td class="n"><time datetime="2026-11-10">10 Nov 2026</time></td></tr>
+        <tr><td>First per-arm calibration result: tip error with 200 g at the jaw 5.1&times; lower, by camera (one session, not yet replicated)</td><td class="n"><time datetime="2026-11-09">9 Nov 2026</time></td></tr>
+        <tr><td>Twin checked on the arm at P 16: tip 6.4 mm from the real one, 15.2 mm for the stock model (180 holds, not yet replicated)</td><td class="n"><time datetime="2026-11-08">8 Nov 2026</time></td></tr>
+        <tr><td>Bench servo: BAM&rsquo;s servo model with the firmware&rsquo;s acceleration profile, simulation error 18.1 to 7.1 mrad (<a href="https://github.com/VatoLabs/STS3215_profile">method and credits</a>)</td><td class="n"><time datetime="2026-11-01">1 Nov 2026</time></td></tr>
         <tr><td>Calibration motions tested in sim: twins agree within 0.2&deg;, so real servo data is the next lever</td><td class="n"><time datetime="2026-10-27">27 Oct 2026</time></td></tr>
         <tr><td>Servo twin fitted on public 12 V logs: 0.8&deg; error on unseen moves, vs 8.3&deg; with ready-made params</td><td class="n"><time datetime="2026-10-25">25 Oct 2026</time></td></tr>
         <tr><td>Lab set up: printer calibrated, servo fit gauges printed, robot station configured</td><td class="n"><time datetime="2026-10-25">25 Oct 2026</time></td></tr>
