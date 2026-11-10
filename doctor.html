@@ -42,14 +42,14 @@
         <div class="ostabs" role="tablist" aria-label="Your computer"><button type="button" role="tab" data-tab="unix">macOS / Linux</button><button type="button" role="tab" data-tab="windows">Windows</button></div>
         <div data-os="unix"><span class="os">macOS or Linux</span><pre class="cmd steps-cmd" aria-label="Install and run, macOS or Linux"><code><span class="cm"># install (Python 3.10 or newer)</span>
 <span class="pr">$ </span>python3 -m venv ~/so101
-<span class="pr">$ </span>~/so101/bin/pip install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0
+<span class="pr">$ </span>~/so101/bin/pip install https://github.com/VatoLabs/so101-doctor/releases/latest/download/so101-doctor.zip mujoco==3.17.0
 <span class="cm"># check the arm and write its twin (works without an arm)</span>
 <span class="pr">$ </span>~/so101/bin/so101-doctor --export-mujoco ~/so101_twin
 <span class="cm"># open the twin</span>
 <span class="pr">$ </span>~/so101/bin/python -m mujoco.viewer --mjcf ~/so101_twin/scene.xml</code></pre></div>
         <div data-os="windows"><span class="os">Windows (PowerShell)</span><pre class="cmd steps-cmd" aria-label="Install and run, Windows PowerShell"><code><span class="cm"># install (Python 3.10 or newer)</span>
 <span class="pr">&gt; </span>py -m venv "$HOME\so101"
-<span class="pr">&gt; </span>&amp; "$HOME\so101\Scripts\pip" install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0
+<span class="pr">&gt; </span>&amp; "$HOME\so101\Scripts\pip" install https://github.com/VatoLabs/so101-doctor/releases/latest/download/so101-doctor.zip mujoco==3.17.0
 <span class="cm"># check the arm and write its twin (works without an arm)</span>
 <span class="pr">&gt; </span>&amp; "$HOME\so101\Scripts\so101-doctor" --export-mujoco "$HOME\so101_twin"
 <span class="cm"># open the twin</span>
@@ -76,9 +76,9 @@
       <li>
         <h3>Install</h3>
         <div class="oscmd" data-os="unix"><span class="os">macOS or Linux</span><pre class="code">python3 -m venv ~/so101
-~/so101/bin/pip install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0</pre></div>
+~/so101/bin/pip install https://github.com/VatoLabs/so101-doctor/releases/latest/download/so101-doctor.zip mujoco==3.17.0</pre></div>
         <div class="oscmd" data-os="windows"><span class="os">Windows (PowerShell)</span><pre class="code">py -m venv "$HOME\so101"
-&amp; "$HOME\so101\Scripts\pip" install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0</pre></div>
+&amp; "$HOME\so101\Scripts\pip" install https://github.com/VatoLabs/so101-doctor/releases/latest/download/so101-doctor.zip mujoco==3.17.0</pre></div>
         <p>Ends with &ldquo;Successfully installed&rdquo;.</p>
       </li>
       <li>
@@ -230,14 +230,14 @@ Needs: Python 3.10+, internet for the install. Linux: the user must be in group 
 
 macOS / Linux
   python3 -m venv ~/so101
-  ~/so101/bin/pip install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0
+  ~/so101/bin/pip install https://github.com/VatoLabs/so101-doctor/releases/latest/download/so101-doctor.zip mujoco==3.17.0
   ~/so101/bin/so101-doctor --json                         # read the arm; add --demo when no arm is connected
   ~/so101/bin/so101-doctor --export-mujoco ~/so101_twin   # a new or empty folder; works with no arm connected
   ~/so101/bin/python -m mujoco.viewer --mjcf ~/so101_twin/scene.xml
 
 Windows (PowerShell)
   py -m venv "$HOME\so101"
-  &amp; "$HOME\so101\Scripts\pip" install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0
+  &amp; "$HOME\so101\Scripts\pip" install https://github.com/VatoLabs/so101-doctor/releases/latest/download/so101-doctor.zip mujoco==3.17.0
   &amp; "$HOME\so101\Scripts\so101-doctor" --json                              # as above: add --demo when no arm is connected
   &amp; "$HOME\so101\Scripts\so101-doctor" --export-mujoco "$HOME\so101_twin"
   &amp; "$HOME\so101\Scripts\python" -m mujoco.viewer --mjcf "$HOME\so101_twin\scene.xml"

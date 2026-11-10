@@ -13,14 +13,14 @@ Needs: Python 3.10+, internet for the install. Linux: the user must be in group 
 
 macOS / Linux
   python3 -m venv ~/so101
-  ~/so101/bin/pip install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0
+  ~/so101/bin/pip install https://github.com/VatoLabs/so101-doctor/releases/latest/download/so101-doctor.zip mujoco==3.17.0
   ~/so101/bin/so101-doctor --json                         # read the arm; add --demo when no arm is connected
   ~/so101/bin/so101-doctor --export-mujoco ~/so101_twin   # a new or empty folder; works with no arm connected
   ~/so101/bin/python -m mujoco.viewer --mjcf ~/so101_twin/scene.xml
 
 Windows (PowerShell)
   py -m venv "$HOME\so101"
-  & "$HOME\so101\Scripts\pip" install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip mujoco==3.17.0
+  & "$HOME\so101\Scripts\pip" install https://github.com/VatoLabs/so101-doctor/releases/latest/download/so101-doctor.zip mujoco==3.17.0
   & "$HOME\so101\Scripts\so101-doctor" --json                              # as above: add --demo when no arm is connected
   & "$HOME\so101\Scripts\so101-doctor" --export-mujoco "$HOME\so101_twin"
   & "$HOME\so101\Scripts\python" -m mujoco.viewer --mjcf "$HOME\so101_twin\scene.xml"
