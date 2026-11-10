@@ -35,10 +35,16 @@
       <p>A free tool that reads every register of the six STS3215 servos on an SO-101 arm and tells you what they really do. It only reads.</p>
     </div>
     <div class="dr-install">
-      <pre class="cmd" aria-label="Install and run"><code><span class="pr">$ </span>pip install so101-doctor
-<span class="pr">$ </span>so101-doctor          <span class="cm"># finds the arm's USB port</span>
-<span class="pr">$ </span>so101-doctor --demo   <span class="cm"># no arm? example output</span></code></pre>
-      <a class="btn solid" href="https://github.com/VatoLabs/STS3215_profile">Read the findings</a>
+      <pre class="cmd steps-cmd" aria-label="Install and run"><code><span class="cm"># 1. In a terminal (macOS or Linux, Python 3.9 or newer), make a home for it</span>
+<span class="pr">$ </span>python3 -m venv ~/so101-doctor
+<span class="cm"># 2. Install it there</span>
+<span class="pr">$ </span>~/so101-doctor/bin/pip install https://github.com/VatoLabs/so101-doctor/archive/refs/heads/main.zip
+<span class="cm"># 3. Try it with no arm (example values)</span>
+<span class="pr">$ </span>~/so101-doctor/bin/so101-doctor --demo
+<span class="cm"># 4. Plug in the arm, power the servos, then</span>
+<span class="pr">$ </span>~/so101-doctor/bin/so101-doctor</code></pre>
+      <p class="dr-note">Close LeRobot first if it is running. Windows steps and options: <a href="https://github.com/VatoLabs/so101-doctor#readme">README</a>.</p>
+      <div class="dr-btns"><a class="btn solid" href="https://github.com/VatoLabs/so101-doctor">Get the code</a><a class="btn" href="https://github.com/VatoLabs/STS3215_profile">Read the findings</a></div>
     </div>
   </div>
 </header>
@@ -147,7 +153,7 @@ Read only: nothing was written to the servos. Method and measurements: https://g
     <div><span class="tl">Drawn by</span>Vato Inasaridze</div>
     <div><span class="tl">Place</span>Luton</div>
     <div><span class="tl">Year</span>2026</div>
-    <div><span class="tl">Licence</span>MIT</div>
+    <div><span class="tl">Licence</span><a href="https://polyformproject.org/licenses/noncommercial/1.0.0/">PolyForm Noncommercial</a></div>
     <nav class="tb-links" aria-label="Elsewhere"><span class="tl">Elsewhere</span><a href="/">Vato Labs</a><a href="https://github.com/VatoLabs/STS3215_profile">Findings</a><a href="https://github.com/vatolabs">GitHub</a><a href="mailto:inasaridzevato@gmail.com">Email</a></nav>
   </footer>
 </main>

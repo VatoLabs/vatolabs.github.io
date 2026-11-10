@@ -258,7 +258,10 @@ figcaption{font-size:.875rem;color:var(--ink-2);padding-top:10px}
 .dr-hero{flex:1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,4vw,72px);align-items:end;padding:clamp(32px,6vh,72px) var(--gut) clamp(48px,8vh,88px)}
 .dr .film h1{position:static;max-width:none;margin:0 0 22px;font-size:clamp(2.75rem,1.1rem + 4vw,5rem);font-weight:750;line-height:.97;letter-spacing:-.025em}
 .dr-text p{max-width:40ch;font-size:clamp(1.125rem,1rem + .45vw,1.375rem);line-height:1.4;text-wrap:pretty}
-.dr-install{display:grid;gap:18px;justify-items:start}
+.dr-install{display:grid;gap:18px;justify-items:start;min-width:0}
+.dr-note{margin:0;font-size:.9375rem;opacity:.8}.dr-note a{color:inherit;text-decoration:underline}
+.steps-cmd{white-space:pre-wrap;overflow-wrap:anywhere}
+.dr-btns{display:flex;flex-wrap:wrap;gap:12px}
 .cmd{width:100%;margin:0;padding:16px 18px;border:1px solid rgba(241,234,209,.38);font:500 .9375rem/1.7 var(--fm);overflow-x:auto;color:var(--film-ink)}
 .pr{color:var(--film-ink-2);user-select:none}
 .cm{color:var(--film-ink-2)}
