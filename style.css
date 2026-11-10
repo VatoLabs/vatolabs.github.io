@@ -285,18 +285,17 @@ figcaption{font-size:.875rem;color:var(--ink-2);padding-top:10px}
 .how p{color:var(--ink-2);max-width:66ch;margin-top:8px}
 .oscmd{margin-top:10px}
 /* OS tabs. Without JS every block shows under its label; the head script sets data-osc and only that computer's blocks show. */
-html[data-osc=mac] [data-os]:not([data-os~=mac]),html[data-osc=linux] [data-os]:not([data-os~=linux]),html[data-osc=windows] [data-os]:not([data-os~=windows]){display:none}
+html[data-osc=unix] [data-os]:not([data-os~=unix]),html[data-osc=windows] [data-os]:not([data-os~=windows]){display:none}
 html[data-osc] .os{display:none}
 .ostabs{--tl:var(--ink);--tb:var(--ink);--tf:var(--sheet);display:none;width:max-content;max-width:100%;border:1px solid var(--tb);margin-top:14px}
 html[data-osc] .ostabs{display:flex}
 .ostabs button{min-height:44px;padding:0 16px;border:0;background:transparent;color:var(--tl);font:500 .875rem var(--fm);cursor:pointer}
 .ostabs button+button{border-left:1px solid var(--tb)}
 .ostabs button:focus-visible{outline:2px solid var(--tl);outline-offset:2px}
-html[data-osc=mac] .ostabs [data-tab=mac],html[data-osc=linux] .ostabs [data-tab=linux],html[data-osc=windows] .ostabs [data-tab=windows]{background:var(--tl);color:var(--tf)}
+html[data-osc=unix] .ostabs [data-tab=unix],html[data-osc=windows] .ostabs [data-tab=windows]{background:var(--tl);color:var(--tf)}
 .dr-cmds{width:100%;min-width:0}
 .dr-cmds .ostabs{--tl:var(--film-ink);--tb:rgba(241,234,209,.38);--tf:var(--film);margin:0;border-bottom:0}
 .dr-cmds .os{color:var(--film-ink-2);margin-top:12px}
-.how .oscmd+p[data-os]{margin-top:8px}
 html:not([data-osc]) span[data-os~=windows]::before{content:" or, on Windows, "}
 .os{display:block;font:600 .75rem/1 var(--fm);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
 .code{margin:0;background:var(--band);border-block:1px solid var(--ink);padding:11px 14px;font:500 .8125rem/1.6 var(--fm);color:var(--ink);white-space:pre-wrap;overflow-wrap:anywhere;font-feature-settings:normal;font-kerning:none;font-variant-ligatures:none}
