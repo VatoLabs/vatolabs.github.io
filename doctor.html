@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>so101-doctor, Vato Labs</title>
+<meta name="description" content="so101-doctor reads every servo register on an SO-101 arm and tells you what your servos really do. Free, read only.">
+<meta property="og:title" content="so101-doctor, Vato Labs">
+<meta property="og:description" content="Reads every servo register on an SO-101 arm and tells you what your servos really do. Read only.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#020202">
+<meta property="og:image" content="https://vatolabs.com/logo.png">
+<link rel="icon" href="/logo.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/logo.png">
+<link rel="preload" href="/fonts/overpass-var.woff2" as="font" type="font/woff2" crossorigin>
+<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('theme')}catch(e){}if(t==='light'||t==='dark')d.setAttribute('data-theme',t);d.classList.add('js')})()</script>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body class="dr">
+<a class="skip" href="#sheet">Skip to content</a>
+<header class="film short" aria-labelledby="tool">
+  <nav class="nav" aria-label="Main">
+    <a class="wordmark" href="/" aria-label="Vato Labs home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.0 -0.0 1920.0 1490.0" role="img" aria-label="Vato Labs"><g fill="currentColor"><path transform="translate(-10.0 735.0) scale(1.00000 -1.00000)" d="M287 0C312 0 327 9 342 42L392 152C421 215 430 257 430 341V700C430 722 417 735 395 735H265C243 735 230 724 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V341C10 257 19 215 48 152L98 42C113 9 128 0 153 0Z"/><path transform="translate(430.0 735.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(870.0 735.0) scale(1.00000 -1.00000)" d="M375 0C397 0 410 13 410 35V700C410 722 397 735 375 735H245C223 735 210 722 210 700V35C210 13 223 0 245 0ZM155 482C177 482 190 495 190 517V700C190 722 177 735 155 735H45C23 735 10 722 10 700V517C10 495 23 482 45 482ZM575 482C597 482 610 495 610 517V700C610 722 597 735 575 735H465C443 735 430 722 430 700V517C430 495 443 482 465 482Z"/><path transform="translate(1490.0 735.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 63 430 174V561C430 672 355 735 266 735H265C243 735 230 722 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H174C85 735 10 672 10 561V174C10 63 85 0 174 0Z"/><path transform="translate(-10.5 1490.0) scale(1.05000 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 722 10 700V35C10 13 23 0 45 0ZM375 0C397 0 410 13 410 35V210C410 232 397 245 375 245H265C243 245 230 232 230 210V35C230 13 243 0 265 0Z"/><path transform="translate(430.0 1490.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(865.7 1490.0) scale(1.42857 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V35C10 11 23 0 45 0ZM266 397C355 397 430 460 430 561V571C430 672 355 735 266 735H265C243 735 230 722 230 700V432C230 410 243 397 265 397ZM266 0C355 0 430 63 430 184V195C430 316 355 379 266 379H265C243 379 230 366 230 344V35C230 13 243 0 265 0Z"/><path transform="translate(1490.0 1490.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 53 430 159V269C430 375 383 413 306 442L252 462C222 473 210 483 210 517V700C210 724 197 735 175 735H174C85 735 10 682 10 576V478C10 372 57 334 134 305L188 285C218 274 230 264 230 230V35C230 11 243 0 265 0ZM395 482C417 482 430 495 430 517V576C430 682 355 735 266 735H265C243 735 230 722 230 700V517C230 493 243 482 265 482ZM175 0C197 0 210 13 210 35V230C210 254 197 265 175 265H45C23 265 10 252 10 230V159C10 53 85 0 174 0Z"/></g></svg></a>
+    <ul>
+      <li class="opt"><a href="/">Lab</a></li>
+      <li class="opt"><a href="#output">Output</a></li>
+      <li class="opt"><a href="#why">Why</a></li>
+      <li class="opt"><a href="/portfolio">Portfolio</a></li>
+      <li><button class="theme" type="button" aria-label="Dark theme" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true" width="20" height="20"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg></button></li>
+      <li><a class="btn" href="https://github.com/vatolabs">GitHub</a></li>
+    </ul>
+  </nav>
+  <div class="dr-hero">
+    <div class="dr-text">
+      <h1 id="tool">so101-doctor</h1>
+      <p>A free tool that reads every register of the six STS3215 servos on an SO-101 arm and tells you what they really do. It only reads.</p>
+    </div>
+    <div class="dr-install">
+      <pre class="cmd" aria-label="Install and run"><code><span class="pr">$ </span>pip install so101-doctor
+<span class="pr">$ </span>so101-doctor          <span class="cm"># finds the arm's USB port</span>
+<span class="pr">$ </span>so101-doctor --demo   <span class="cm"># no arm? example output</span></code></pre>
+      <a class="btn solid" href="https://github.com/VatoLabs/STS3215_profile">Read the findings</a>
+    </div>
+  </div>
+</header>
+
+<main class="sheet" id="sheet">
+  <div class="ruler" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
+
+  <section class="view" id="output" aria-labelledby="out-title">
+    <div class="bench-head">
+      <h2 class="vh" id="out-title">What it prints</h2>
+      <div>
+        <p>One row per servo, then warnings in plain words.</p>
+        <ol class="notes">
+          <li>The acceleration the firmware really uses, from registers 41 and 85, and the shortest time that allows for a 60&deg; move.</li>
+          <li>Firmware, supply voltage against the servo&rsquo;s own limits, temperature, gains and fault bits.</li>
+          <li>Warnings when register 85 caps the acceleration you asked for, joints are set up differently, the supply is above a servo&rsquo;s voltage setting, a servo is missing or a position is outside its limits.</li>
+        </ol>
+      </div>
+    </div>
+    <figure class="term-fig" aria-labelledby="term-title">
+      <figcaption class="plot-head">
+        <span class="vt" id="term-title">so101-doctor --demo</span>
+        <span class="tag">Example values</span>
+      </figcaption>
+      <div class="term">
+<pre class="wrap"><span class="pr">$ </span>so101-doctor --demo
+so101-doctor: 6 of 6 servos on DEMO (example values, not a real arm)</pre>
+<pre class="grid" tabindex="0" aria-label="Servo table, scrolls sideways">id  joint         fw    volts temp  P/D/I      acc max85  accel rad/s2  60 deg min  note
+----------------------------------------------------------------------------------------
+ 1  shoulder_pan  3.10   12.0  30C  16/32/0    254   254          39.0      0.33 s
+ 2  shoulder_lift 3.10   12.0  30C  16/32/0    254   254          39.0      0.33 s
+ 3  elbow_flex    3.10   12.0  30C  16/32/0    254    50           7.7      0.74 s  capped by Maximum_Acceleration 50
+ 4  wrist_flex    3.10   12.0  30C  16/32/0    254   254          39.0      0.33 s
+ 5  wrist_roll    3.10   12.0  30C  16/32/0    254   254          39.0      0.33 s
+ 6  gripper       3.10   12.0  30C  16/32/0      0   254           7.7      0.74 s  Acceleration 0 acts as 50</pre>
+<pre class="wrap">accel = the acceleration the servo's firmware really uses, from registers 41 and 85: 100 steps/s^2 x min(Acceleration, Maximum_Acceleration), Acceleration 0 acting as 50 (a change to 85 counts from the next write of 41; LeRobot writes both on connect).
+60 deg min = the shortest time that acceleration allows for a 60 deg move (speed limits only make it longer).
+
+WARNING  servo 3 (elbow_flex): Acceleration 254 asks for 39.0 rad/s^2 but Maximum_Acceleration (register 85) = 50 caps it at 7.7 rad/s^2, 5.1x slower
+WARNING  joints 1-5 differ in maximum_acceleration: [50, 254]. Joints set up differently move differently.
+
+Read only: nothing was written to the servos. Method and measurements: https://github.com/VatoLabs/STS3215_profile</pre>
+      </div>
+      <p class="simnote">Built-in example values, not a real arm. Run on your arm, it shows your own registers.</p>
+    </figure>
+  </section>
+
+  <section class="view entry" id="why" aria-labelledby="why-title">
+    <div class="txt">
+      <h2 class="vh" id="why-title">Why the acceleration matters</h2>
+      <p>The STS3215 does not drive straight to the goal you send. It moves an internal target toward the goal at a constant acceleration, braking in time to stop on it, and the position loop follows that target. The acceleration is <strong>a = 100 steps/s&sup2; &times; min(register 41, register 85)</strong>, with register 41 at 0 acting as 50. A simulator that ignores this is wrong on every move.</p>
+      <div class="tw"><table>
+        <caption>Acceleration the firmware uses, firmware 3.10</caption>
+        <thead><tr><th scope="col">Registers 41 / 85</th><th scope="col" class="n">Accel</th><th scope="col" class="n">60&deg; move</th><th scope="col">Status</th></tr></thead>
+        <tbody>
+          <tr><td>254 / 254, LeRobot</td><td class="n">38.96 rad/s&sup2;</td><td class="n">0.33 s</td><td><span class="st">From the rule</span></td></tr>
+          <tr><td>254 / 50, 85 left at factory</td><td class="n">7.7 rad/s&sup2;</td><td class="n">0.74 s</td><td><span class="st">From the rule</span></td></tr>
+          <tr><td>Factory cap 50, bench</td><td class="n">6.6&#8209;7.2 rad/s&sup2;</td><td class="n">&nbsp;</td><td><span class="st ok">Measured, 2 servos</span></td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="4">60&deg; move: the shortest time that acceleration allows, as so101-doctor computes it.</td></tr></tfoot>
+      </table></div>
+    </div>
+    <figure class="bars" aria-labelledby="why-cap" style="--max:68.3">
+      <figcaption id="why-cap">Mean position error against the real servo, on a held-out 0.58 N&middot;m load. Lower is better.</figcaption>
+      <ol>
+        <li style="--v:68.3"><span class="bl">Stock MuJoCo Menagerie actuator</span><span class="bar"></span><span class="bv">68.3 mrad <small>3.9&deg;</small></span></li>
+        <li style="--v:18.1"><span class="bl">BAM&rsquo;s STS3215 model, goal as sent</span><span class="bar"></span><span class="bv">18.1 mrad <small>1.0&deg;</small></span></li>
+        <li style="--v:7.1" class="own"><span class="bl">Same model, goal through the profile</span><span class="bar"></span><span class="bv">7.1 mrad <small>0.4&deg;</small></span></li>
+      </ol>
+      <p class="src">One bench servo at LeRobot&rsquo;s settings, measured 30 Oct to 1 Nov 2026. The 68.3 to 18.1 step is BAM&rsquo;s work (Rhoban), with the model fitted only on T-K-233&rsquo;s public logs; the profile&rsquo;s own share is 18.1 to 7.1. T-K-233 first showed register 85&rsquo;s role in <a href="https://github.com/Rhoban/bam/pull/20">Rhoban/bam PR #20</a>. Method, limits and credits: <a href="https://github.com/VatoLabs/STS3215_profile">VatoLabs/STS3215_profile</a>.</p>
+    </figure>
+  </section>
+
+  <section class="view" id="safe" aria-labelledby="safe-title">
+    <div class="bench-head">
+      <h2 class="vh" id="safe-title">Read only</h2>
+      <p>so101-doctor can send the servos two instructions, PING and READ, and nothing else. It has no way to write a register, so it cannot move the arm, change a setting or switch torque on or off. Its tests check that only those two are ever sent. If LeRobot or another script has the port open, close it first.</p>
+    </div>
+  </section>
+
+  <section class="view" id="next" aria-labelledby="next-title">
+    <h2 class="vh" id="next-title">Coming soon</h2>
+    <div class="steps">
+      <article class="step">
+        <h3>Per-arm calibration</h3>
+        <p>A twin of your own arm, fitted from a short recording session, that corrects every command.</p>
+        <div class="tw"><table>
+          <caption>Early result, our arm</caption>
+          <thead><tr><th scope="col">Measure</th><th scope="col" class="n">Result</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+            <tr><td>Jaw-tip error, 200 g payload</td><td class="n">5.1&times; lower</td><td><span class="st todo">Not yet replicated</span></td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="3">Camera-measured. One arm, one session.</td></tr></tfoot>
+        </table></div>
+      </article>
+      <article class="step">
+        <h3>Payload and force</h3>
+        <p>Payload and force from the servos&rsquo; own duty readings.</p>
+      </article>
+    </div>
+  </section>
+
+  <div class="ruler foot" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
+  <footer class="titleblock">
+    <div class="tb-name"><span class="tl">Lab</span><a class="wordmark" href="/" aria-label="Vato Labs home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.0 -0.0 1920.0 1490.0" role="img" aria-label="Vato Labs"><g fill="currentColor"><path transform="translate(-10.0 735.0) scale(1.00000 -1.00000)" d="M287 0C312 0 327 9 342 42L392 152C421 215 430 257 430 341V700C430 722 417 735 395 735H265C243 735 230 724 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V341C10 257 19 215 48 152L98 42C113 9 128 0 153 0Z"/><path transform="translate(430.0 735.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(870.0 735.0) scale(1.00000 -1.00000)" d="M375 0C397 0 410 13 410 35V700C410 722 397 735 375 735H245C223 735 210 722 210 700V35C210 13 223 0 245 0ZM155 482C177 482 190 495 190 517V700C190 722 177 735 155 735H45C23 735 10 722 10 700V517C10 495 23 482 45 482ZM575 482C597 482 610 495 610 517V700C610 722 597 735 575 735H465C443 735 430 722 430 700V517C430 495 443 482 465 482Z"/><path transform="translate(1490.0 735.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 63 430 174V561C430 672 355 735 266 735H265C243 735 230 722 230 700V35C230 13 243 0 265 0ZM175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H174C85 735 10 672 10 561V174C10 63 85 0 174 0Z"/><path transform="translate(-10.5 1490.0) scale(1.05000 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 722 10 700V35C10 13 23 0 45 0ZM375 0C397 0 410 13 410 35V210C410 232 397 245 375 245H265C243 245 230 232 230 210V35C230 13 243 0 265 0Z"/><path transform="translate(430.0 1490.0) scale(1.00000 -1.00000)" d="M395 0C417 0 430 13 430 35V394C430 478 421 520 392 583L342 693C327 726 312 735 287 735H265C243 735 230 722 230 700V419C230 397 243 384 265 384H316C320 384 322 382 322 378V370C322 366 320 364 316 364H265C243 364 230 351 230 329V35C230 11 243 0 265 0ZM175 0C197 0 210 13 210 35V329C210 351 197 364 175 364H124C120 364 118 366 118 370V378C118 382 120 384 124 384H175C197 384 210 397 210 419V700C210 722 197 735 175 735H153C128 735 113 726 98 693L48 583C19 520 10 478 10 394V35C10 11 23 0 45 0Z"/><path transform="translate(865.7 1490.0) scale(1.42857 -1.00000)" d="M175 0C197 0 210 13 210 35V700C210 722 197 735 175 735H45C23 735 10 724 10 700V35C10 11 23 0 45 0ZM266 397C355 397 430 460 430 561V571C430 672 355 735 266 735H265C243 735 230 722 230 700V432C230 410 243 397 265 397ZM266 0C355 0 430 63 430 184V195C430 316 355 379 266 379H265C243 379 230 366 230 344V35C230 13 243 0 265 0Z"/><path transform="translate(1490.0 1490.0) scale(1.00000 -1.00000)" d="M266 0C355 0 430 53 430 159V269C430 375 383 413 306 442L252 462C222 473 210 483 210 517V700C210 724 197 735 175 735H174C85 735 10 682 10 576V478C10 372 57 334 134 305L188 285C218 274 230 264 230 230V35C230 11 243 0 265 0ZM395 482C417 482 430 495 430 517V576C430 682 355 735 266 735H265C243 735 230 722 230 700V517C230 493 243 482 265 482ZM175 0C197 0 210 13 210 35V230C210 254 197 265 175 265H45C23 265 10 252 10 230V159C10 53 85 0 174 0Z"/></g></svg></a></div>
+    <div><span class="tl">Drawn by</span>Vato Inasaridze</div>
+    <div><span class="tl">Place</span>Luton</div>
+    <div><span class="tl">Year</span>2026</div>
+    <div><span class="tl">Licence</span>MIT</div>
+    <nav class="tb-links" aria-label="Elsewhere"><span class="tl">Elsewhere</span><a href="/">Vato Labs</a><a href="https://github.com/VatoLabs/STS3215_profile">Findings</a><a href="https://github.com/vatolabs">GitHub</a><a href="mailto:inasaridzevato@gmail.com">Email</a></nav>
+  </footer>
+</main>
+<script src="/site.js" defer></script>
+</body>
+</html>
